@@ -16,7 +16,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 
 function bundle() {
-    let apps = ['website', 'cms'];
+    let apps = ['website'];
     let options = ['production', 'debug'];
     let production = false;
     let debug = false;

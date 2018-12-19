@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+}
+
+.material-icons {
+    vertical-align: middle;
+}
+
+.container {
+    max-width: 1080px;
+    margin: auto;
+    padding: 0 0.5rem;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+ul {
+    margin: 0;
+}
+
+.cl-1 {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.cl-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.cl-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.w-gap {
+    grid-gap: 0.75rem;
+}
+
+.section {
+    margin-top: 2rem;
+}
+._Landing__landing {
+    display: block;
+}
