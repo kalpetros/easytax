@@ -1,0 +1,22 @@
+{% load i18n %}
+{% load staticfiles %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Easytax</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="{% static 'website/css/styles.css' %}"/>
+  </head>
+  <body>
+    <div id="modal-container"></div>
+    <div id="sidenav-container"></div>
+    <div id="root"></div>
+  </body>
+  <script type="text/javascript" src="{% static 'website/app/bundle.js' %}"></script>
+</html>
