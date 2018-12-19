@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Unit test / coverage reports
+.coverage
+.cache
+
+# Django stuff
+*.pot
+settings.py
+
+# Other
+*.*~
+*.*#
+*.#*
+/node_modules
+package-lock.json
+db.sqlite3
