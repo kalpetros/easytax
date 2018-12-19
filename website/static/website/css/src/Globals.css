@@ -1,0 +1,44 @@
+:global body {
+    margin: 0;
+}
+
+:global .material-icons {
+    vertical-align: middle;
+}
+
+:global .container {
+    max-width: 1080px;
+    margin: auto;
+    padding: 0 0.5rem;
+}
+
+:global .cursor {
+    cursor: pointer;
+}
+
+:global ul {
+    margin: 0;
+}
+
+:global .cl-1 {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+:global .cl-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+:global .cl-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+:global .w-gap {
+    grid-gap: 0.75rem;
+}
+
+:global .section {
+    margin-top: 2rem;
+}
