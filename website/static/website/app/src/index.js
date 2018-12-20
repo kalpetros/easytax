@@ -1,6 +1,8 @@
 import '../../css/src/Globals.css';
 import styles from '../../css/src/index.css';
 import {Landing} from './Landing';
+import {Navbar} from './Navbar';
+import {Menu} from './Menu';
 
 import {
     BrowserRouter as Router,
@@ -64,6 +66,15 @@ class App extends React.Component {
                      onLogin={this.handleLogin}
                      user={this.state.user}/>
         );
+
+        const navbar = (props) => (
+            <Navbar {...props}/>
+        );
+
+        const menu = (props) => (
+            <Menu {...props}/>
+        );
+        
         const root = (props) => (
             this.state.user !== null ? (
                 landing(props)
@@ -76,10 +87,14 @@ class App extends React.Component {
             <React.Fragment>
 	      <Router>
 	        <ScrollWrapper>
-	          <Switch>
-	            <Route exact path="/" render={root}/>
-	            <Route component={FourOFour}/>
-	          </Switch>
+                  <Route render={navbar}/>
+                  <div className={styles.index}>
+                    <Route render={menu}/>
+                    <Switch>
+	              <Route exact path="/" render={root}/>
+	              <Route component={FourOFour}/>
+	            </Switch>
+                  </div>
 	        </ScrollWrapper>
 	      </Router>
             </React.Fragment>
@@ -87,4 +102,7 @@ class App extends React.Component {
     }
 }
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(
+    <App/>,
+    document.getElementById('root')
+);

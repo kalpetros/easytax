@@ -29252,6 +29252,68 @@ module.exports = warning;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.Button = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Button = require('../../../css/src/Components/Button.css');
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Button = function (_React$Component) {
+    _inherits(Button, _React$Component);
+
+    function Button(props) {
+        _classCallCheck(this, Button);
+
+        var _this = _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).call(this, props));
+
+        _this.state = {};
+
+        return _this;
+    }
+
+    _createClass(Button, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'button',
+                { className: _Button2.default.button },
+                _react2.default.createElement(
+                    'i',
+                    { className: 'material-icons' },
+                    this.props.icon
+                )
+            );
+        }
+    }]);
+
+    return Button;
+}(_react2.default.Component);
+
+exports.Button = Button;
+
+},{"../../../css/src/Components/Button.css":93,"react":78}],89:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.Landing = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -29259,6 +29321,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _Landing = require('../../css/src/Landing.css');
 
 var _Landing2 = _interopRequireDefault(_Landing);
+
+var _Button = require('./Components/Button');
 
 var _react = require('react');
 
@@ -29273,42 +29337,365 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Landing = function (_React$Component) {
-    _inherits(Landing, _React$Component);
+  _inherits(Landing, _React$Component);
 
-    function Landing(props) {
-        _classCallCheck(this, Landing);
+  function Landing(props) {
+    _classCallCheck(this, Landing);
 
-        var _this = _possibleConstructorReturn(this, (Landing.__proto__ || Object.getPrototypeOf(Landing)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Landing.__proto__ || Object.getPrototypeOf(Landing)).call(this, props));
 
-        _this.state = {};
+    _this.state = {};
 
+    return _this;
+  }
+
+  _createClass(Landing, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'renderBody',
+    value: function renderBody() {
+      var items = Array(25).fill(1).map(function (item, index) {
+        return _react2.default.createElement(
+          'tr',
+          { key: index },
+          _react2.default.createElement(
+            'td',
+            null,
+            _react2.default.createElement('input', { type: 'checkbox' })
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            index + 1
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            'John'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            'Doe'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            'SK88291'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            '19924828'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            '$392.90'
+          )
+        );
+      });
+
+      return items;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: _Landing2.default.landing },
+        _react2.default.createElement(
+          'div',
+          { className: _Landing2.default.actionBar },
+          _react2.default.createElement(
+            'div',
+            { className: _Landing2.default.left },
+            _react2.default.createElement(_Button.Button, { icon: 'search' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _Landing2.default.right },
+            _react2.default.createElement(_Button.Button, { icon: 'delete_forever' }),
+            _react2.default.createElement(_Button.Button, { icon: 'add' })
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _Landing2.default.content },
+          _react2.default.createElement(
+            'table',
+            { className: _Landing2.default.table },
+            _react2.default.createElement(
+              'thead',
+              null,
+              _react2.default.createElement(
+                'tr',
+                null,
+                _react2.default.createElement(
+                  'th',
+                  null,
+                  _react2.default.createElement('input', { type: 'checkbox' })
+                ),
+                _react2.default.createElement(
+                  'th',
+                  null,
+                  '#'
+                ),
+                _react2.default.createElement(
+                  'th',
+                  null,
+                  'First name'
+                ),
+                _react2.default.createElement(
+                  'th',
+                  null,
+                  'Last name'
+                ),
+                _react2.default.createElement(
+                  'th',
+                  null,
+                  'Social security number'
+                ),
+                _react2.default.createElement(
+                  'th',
+                  null,
+                  'Tax number'
+                ),
+                _react2.default.createElement(
+                  'th',
+                  null,
+                  'Credit'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'tbody',
+              null,
+              this.renderBody()
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Landing;
+}(_react2.default.Component);
+
+exports.Landing = Landing;
+
+},{"../../css/src/Landing.css":95,"./Components/Button":88,"react":78}],90:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Menu = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Menu = require('../../css/src/Menu.css');
+
+var _Menu2 = _interopRequireDefault(_Menu);
+
+var _immutabilityHelper = require('immutability-helper');
+
+var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Menu = function (_React$Component) {
+    _inherits(Menu, _React$Component);
+
+    function Menu(props) {
+        _classCallCheck(this, Menu);
+
+        var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
+
+        _this.state = {
+            active: 'adm'
+        };
+
+        _this.handleChange = _this.handleChange.bind(_this);
         return _this;
     }
 
-    _createClass(Landing, [{
+    _createClass(Menu, [{
         key: 'componentDidMount',
         value: function componentDidMount() {}
+    }, {
+        key: 'handleChange',
+        value: function handleChange(event) {
+            var newState = (0, _immutabilityHelper2.default)(this.state, {
+                active: { $set: event.currentTarget.id }
+            });
+
+            this.setState(newState);
+        }
+    }, {
+        key: 'renderList',
+        value: function renderList() {
+            var _this2 = this;
+
+            var list = [{ name: 'Administration', id: 'adm', icon: 'language' }, { name: 'Customers', id: 'cus', icon: 'supervised_user_circle' }, { name: 'Regulations', id: 'reg', icon: 'beenhere' }, { name: 'Tax', id: 'tax', icon: 'euro_symbol' }, { name: 'Invoices', id: 'inv', icon: 'donut_small' }, { name: 'Expenses', id: 'exp', icon: 'poll' }];
+
+            var items = list.map(function (item, index) {
+                var className = item.id == _this2.state.active ? _Menu2.default.active : _Menu2.default.li;
+
+                return _react2.default.createElement(
+                    'li',
+                    { key: index,
+                        className: className,
+                        id: list[index].id,
+                        onClick: _this2.handleChange },
+                    _react2.default.createElement(
+                        'i',
+                        { className: 'material-icons' },
+                        list[index].icon
+                    ),
+                    ' ',
+                    list[index].name
+                );
+            });
+
+            return items;
+        }
     }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                { className: _Landing2.default.landing },
+                { className: _Menu2.default.menu },
                 _react2.default.createElement(
-                    'h1',
-                    null,
-                    'Easytax'
+                    'ul',
+                    { className: _Menu2.default.list },
+                    this.renderList()
                 )
             );
         }
     }]);
 
-    return Landing;
+    return Menu;
 }(_react2.default.Component);
 
-exports.Landing = Landing;
+exports.Menu = Menu;
 
-},{"../../css/src/Landing.css":91,"react":78}],89:[function(require,module,exports){
+},{"../../css/src/Menu.css":96,"immutability-helper":36,"react":78}],91:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Navbar = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Navbar = require('../../css/src/Navbar.css');
+
+var _Navbar2 = _interopRequireDefault(_Navbar);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Navbar = function (_React$Component) {
+  _inherits(Navbar, _React$Component);
+
+  function Navbar(props) {
+    _classCallCheck(this, Navbar);
+
+    var _this = _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this, props));
+
+    _this.state = {};
+
+    return _this;
+  }
+
+  _createClass(Navbar, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: _Navbar2.default.navbar },
+        _react2.default.createElement(
+          'div',
+          { className: _Navbar2.default.logo },
+          _react2.default.createElement(
+            'ul',
+            null,
+            _react2.default.createElement(
+              'li',
+              null,
+              _react2.default.createElement(
+                'a',
+                { href: '/' },
+                'easytax v0.0.1'
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _Navbar2.default.list },
+          _react2.default.createElement(
+            'ul',
+            null,
+            _react2.default.createElement(
+              'li',
+              null,
+              _react2.default.createElement(
+                'span',
+                null,
+                _react2.default.createElement(
+                  'i',
+                  { className: 'material-icons' },
+                  'notifications'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'li',
+              null,
+              _react2.default.createElement(
+                'span',
+                null,
+                'Guest'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Navbar;
+}(_react2.default.Component);
+
+exports.Navbar = Navbar;
+
+},{"../../css/src/Navbar.css":97,"react":78}],92:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -29322,6 +29709,10 @@ var _index = require('../../css/src/index.css');
 var _index2 = _interopRequireDefault(_index);
 
 var _Landing = require('./Landing');
+
+var _Navbar = require('./Navbar');
+
+var _Menu = require('./Menu');
 
 var _reactRouterDom = require('react-router-dom');
 
@@ -29454,6 +29845,15 @@ var App = function (_React$Component3) {
                     onLogin: _this4.handleLogin,
                     user: _this4.state.user }));
             };
+
+            var navbar = function navbar(props) {
+                return _react2.default.createElement(_Navbar.Navbar, props);
+            };
+
+            var menu = function menu(props) {
+                return _react2.default.createElement(_Menu.Menu, props);
+            };
+
             var root = function root(props) {
                 return _this4.state.user !== null ? landing(props) : landing(props);
             };
@@ -29467,11 +29867,17 @@ var App = function (_React$Component3) {
                     _react2.default.createElement(
                         ScrollWrapper,
                         null,
+                        _react2.default.createElement(_reactRouterDom.Route, { render: navbar }),
                         _react2.default.createElement(
-                            _reactRouterDom.Switch,
-                            null,
-                            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: root }),
-                            _react2.default.createElement(_reactRouterDom.Route, { component: FourOFour })
+                            'div',
+                            { className: _index2.default.index },
+                            _react2.default.createElement(_reactRouterDom.Route, { render: menu }),
+                            _react2.default.createElement(
+                                _reactRouterDom.Switch,
+                                null,
+                                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: root }),
+                                _react2.default.createElement(_reactRouterDom.Route, { component: FourOFour })
+                            )
                         )
                     )
                 )
@@ -29484,10 +29890,16 @@ var App = function (_React$Component3) {
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
 
-},{"../../css/src/Globals.css":90,"../../css/src/index.css":92,"./Landing":88,"axios":1,"immutability-helper":36,"react":78,"react-dom":50,"react-router-dom":63}],90:[function(require,module,exports){
+},{"../../css/src/Globals.css":94,"../../css/src/index.css":98,"./Landing":89,"./Menu":90,"./Navbar":91,"axios":1,"immutability-helper":36,"react":78,"react-dom":50,"react-router-dom":63}],93:[function(require,module,exports){
+module.exports = {"button":"_Components_Button__button"}
+},{}],94:[function(require,module,exports){
 module.exports = {}
-},{}],91:[function(require,module,exports){
-module.exports = {"landing":"_Landing__landing"}
-},{}],92:[function(require,module,exports){
-arguments[4][90][0].apply(exports,arguments)
-},{"dup":90}]},{},[89]);
+},{}],95:[function(require,module,exports){
+module.exports = {"landing":"_Landing__landing","actionBar":"_Landing__actionBar","left":"_Landing__left","right":"_Landing__right","content":"_Landing__content","table":"_Landing__table"}
+},{}],96:[function(require,module,exports){
+module.exports = {"menu":"_Menu__menu","list":"_Menu__list","li":"_Menu__li","active":"_Menu__active _Menu__li"}
+},{}],97:[function(require,module,exports){
+module.exports = {"navbar":"_Navbar__navbar","logo":"_Navbar__logo","list":"_Navbar__list","mobileList":"_Navbar__mobileList"}
+},{}],98:[function(require,module,exports){
+module.exports = {"index":"_index__index"}
+},{}]},{},[92]);

@@ -1,5 +1,18 @@
+._index__index {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: calc(100% - 51px);
+    overflow: hidden;
+}
+html,
+body,
+#root {
+    height: 100%;
+}
+
 body {
     margin: 0;
+    font-family: 'Monospace';
 }
 
 .material-icons {
@@ -43,5 +56,189 @@ ul {
     margin-top: 2rem;
 }
 ._Landing__landing {
+    background-color: #eee;
+    overflow: auto;
+}
+
+._Landing__actionBar {
+    background-color: #fff;
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    filter: drop-shadow(0 2px 2px #eee);
+}
+
+._Landing__left {
+    padding: 0.75rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: max-content;
+}
+
+._Landing__right {
+    padding: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, max-content));
+    justify-content: right;
+}
+
+._Landing__content {
+}
+
+._Landing__table {
+    width: 100%;
+    border-spacing: 1px;
+}
+
+._Landing__table thead {
+    background-color: #fff;
+}
+
+._Landing__table tbody {
+    background-color: #fff;
+}
+
+._Landing__table thead tr th {
+    background-color: #fff;
+    padding: 0.75rem;
+    text-align: center;
+    position: sticky;
+    top: calc(0.75rem * 2 + 0.5rem * 2 + 25.5px);
+    filter: drop-shadow(0 2px 2px #eee);
+}
+
+._Landing__table tbody tr td {
+    padding: 0.75rem;
+    text-align: center;
+}
+._Navbar__navbar {
+    background-color: #fff;
+    height: 50px;
+    line-height: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+._Navbar__logo {
+    display: grid;
+    justify-items: left;
+}
+
+._Navbar__logo ul {
+    list-style: none;
+    padding: 0;
+}
+
+._Navbar__logo ul li {
+    display: inline-block;
+    padding: 0 0.75rem;
+    cursor: pointer;
+}
+
+._Navbar__logo a {
+    text-decoration: none;
+    color: #9e9e9e;
+}
+
+._Navbar__logo a:hover {
+    color: #0f1125;
+}
+
+._Navbar__list,
+._Navbar__mobileList {
+    display: grid;
+    justify-items: right;
+}
+
+._Navbar__list > ul,
+._Navbar__mobileList > ul {
+    list-style: none;
+    padding: 0;
+}
+
+._Navbar__list > ul > li,
+._Navbar__mobileList > ul > li {
+    display: inline-block;
+    color: #9e9e9e;
+    cursor: pointer;
+    position: relative;
+}
+
+._Navbar__list > ul > li > a,
+._Navbar__mobileList > ul > li > a,
+._Navbar__list > ul > li > span,
+._Navbar__mobileList > ul > li > span {
+    padding: 0 0.75rem;
     display: block;
+}
+
+._Navbar__list > ul > li:hover > a,
+._Navbar__mobileList > ul > li:hover > a,
+._Navbar__list > ul > li:hover > span,
+._Navbar__mobileList > ul > li:hover > span {
+    color: #0f1125;
+}
+
+._Navbar__list > ul > li > a {
+    text-decoration: none;
+    color: #9e9e9e;
+}
+
+@media (max-width: 600px) {
+    ._Navbar__list {
+	display: none;
+    }
+    ._Navbar__mobileList {
+	display: grid;
+    }
+}
+._Menu__menu {
+    background-color: #0f1125;
+    width: 15vw;
+    overflow: auto;
+}
+
+._Menu__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+._Menu__li {
+    padding: 2rem;
+    color: #fff;
+    border-bottom: 1px solid #18192b;
+}
+
+._Menu__li:hover {
+    background-color: #18192b;
+    cursor: pointer;
+}
+
+._Menu__li i {
+    margin-right: 1rem;
+}
+
+._Menu__active {
+    border-left: 5px solid #99b965;
+    color: #99b965;
+}
+._Components_Button__button {
+    background-color: unset;
+    display: inline-block;
+    padding: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+._Components_Button__button:hover {
+    background-color: #eee;
+    border-radius: 50%;
+    transition: background-color 0.5s linear;
 }

@@ -1,0 +1,6 @@
+.index {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: calc(100% - 51px);
+    overflow: hidden;
+}

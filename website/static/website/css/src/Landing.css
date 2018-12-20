@@ -1,3 +1,60 @@
 .landing {
-    display: block;
+    background-color: #eee;
+    overflow: auto;
+}
+
+.actionBar {
+    background-color: #fff;
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    filter: drop-shadow(0 2px 2px #eee);
+}
+
+.left {
+    padding: 0.75rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: max-content;
+}
+
+.right {
+    padding: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, max-content));
+    justify-content: right;
+}
+
+.content {
+}
+
+.table {
+    width: 100%;
+    border-spacing: 1px;
+}
+
+.table thead {
+    background-color: #fff;
+}
+
+.table tbody {
+    background-color: #fff;
+}
+
+.table thead tr th {
+    background-color: #fff;
+    padding: 0.75rem;
+    text-align: center;
+    position: sticky;
+    top: calc(0.75rem * 2 + 0.5rem * 2 + 25.5px);
+    filter: drop-shadow(0 2px 2px #eee);
+}
+
+.table tbody tr td {
+    padding: 0.75rem;
+    text-align: center;
 }
