@@ -1,6 +1,6 @@
 import '../../css/src/Globals.css';
 import styles from '../../css/src/index.css';
-import {Landing} from './Landing';
+import {Customers} from './Customers';
 import {Navbar} from './Navbar';
 import {Menu} from './Menu';
 
@@ -61,10 +61,10 @@ class App extends React.Component {
 	};
     }
     render() {
-        const landing = (props) => (
-            <Landing {...props}
-                     onLogin={this.handleLogin}
-                     user={this.state.user}/>
+        const customers = (props) => (
+            <Customers {...props}
+                       onLogin={this.handleLogin}
+                       user={this.state.user}/>
         );
 
         const navbar = (props) => (
@@ -77,9 +77,9 @@ class App extends React.Component {
         
         const root = (props) => (
             this.state.user !== null ? (
-                landing(props)
+                customers(props)
             ) : (
-                landing(props)
+                customers(props)
             )
         );
 
@@ -92,6 +92,8 @@ class App extends React.Component {
                     <Route render={menu}/>
                     <Switch>
 	              <Route exact path="/" render={root}/>
+                      <Route exact path="/customers" render={root}/>
+                      <Route exact path="/profile" render={root}/>
 	              <Route component={FourOFour}/>
 	            </Switch>
                   </div>

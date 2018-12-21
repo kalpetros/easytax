@@ -1,9 +1,3 @@
-._index__index {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    height: calc(100% - 51px);
-    overflow: hidden;
-}
 html,
 body,
 #root {
@@ -55,65 +49,46 @@ ul {
 .section {
     margin-top: 2rem;
 }
-._Landing__landing {
-    background-color: #eee;
+._index__index {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: calc(100% - 51px);
+    overflow: hidden;
+}
+._Menu__menu {
+    background-color: #0f1125;
+    width: 15vw;
     overflow: auto;
 }
 
-._Landing__actionBar {
-    background-color: #fff;
-    height: auto;
-    width: 100%;
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    filter: drop-shadow(0 2px 2px #eee);
+._Menu__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-._Landing__left {
-    padding: 0.75rem;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: max-content;
+._Menu__li {
+    padding: 2rem;
+    color: #fff;
+    border-bottom: 1px solid #18192b;
 }
 
-._Landing__right {
-    padding: 0.75rem;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(auto, max-content));
-    justify-content: right;
+._Menu__li:hover {
+    background-color: #18192b;
+    cursor: pointer;
 }
 
-._Landing__content {
+._Menu__li i {
+    margin-right: 1rem;
 }
 
-._Landing__table {
-    width: 100%;
-    border-spacing: 1px;
+._Menu__active {
+    border-left: 5px solid #99b965;
+    color: #99b965;
 }
-
-._Landing__table thead {
-    background-color: #fff;
-}
-
-._Landing__table tbody {
-    background-color: #fff;
-}
-
-._Landing__table thead tr th {
-    background-color: #fff;
-    padding: 0.75rem;
-    text-align: center;
-    position: sticky;
-    top: calc(0.75rem * 2 + 0.5rem * 2 + 25.5px);
-    filter: drop-shadow(0 2px 2px #eee);
-}
-
-._Landing__table tbody tr td {
-    padding: 0.75rem;
-    text-align: center;
+._Customers__customers {
+    background-color: #eee;
+    overflow: auto;
 }
 ._Navbar__navbar {
     background-color: #fff;
@@ -198,37 +173,6 @@ ul {
 	display: grid;
     }
 }
-._Menu__menu {
-    background-color: #0f1125;
-    width: 15vw;
-    overflow: auto;
-}
-
-._Menu__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-._Menu__li {
-    padding: 2rem;
-    color: #fff;
-    border-bottom: 1px solid #18192b;
-}
-
-._Menu__li:hover {
-    background-color: #18192b;
-    cursor: pointer;
-}
-
-._Menu__li i {
-    margin-right: 1rem;
-}
-
-._Menu__active {
-    border-left: 5px solid #99b965;
-    color: #99b965;
-}
 ._Components_Button__button {
     background-color: unset;
     display: inline-block;
@@ -241,4 +185,88 @@ ul {
     background-color: #eee;
     border-radius: 50%;
     transition: background-color 0.5s linear;
+}
+._Customers_TopBar__topBar {
+    background-color: #fff;
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    filter: drop-shadow(0 2px 2px #eee);   
+}
+
+._Customers_TopBar__left {
+    padding: 0.75rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, minmax(auto, max-content));
+    align-items: center;
+}
+
+._Customers_TopBar__right {
+    padding: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, max-content));
+    justify-content: right;
+    align-items: center;
+}
+
+._Customers_TopBar__entries {
+    color: #9e9e9e;
+}
+._Customers_Content__table {
+    width: 100%;
+    border-spacing: 1px;
+}
+
+._Customers_Content__table thead {
+    background-color: #fff;
+}
+
+._Customers_Content__table tbody {
+    background-color: #fff;
+}
+
+._Customers_Content__table thead tr th {
+    background-color: #fff;
+    padding: 0.75rem;
+    text-align: center;
+    position: sticky;
+    top: calc(0.75rem * 2 + 0.5rem * 2 + 25.5px);
+    filter: drop-shadow(0 2px 2px #eee);
+}
+
+._Customers_Content__table tbody tr td {
+    padding: 0.75rem;
+    text-align: center;
+}
+
+._Customers_Content__table tbody tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+._Components_Modal__modal {
+    background-color: #fff;
+    max-height: 80vh;
+    height: 25vh;
+    width: 25vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+}
+._Components_Overlay__overlay {
+    background: linear-gradient(90deg,
+				rgba(255, 255, 255, 0.5),
+				rgba(15, 17, 37, 0.9));
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
 }

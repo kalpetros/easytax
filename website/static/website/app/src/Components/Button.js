@@ -11,10 +11,30 @@ class Button extends React.Component {
     }
     componentDidMount() {
     }
+    renderIcon() {
+        if (typeof this.props.icon !== 'undefined') {
+            return(
+                <i className="material-icons">{this.props.icon}</i>
+            );
+        }
+
+        return null;
+    }
+    renderTitle() {
+        if (typeof this.props.title !== 'undefined') {
+            return(
+                <span>{this.props.title}</span>
+            );
+        }
+
+        return null;
+    }
     render() {
 	return(
-	    <button className={styles.button}>
-              <i className="material-icons">{this.props.icon}</i>
+	    <button className={styles.button}
+                    onClick={this.props.onClick}>
+              {this.renderIcon()}
+              {this.renderTitle()}
 	    </button>
 	);
     }
