@@ -1,0 +1,87 @@
+.input {
+    background-color: #fff;
+    height: 4rem;
+    width: 100%;
+    /*padding: 0 1rem;*/
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px #e0e0e0;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.inputDisabled {
+    composes: input;
+    background-color: rgba(238, 238, 238, 0.6);
+    cursor: not-allowed;
+}
+
+.input:after {
+    content: '';
+    background-color: #0f1125;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    transition: width 0.2s ease-out;
+}
+
+.input:focus-within:after {
+    width: 100%;
+    transition: width 0.2s ease-out;
+}
+
+.label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: #0f1125;
+    transition: all 0.25s ease-out;
+    pointer-events: none;
+}
+
+.labelActive {
+    composes: label;
+    top: 22%;
+    font-size: 10.5px;
+}
+
+.label i {
+    margin-right: 0.5rem;
+}
+
+.input:focus-within .label {
+    top: 22%;
+    font-size: 10.5px;
+    transition: all 0.25s ease-out;
+}
+
+.input input[type="text"],
+.input input[type="number"],
+.input input[type="password"],
+.input input[type="email"] {
+    background-color: transparent;
+    padding: 0 1rem;
+    border: none;
+    height: 100%;
+    /*width: 100%;*/
+    width: 100%;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    width: fill-available;
+}
+
+.input input:disabled {
+    cursor: not-allowed;
+}
+
+.input input:focus {
+    outline: none;
+}
+
+.input input:invalid {
+    color: red;
+}
