@@ -71,8 +71,13 @@ class App extends React.Component {
             <Navbar {...props}/>
         );
 
+        let list = [
+            {name: 'Customers', id: 'cus', icon: 'supervised_user_circle'}
+        ];
+
         const menu = (props) => (
-            <Menu {...props}/>
+            <Menu {...props}
+                  list={list}/>
         );
         
         const root = (props) => (
@@ -93,6 +98,7 @@ class App extends React.Component {
                     <Switch>
 	              <Route exact path="/" render={root}/>
                       <Route exact path="/customers" render={root}/>
+                      {/* <Route exact path="/customers/:customerId" render={}/> */}
                       <Route exact path="/profile" render={root}/>
 	              <Route component={FourOFour}/>
 	            </Switch>

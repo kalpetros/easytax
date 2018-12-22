@@ -2,6 +2,7 @@ import styles from '../../css/src/Customers.css';
 import {Modal} from './Components/Modal';
 import {List} from './Customers/List';
 import {Create} from './Customers/Create';
+import {View} from './Customers/View';
 
 import update from 'immutability-helper';
 import React from 'react';
@@ -16,7 +17,8 @@ class Customers extends React.Component {
 
         this.handleBackClick = this.handleBackClick.bind(this);
         this.handleDeleteClick = this.handleDeleteClick.bind(this);
-        this.handleAddClick = this.handleAddClick.bind(this);
+        this.handleCreateClick = this.handleCreateClick.bind(this);
+        this.handleViewClick = this.handleViewClick.bind(this);
     }
     componentDidMount() {
     }
@@ -30,9 +32,16 @@ class Customers extends React.Component {
     handleDeleteClick() {
         console.log('delete clicked');
     }
-    handleAddClick() {
+    handleCreateClick() {
         const newState = update(this.state, {
             view: {$set: 'create'}
+        });
+
+        this.setState(newState);
+    }
+    handleViewClick() {
+        const newState = update(this.state, {
+            view: {$set: 'view'}
         });
 
         this.setState(newState);
@@ -42,13 +51,20 @@ class Customers extends React.Component {
             return(
                 <Create onBackClick={this.handleBackClick}
                         onDeleteClick={this.handleDeleteClick}
-                        onAddClick={this.handleAddClick}/>
+                        onAddClick={this.handleCreateClick}/>
+            );
+        } else if (this.state.view == 'view') {
+            return(
+                <View onBackClick={this.handleBackClick}
+                      onDeleteClick={this.handleDeleteClick}
+                      onAddClick={this.handleCreateClick}/>
             );
         }
 
         return(
             <List onDeleteClick={this.handleDeleteClick}
-                  onAddClick={this.handleAddClick}/>
+                  onAddClick={this.handleCreateClick}
+                  onViewClick={this.handleViewClick}/>
         );
     }
     render() {

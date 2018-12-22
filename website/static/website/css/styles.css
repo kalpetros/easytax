@@ -55,6 +55,10 @@ ul {
 .section {
     margin-top: 2rem;
 }
+._Customers__customers {
+    background-color: #eee;
+    overflow: auto;
+}
 ._Navbar__navbar {
     background-color: #fff;
     height: 50px;
@@ -169,10 +173,6 @@ ul {
     border-left: 5px solid #99b965;
     color: #99b965;
 }
-._Customers__customers {
-    background-color: #eee;
-    overflow: auto;
-}
 ._Components_Modal__modal {
     background-color: #fff;
     max-height: 90vh;
@@ -218,67 +218,11 @@ ul {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.75rem;
 }
-._Customers_TopBar__topBar {
-    background-color: #fff;
-    height: auto;
-    width: 100%;
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    filter: drop-shadow(0 2px 2px #eee);   
+._Customers_Create__create {
+    
 }
-
-._Customers_TopBar__left {
-    padding: 0.75rem;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(2, minmax(auto, max-content));
-    align-items: center;
-}
-
-._Customers_TopBar__right {
-    padding: 0.75rem;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(auto, max-content));
-    justify-content: right;
-    align-items: center;
-}
-
-._Customers_TopBar__entries {
-    color: #9e9e9e;
-}
-._Customers_Content__table {
-    width: 100%;
-    border-spacing: 1px;
-}
-
-._Customers_Content__table thead {
-    background-color: #fff;
-}
-
-._Customers_Content__table tbody {
-    background-color: #fff;
-}
-
-._Customers_Content__table thead tr th {
-    background-color: #fff;
-    padding: 0.75rem;
-    text-align: center;
-    position: sticky;
-    top: calc(0.75rem * 2 + 0.5rem * 2 + 25.5px);
-    filter: drop-shadow(0 2px 2px #eee);
-}
-
-._Customers_Content__table tbody tr td {
-    padding: 0.75rem;
-    text-align: center;
-}
-
-._Customers_Content__table tbody tr:hover {
-    background-color: #f5f5f5;
-    cursor: pointer;
+._Customers_List__list {
+    
 }
 ._Components_Overlay__overlay {
     background: linear-gradient(90deg,
@@ -303,6 +247,109 @@ ul {
     background-color: #eee;
     border-radius: 50%;
     transition: background-color 0.5s linear;
+}
+._Customers_Create_TopBar__topBar {
+    background-color: #fff;
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    filter: drop-shadow(0 2px 2px #eee);
+    z-index: 1;
+}
+
+._Customers_Create_TopBar__left {
+    padding: 0.75rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, minmax(auto, max-content));
+    align-items: center;
+}
+
+._Customers_Create_TopBar__right {
+    padding: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, max-content));
+    justify-content: right;
+    align-items: center;
+}
+
+._Customers_Create_TopBar__entries {
+    color: #9e9e9e;
+}
+._Customers_Create_Content__content span {
+    padding: 1rem;
+    display: block;
+}
+
+._Customers_Create_Content__input {
+    display: grid;
+    grid-auto-flow: column;
+}
+._Customers_List_TopBar__topBar {
+    background-color: #fff;
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    filter: drop-shadow(0 2px 2px #eee);   
+}
+
+._Customers_List_TopBar__left {
+    padding: 0.75rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, minmax(auto, max-content));
+    align-items: center;
+}
+
+._Customers_List_TopBar__right {
+    padding: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, max-content));
+    justify-content: right;
+    align-items: center;
+}
+
+._Customers_List_TopBar__entries {
+    color: #9e9e9e;
+}
+._Customers_List_Content__table {
+    width: 100%;
+    border-spacing: 1px;
+}
+
+._Customers_List_Content__table thead {
+    background-color: #fff;
+}
+
+._Customers_List_Content__table tbody {
+    background-color: #fff;
+}
+
+._Customers_List_Content__table thead tr th {
+    background-color: #fff;
+    padding: 0.75rem;
+    text-align: center;
+    position: sticky;
+    top: calc(0.75rem * 2 + 0.5rem * 2 + 25.5px);
+    filter: drop-shadow(0 2px 2px #eee);
+}
+
+._Customers_List_Content__table tbody tr td {
+    padding: 0.75rem;
+    text-align: center;
+}
+
+._Customers_List_Content__table tbody tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
 }
 ._Forms_Input__input {
     background-color: #fff;
@@ -389,112 +436,40 @@ ul {
 ._Forms_Input__input input:invalid {
     color: red;
 }
-._Customers_List__list {
-    
-}
-._Customers_Create__create {
-    
-}
-._Customers_List_TopBar__topBar {
-    background-color: #fff;
-    height: auto;
-    width: 100%;
+._Customers_View__view {
     display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    filter: drop-shadow(0 2px 2px #eee);   
+    grid-template-columns: auto 1fr;
+    height: 100%;
 }
 
-._Customers_List_TopBar__left {
-    padding: 0.75rem;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(2, minmax(auto, max-content));
-    align-items: center;
+._Customers_View__menu {
+    background-color: #000;
+    border-left: 1px solid #18192b;
 }
 
-._Customers_List_TopBar__right {
-    padding: 0.75rem;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(auto, max-content));
-    justify-content: right;
-    align-items: center;
+._Customers_View__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-._Customers_List_TopBar__entries {
-    color: #9e9e9e;
-}
-._Customers_List_Content__table {
-    width: 100%;
-    border-spacing: 1px;
+._Customers_View__li {
+    padding: 2rem;
+    color: #fff;
+    border-bottom: 1px solid #18192b;
 }
 
-._Customers_List_Content__table thead {
-    background-color: #fff;
-}
-
-._Customers_List_Content__table tbody {
-    background-color: #fff;
-}
-
-._Customers_List_Content__table thead tr th {
-    background-color: #fff;
-    padding: 0.75rem;
-    text-align: center;
-    position: sticky;
-    top: calc(0.75rem * 2 + 0.5rem * 2 + 25.5px);
-    filter: drop-shadow(0 2px 2px #eee);
-}
-
-._Customers_List_Content__table tbody tr td {
-    padding: 0.75rem;
-    text-align: center;
-}
-
-._Customers_List_Content__table tbody tr:hover {
-    background-color: #f5f5f5;
+._Customers_View__li:hover {
+    background-color: #18192b;
     cursor: pointer;
 }
-._Customers_Create_TopBar__topBar {
-    background-color: #fff;
-    height: auto;
-    width: 100%;
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    filter: drop-shadow(0 2px 2px #eee);
-    z-index: 1;
+
+._Customers_View__li i {
+    margin-right: 1rem;
 }
 
-._Customers_Create_TopBar__left {
-    padding: 0.75rem;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(2, minmax(auto, max-content));
-    align-items: center;
+._Customers_View__active {
+    border-left: 5px solid #99b965;
+    color: #99b965;
 }
 
-._Customers_Create_TopBar__right {
-    padding: 0.75rem;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(auto, max-content));
-    justify-content: right;
-    align-items: center;
-}
-
-._Customers_Create_TopBar__entries {
-    color: #9e9e9e;
-}
-._Customers_Create_Content__content span {
-    padding: 1rem;
-    display: block;
-}
-
-._Customers_Create_Content__input {
-    display: grid;
-    grid-auto-flow: column;
-}

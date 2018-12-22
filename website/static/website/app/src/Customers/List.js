@@ -15,7 +15,7 @@ class List extends React.Component {
 	    <div className={styles.list}>
               <TopBar onDeleteClick={this.props.onDeleteClick}
                       onAddClick={this.props.onAddClick}/>
-              <Content/>
+              <Content onViewClick={this.props.onViewClick}/>
 	    </div>
 	);
     }
