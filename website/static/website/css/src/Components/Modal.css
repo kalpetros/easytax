@@ -1,11 +1,45 @@
 .modal {
     background-color: #fff;
-    max-height: 80vh;
-    height: 25vh;
-    width: 25vw;
+    max-height: 90vh;
+    max-width: 90vw;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 30px;
+    overflow: auto;
+    /* border-radius: 30px; */
+}
+
+.header {
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    padding: 0.75rem;
+    border-bottom: 1px solid #e0e0e0;
+    filter: drop-shadow(0 2px 2px #eee);
+    z-index: 1;
+}
+
+.content {
+    padding: 0.75rem;
+}
+
+.footer {
+    background-color: #fff;
+    position: sticky;
+    bottom: 0;
+    padding: 0.75rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.test {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.75rem;
+}
+
+.test1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.75rem;
 }

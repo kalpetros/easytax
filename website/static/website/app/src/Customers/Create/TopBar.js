@@ -1,5 +1,5 @@
-import styles from '../../../css/src/Customers/TopBar.css';
-import {Button} from '../Components/Button';
+import styles from '../../../../css/src/Customers/Create/TopBar.css';
+import {Button} from '../../Components/Button';
 
 import React from 'react';
 
@@ -16,13 +16,11 @@ class TopBar extends React.Component {
 	return(
 	    <div className={styles.topBar}>
               <div className={styles.left}>
-                <Button icon="search"/>
+                <Button icon="arrow_back"
+                        onClick={this.props.onBackClick}/>
               </div>
               <div className={styles.right}>
-                <Button icon="reorder"/>
-                <Button icon="delete_forever"
-                        onClick={this.props.onDeleteClick}/>
-                <Button icon="add"
+                <Button icon="save"
                         onClick={this.props.onAddClick}/>
               </div>
             </div>

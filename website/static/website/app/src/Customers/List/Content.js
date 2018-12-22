@@ -1,4 +1,4 @@
-import styles from '../../../css/src/Customers/Content.css';
+import styles from '../../../../css/src/Customers/List/Content.css';
 
 import React from 'react';
 

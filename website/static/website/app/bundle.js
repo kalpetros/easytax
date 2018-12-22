@@ -29332,11 +29332,11 @@ var Button = function (_React$Component) {
 
 exports.Button = Button;
 
-},{"../../../css/src/Components/Button.css":97,"react":78}],89:[function(require,module,exports){
+},{"../../../css/src/Components/Button.css":102,"react":78}],89:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Modal = undefined;
 
@@ -29345,6 +29345,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _Modal = require('../../../css/src/Components/Modal.css');
 
 var _Modal2 = _interopRequireDefault(_Modal);
+
+var _Button = require('../Components/Button');
 
 var _Overlay = require('./Overlay');
 
@@ -29361,38 +29363,60 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Modal = function (_React$Component) {
-    _inherits(Modal, _React$Component);
+  _inherits(Modal, _React$Component);
 
-    function Modal(props) {
-        _classCallCheck(this, Modal);
+  function Modal(props) {
+    _classCallCheck(this, Modal);
 
-        var _this = _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, props));
 
-        _this.state = {};
+    _this.state = {};
 
-        return _this;
+    return _this;
+  }
+
+  _createClass(Modal, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _Overlay.Overlay,
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: _Modal2.default.modal },
+          _react2.default.createElement(
+            'div',
+            { className: _Modal2.default.header },
+            _react2.default.createElement(
+              'span',
+              null,
+              'Add a client'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _Modal2.default.content },
+            this.props.children
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _Modal2.default.footer },
+            _react2.default.createElement(_Button.Button, { title: 'Create' })
+          )
+        )
+      );
     }
+  }]);
 
-    _createClass(Modal, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {}
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                _Overlay.Overlay,
-                null,
-                _react2.default.createElement('div', { className: _Modal2.default.modal })
-            );
-        }
-    }]);
-
-    return Modal;
+  return Modal;
 }(_react2.default.Component);
 
 exports.Modal = Modal;
 
-},{"../../../css/src/Components/Modal.css":98,"./Overlay":90,"react":78}],90:[function(require,module,exports){
+},{"../../../css/src/Components/Modal.css":103,"../Components/Button":88,"./Overlay":90,"react":78}],90:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29450,7 +29474,7 @@ var Overlay = function (_React$Component) {
 
 exports.Overlay = Overlay;
 
-},{"../../../css/src/Components/Overlay.css":99,"react":78}],91:[function(require,module,exports){
+},{"../../../css/src/Components/Overlay.css":104,"react":78}],91:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29466,9 +29490,13 @@ var _Customers2 = _interopRequireDefault(_Customers);
 
 var _Modal = require('./Components/Modal');
 
-var _TopBar = require('./Customers/TopBar');
+var _List = require('./Customers/List');
 
-var _Content = require('./Customers/Content');
+var _Create = require('./Customers/Create');
+
+var _immutabilityHelper = require('immutability-helper');
+
+var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
 var _react = require('react');
 
@@ -29494,8 +29522,11 @@ var Customers = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Customers.__proto__ || Object.getPrototypeOf(Customers)).call(this, props));
 
-        _this.state = {};
+        _this.state = {
+            view: 'list'
+        };
 
+        _this.handleBackClick = _this.handleBackClick.bind(_this);
         _this.handleDeleteClick = _this.handleDeleteClick.bind(_this);
         _this.handleAddClick = _this.handleAddClick.bind(_this);
         return _this;
@@ -29505,6 +29536,15 @@ var Customers = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {}
     }, {
+        key: 'handleBackClick',
+        value: function handleBackClick() {
+            var newState = (0, _immutabilityHelper2.default)(this.state, {
+                view: { $set: 'list' }
+            });
+
+            this.setState(newState);
+        }
+    }, {
         key: 'handleDeleteClick',
         value: function handleDeleteClick() {
             console.log('delete clicked');
@@ -29512,10 +29552,23 @@ var Customers = function (_React$Component) {
     }, {
         key: 'handleAddClick',
         value: function handleAddClick() {
-            console.log('add clicked');
-            var modalContainer = document.getElementById('modal-container');
+            var newState = (0, _immutabilityHelper2.default)(this.state, {
+                view: { $set: 'create' }
+            });
 
-            _reactDom2.default.render(_react2.default.createElement(_Modal.Modal, null), modalContainer);
+            this.setState(newState);
+        }
+    }, {
+        key: 'renderView',
+        value: function renderView() {
+            if (this.state.view == 'create') {
+                return _react2.default.createElement(_Create.Create, { onBackClick: this.handleBackClick,
+                    onDeleteClick: this.handleDeleteClick,
+                    onAddClick: this.handleAddClick });
+            }
+
+            return _react2.default.createElement(_List.List, { onDeleteClick: this.handleDeleteClick,
+                onAddClick: this.handleAddClick });
         }
     }, {
         key: 'render',
@@ -29523,9 +29576,7 @@ var Customers = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: _Customers2.default.customers },
-                _react2.default.createElement(_TopBar.TopBar, { onDeleteClick: this.handleDeleteClick,
-                    onAddClick: this.handleAddClick }),
-                _react2.default.createElement(_Content.Content, null)
+                this.renderView()
             );
         }
     }]);
@@ -29535,7 +29586,528 @@ var Customers = function (_React$Component) {
 
 exports.Customers = Customers;
 
-},{"../../css/src/Customers.css":100,"./Components/Modal":89,"./Customers/Content":92,"./Customers/TopBar":93,"react":78,"react-dom":50}],92:[function(require,module,exports){
+},{"../../css/src/Customers.css":105,"./Components/Modal":89,"./Customers/Create":92,"./Customers/List":95,"immutability-helper":36,"react":78,"react-dom":50}],92:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Create = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Create = require('../../../css/src/Customers/Create.css');
+
+var _Create2 = _interopRequireDefault(_Create);
+
+var _TopBar = require('./Create/TopBar');
+
+var _Content = require('./Create/Content');
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Create = function (_React$Component) {
+    _inherits(Create, _React$Component);
+
+    function Create(props) {
+        _classCallCheck(this, Create);
+
+        return _possibleConstructorReturn(this, (Create.__proto__ || Object.getPrototypeOf(Create)).call(this, props));
+    }
+
+    _createClass(Create, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: _Create2.default.create },
+                _react2.default.createElement(_TopBar.TopBar, { onBackClick: this.props.onBackClick,
+                    onDeleteClick: this.props.onDeleteClick,
+                    onAddClick: this.props.onAddClick }),
+                _react2.default.createElement(_Content.Content, null)
+            );
+        }
+    }]);
+
+    return Create;
+}(_react2.default.Component);
+
+exports.Create = Create;
+
+},{"../../../css/src/Customers/Create.css":106,"./Create/Content":93,"./Create/TopBar":94,"react":78}],93:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+       value: true
+});
+exports.Content = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Content = require('../../../../css/src/Customers/Create/Content.css');
+
+var _Content2 = _interopRequireDefault(_Content);
+
+var _Input = require('../../Forms/Input');
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Content = function (_React$Component) {
+       _inherits(Content, _React$Component);
+
+       function Content(props) {
+              _classCallCheck(this, Content);
+
+              var _this = _possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).call(this, props));
+
+              _this.state = {};
+
+              return _this;
+       }
+
+       _createClass(Content, [{
+              key: 'componentDidMount',
+              value: function componentDidMount() {}
+       }, {
+              key: 'render',
+              value: function render() {
+                     return _react2.default.createElement(
+                            'div',
+                            { className: _Content2.default.content },
+                            _react2.default.createElement(
+                                   'span',
+                                   null,
+                                   '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 TAXIS'
+                            ),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u038C\u03BD\u03BF\u03BC\u03B1 \u03A7\u03C1\u03AE\u03C3\u03C4\u03B7',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03A0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2',
+                                          value: '' })
+                            ),
+                            _react2.default.createElement(
+                                   'span',
+                                   null,
+                                   '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 \u0399\u039A\u0391'
+                            ),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u038C\u03BD\u03BF\u03BC\u03B1 \u03A7\u03C1\u03AE\u03C3\u03C4\u03B7',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03A0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2',
+                                          value: '' })
+                            ),
+                            _react2.default.createElement(
+                                   'span',
+                                   null,
+                                   '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 \u0393\u0395\u039C\u0397'
+                            ),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u038C\u03BD\u03BF\u03BC\u03B1 \u03A7\u03C1\u03AE\u03C3\u03C4\u03B7',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03A0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2',
+                                          value: '' })
+                            ),
+                            _react2.default.createElement(
+                                   'span',
+                                   null,
+                                   '\u03A0\u03C1\u03BF\u03C3\u03C9\u03C0\u03B9\u03BA\u03AC \u03C3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1'
+                            ),
+                            _react2.default.createElement(_Input.Input, { id: 'test',
+                                   name: 'test',
+                                   type: 'text',
+                                   label: '\u0391\u03A6\u039C',
+                                   value: '' }),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u038C\u03BD\u03BF\u03BC\u03B1',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u0395\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u0395\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF 2',
+                                          value: '' })
+                            ),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u038C\u03BD\u03BF\u03BC\u03B1 \u03A0\u03B1\u03C4\u03AD\u03C1\u03B1',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u0395\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF \u03A0\u03B1\u03C4\u03AD\u03C1\u03B1',
+                                          value: '' })
+                            ),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u038C\u03BD\u03BF\u03BC\u03B1 \u039C\u03B7\u03C4\u03AD\u03C1\u03B1\u03C2',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u03A0\u03B1\u03C4\u03C1\u03B9\u03BA\u03CC \u0395\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF \u039C\u03B7\u03C4\u03AD\u03C1\u03B1\u03C2',
+                                          value: '' })
+                            ),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u0397\u03BC\u03B5\u03C1\u03BF\u03BC\u03B7\u03BD\u03AF\u03B1 \u0393\u03AD\u03BD\u03BD\u03B7\u03C3\u03B7\u03C2',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u0397\u03BC\u03B5\u03C1\u03BF\u03BC\u03B7\u03BD\u03AF\u03B1 \u0398\u03B1\u03BD\u03AC\u03C4\u03BF\u03C5',
+                                          value: '' })
+                            ),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u03A7\u03CE\u03C1\u03B1 \u0393\u03AD\u03BD\u03BD\u03B7\u03C3\u03B7\u03C2',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u03A6\u03CD\u03BB\u03BF',
+                                          value: '' })
+                            ),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u03A5\u03C0\u03B7\u03BA\u03BF\u03CC\u03C4\u03B7\u03C4\u03B1',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u0399\u03B8\u03B1\u03B3\u03AD\u03BD\u03B5\u03B9\u03B1',
+                                          value: '' })
+                            ),
+                            _react2.default.createElement(
+                                   'span',
+                                   null,
+                                   '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 \u0395\u03C0\u03B9\u03BA\u03BF\u03B9\u03BD\u03C9\u03BD\u03AF\u03B1\u03C2'
+                            ),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u03A3\u03C4\u03B1\u03B8\u03B5\u03C1\u03CC \u03A4\u03B7\u03BB\u03AD\u03C6\u03C9\u03BD\u03BF',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u039A\u03B9\u03BD\u03B7\u03C4\u03CC \u03A4\u03B7\u03BB\u03AD\u03C6\u03C9\u03BD\u03BF',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: 'Fax',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: 'E-mail',
+                                          value: '' })
+                            ),
+                            _react2.default.createElement(
+                                   'span',
+                                   null,
+                                   '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 \u03A4\u03B1\u03C5\u03C4\u03CC\u03C4\u03B7\u03C4\u03B1\u03C2'
+                            ),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u0395\u03AF\u03B4\u03BF\u03C2 \u03A4\u03B1\u03C5\u03C4\u03CC\u03C4\u03B7\u03C4\u03B1\u03C2',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u0391\u03C1\u03B9\u03B8\u03BC\u03CC\u03C2 \u03A4\u03B1\u03C5\u03C4\u03CC\u03C4\u03B7\u03C4\u03B1\u03C2',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u0397\u03BC\u03B5\u03C1\u03BF\u03BC\u03B7\u03BD\u03AF\u03B1 \u0388\u03BA\u03B4\u03BF\u03C3\u03B7\u03C2',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u0395\u03BA\u03B4\u03BF\u03CD\u03C3\u03B1 \u0391\u03C1\u03C7\u03AE',
+                                          value: '' })
+                            ),
+                            _react2.default.createElement(
+                                   'span',
+                                   null,
+                                   '\u0394\u03B9\u03B5\u03CD\u03B8\u03C5\u03BD\u03C3\u03B7 \u039A\u03B1\u03C4\u03BF\u03B9\u03BA\u03AF\u03B1\u03C2'
+                            ),
+                            _react2.default.createElement(_Input.Input, { id: 'test',
+                                   name: 'test',
+                                   type: 'text',
+                                   label: '\u03A7\u03CE\u03C1\u03B1',
+                                   value: '' }),
+                            _react2.default.createElement(_Input.Input, { id: 'test',
+                                   name: 'test',
+                                   type: 'text',
+                                   label: '\u03A4.\u039A.',
+                                   value: '' }),
+                            _react2.default.createElement(_Input.Input, { id: 'test',
+                                   name: 'test',
+                                   type: 'text',
+                                   label: '\u0394\u03B9\u03B5\u03CD\u03B8\u03C5\u03BD\u03C3\u03B7',
+                                   value: '' }),
+                            _react2.default.createElement(_Input.Input, { id: 'test',
+                                   name: 'test',
+                                   type: 'text',
+                                   label: '\u0394\u03AE\u03BC\u03BF\u03C2',
+                                   value: '' }),
+                            _react2.default.createElement(
+                                   'span',
+                                   null,
+                                   '\u039F\u03B9\u03BA\u03BF\u03B3\u03B5\u03BD\u03B5\u03B9\u03B1\u03BA\u03AE \u039A\u03B1\u03C4\u03AC\u03C3\u03C4\u03B1\u03C3\u03B7'
+                            ),
+                            _react2.default.createElement(_Input.Input, { id: 'test',
+                                   name: 'test',
+                                   type: 'text',
+                                   label: '\u039A\u03B1\u03C4\u03AC\u03C3\u03C4\u03B1\u03C3\u03B7',
+                                   value: '' }),
+                            _react2.default.createElement(_Input.Input, { id: 'test',
+                                   name: 'test',
+                                   type: 'text',
+                                   label: '\u0397\u03BC\u03B5\u03C1\u03BF\u03BC\u03B7\u03BD\u03AF\u03B1 \u0393\u03AC\u03BC\u03BF\u03C5',
+                                   value: '' }),
+                            _react2.default.createElement(_Input.Input, { id: 'test',
+                                   name: 'test',
+                                   type: 'text',
+                                   label: '\u0391\u03A6\u039C \u03A3\u03C5\u03B6\u03CD\u03B3\u03BF\u03C5',
+                                   value: '' }),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u038C\u03BD\u03BF\u03BC\u03B1 \u03A3\u03C5\u03B6\u03CD\u03B3\u03BF\u03C5',
+                                          value: '' }),
+                                   _react2.default.createElement(_Input.Input, { id: 'test',
+                                          name: 'test',
+                                          type: 'text',
+                                          label: '\u0395\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF \u03A3\u03C5\u03B6\u03CD\u03B3\u03BF\u03C5',
+                                          value: '' })
+                            )
+                     );
+              }
+       }]);
+
+       return Content;
+}(_react2.default.Component);
+
+exports.Content = Content;
+
+},{"../../../../css/src/Customers/Create/Content.css":107,"../../Forms/Input":98,"react":78}],94:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.TopBar = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _TopBar = require('../../../../css/src/Customers/Create/TopBar.css');
+
+var _TopBar2 = _interopRequireDefault(_TopBar);
+
+var _Button = require('../../Components/Button');
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TopBar = function (_React$Component) {
+    _inherits(TopBar, _React$Component);
+
+    function TopBar(props) {
+        _classCallCheck(this, TopBar);
+
+        var _this = _possibleConstructorReturn(this, (TopBar.__proto__ || Object.getPrototypeOf(TopBar)).call(this, props));
+
+        _this.state = {};
+
+        return _this;
+    }
+
+    _createClass(TopBar, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: _TopBar2.default.topBar },
+                _react2.default.createElement(
+                    'div',
+                    { className: _TopBar2.default.left },
+                    _react2.default.createElement(_Button.Button, { icon: 'arrow_back',
+                        onClick: this.props.onBackClick })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: _TopBar2.default.right },
+                    _react2.default.createElement(_Button.Button, { icon: 'save',
+                        onClick: this.props.onAddClick })
+                )
+            );
+        }
+    }]);
+
+    return TopBar;
+}(_react2.default.Component);
+
+exports.TopBar = TopBar;
+
+},{"../../../../css/src/Customers/Create/TopBar.css":108,"../../Components/Button":88,"react":78}],95:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.List = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _List = require('../../../css/src/Customers/List.css');
+
+var _List2 = _interopRequireDefault(_List);
+
+var _TopBar = require('./List/TopBar');
+
+var _Content = require('./List/Content');
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var List = function (_React$Component) {
+    _inherits(List, _React$Component);
+
+    function List(props) {
+        _classCallCheck(this, List);
+
+        return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, props));
+    }
+
+    _createClass(List, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: _List2.default.list },
+                _react2.default.createElement(_TopBar.TopBar, { onDeleteClick: this.props.onDeleteClick,
+                    onAddClick: this.props.onAddClick }),
+                _react2.default.createElement(_Content.Content, null)
+            );
+        }
+    }]);
+
+    return List;
+}(_react2.default.Component);
+
+exports.List = List;
+
+},{"../../../css/src/Customers/List.css":109,"./List/Content":96,"./List/TopBar":97,"react":78}],96:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29545,7 +30117,7 @@ exports.Content = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Content = require('../../../css/src/Customers/Content.css');
+var _Content = require('../../../../css/src/Customers/List/Content.css');
 
 var _Content2 = _interopRequireDefault(_Content);
 
@@ -29681,7 +30253,7 @@ var Content = function (_React$Component) {
 
 exports.Content = Content;
 
-},{"../../../css/src/Customers/Content.css":101,"react":78}],93:[function(require,module,exports){
+},{"../../../../css/src/Customers/List/Content.css":110,"react":78}],97:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29691,11 +30263,11 @@ exports.TopBar = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _TopBar = require('../../../css/src/Customers/TopBar.css');
+var _TopBar = require('../../../../css/src/Customers/List/TopBar.css');
 
 var _TopBar2 = _interopRequireDefault(_TopBar);
 
-var _Button = require('../Components/Button');
+var _Button = require('../../Components/Button');
 
 var _react = require('react');
 
@@ -29754,7 +30326,79 @@ var TopBar = function (_React$Component) {
 
 exports.TopBar = TopBar;
 
-},{"../../../css/src/Customers/TopBar.css":102,"../Components/Button":88,"react":78}],94:[function(require,module,exports){
+},{"../../../../css/src/Customers/List/TopBar.css":111,"../../Components/Button":88,"react":78}],98:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Input = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Input = require('../../../css/src/Forms/Input.css');
+
+var _Input2 = _interopRequireDefault(_Input);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Input = function (_React$Component) {
+    _inherits(Input, _React$Component);
+
+    function Input() {
+        _classCallCheck(this, Input);
+
+        return _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).apply(this, arguments));
+    }
+
+    _createClass(Input, [{
+        key: 'render',
+        value: function render() {
+            var inputClass = this.props.disabled ? _Input2.default.inputDisabled : _Input2.default.input;
+            var labelClass = this.props.value !== '' ? _Input2.default.labelActive : _Input2.default.label;
+            return _react2.default.createElement(
+                'div',
+                { className: inputClass },
+                _react2.default.createElement(
+                    'div',
+                    { className: labelClass },
+                    _react2.default.createElement(
+                        'label',
+                        null,
+                        _react2.default.createElement('i', { className: "fas fa-" + this.props.icon }),
+                        ' ',
+                        this.props.label
+                    )
+                ),
+                _react2.default.createElement('input', { id: this.props.id,
+                    name: this.props.name,
+                    type: this.props.type,
+                    value: this.props.value,
+                    min: this.props.min,
+                    max: this.props.max,
+                    disabled: this.props.disabled,
+                    required: this.props.required,
+                    onChange: this.props.onChange })
+            );
+        }
+    }]);
+
+    return Input;
+}(_react2.default.Component);
+
+exports.Input = Input;
+
+},{"../../../css/src/Forms/Input.css":112,"react":78}],99:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29860,7 +30504,7 @@ var Menu = function (_React$Component) {
 
 exports.Menu = Menu;
 
-},{"../../css/src/Menu.css":104,"immutability-helper":36,"react":78}],95:[function(require,module,exports){
+},{"../../css/src/Menu.css":114,"immutability-helper":36,"react":78}],100:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29964,7 +30608,7 @@ var Navbar = function (_React$Component) {
 
 exports.Navbar = Navbar;
 
-},{"../../css/src/Navbar.css":105,"react":78}],96:[function(require,module,exports){
+},{"../../css/src/Navbar.css":115,"react":78}],101:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -30161,24 +30805,34 @@ var App = function (_React$Component3) {
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
 
-},{"../../css/src/Globals.css":103,"../../css/src/index.css":106,"./Customers":91,"./Menu":94,"./Navbar":95,"axios":1,"immutability-helper":36,"react":78,"react-dom":50,"react-router-dom":63}],97:[function(require,module,exports){
+},{"../../css/src/Globals.css":113,"../../css/src/index.css":116,"./Customers":91,"./Menu":99,"./Navbar":100,"axios":1,"immutability-helper":36,"react":78,"react-dom":50,"react-router-dom":63}],102:[function(require,module,exports){
 module.exports = {"button":"_Components_Button__button"}
-},{}],98:[function(require,module,exports){
-module.exports = {"modal":"_Components_Modal__modal"}
-},{}],99:[function(require,module,exports){
-module.exports = {"overlay":"_Components_Overlay__overlay"}
-},{}],100:[function(require,module,exports){
-module.exports = {"customers":"_Customers__customers"}
-},{}],101:[function(require,module,exports){
-module.exports = {"table":"_Customers_Content__table"}
-},{}],102:[function(require,module,exports){
-module.exports = {"topBar":"_Customers_TopBar__topBar","left":"_Customers_TopBar__left","right":"_Customers_TopBar__right","entries":"_Customers_TopBar__entries"}
 },{}],103:[function(require,module,exports){
-module.exports = {}
+module.exports = {"modal":"_Components_Modal__modal","header":"_Components_Modal__header","content":"_Components_Modal__content","footer":"_Components_Modal__footer","test":"_Components_Modal__test","test1":"_Components_Modal__test1"}
 },{}],104:[function(require,module,exports){
-module.exports = {"menu":"_Menu__menu","list":"_Menu__list","li":"_Menu__li","active":"_Menu__active _Menu__li"}
+module.exports = {"overlay":"_Components_Overlay__overlay"}
 },{}],105:[function(require,module,exports){
-module.exports = {"navbar":"_Navbar__navbar","logo":"_Navbar__logo","list":"_Navbar__list","mobileList":"_Navbar__mobileList"}
+module.exports = {"customers":"_Customers__customers"}
 },{}],106:[function(require,module,exports){
+module.exports = {"create":"_Customers_Create__create"}
+},{}],107:[function(require,module,exports){
+module.exports = {"content":"_Customers_Create_Content__content","input":"_Customers_Create_Content__input"}
+},{}],108:[function(require,module,exports){
+module.exports = {"topBar":"_Customers_Create_TopBar__topBar","left":"_Customers_Create_TopBar__left","right":"_Customers_Create_TopBar__right","entries":"_Customers_Create_TopBar__entries"}
+},{}],109:[function(require,module,exports){
+module.exports = {"list":"_Customers_List__list"}
+},{}],110:[function(require,module,exports){
+module.exports = {"table":"_Customers_List_Content__table"}
+},{}],111:[function(require,module,exports){
+module.exports = {"topBar":"_Customers_List_TopBar__topBar","left":"_Customers_List_TopBar__left","right":"_Customers_List_TopBar__right","entries":"_Customers_List_TopBar__entries"}
+},{}],112:[function(require,module,exports){
+module.exports = {"input":"_Forms_Input__input","inputDisabled":"_Forms_Input__inputDisabled _Forms_Input__input","label":"_Forms_Input__label","labelActive":"_Forms_Input__labelActive _Forms_Input__label"}
+},{}],113:[function(require,module,exports){
+module.exports = {}
+},{}],114:[function(require,module,exports){
+module.exports = {"menu":"_Menu__menu","list":"_Menu__list","li":"_Menu__li","active":"_Menu__active _Menu__li"}
+},{}],115:[function(require,module,exports){
+module.exports = {"navbar":"_Navbar__navbar","logo":"_Navbar__logo","list":"_Navbar__list","mobileList":"_Navbar__mobileList"}
+},{}],116:[function(require,module,exports){
 module.exports = {"index":"_index__index"}
-},{}]},{},[96]);
+},{}]},{},[101]);
