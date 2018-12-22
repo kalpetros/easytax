@@ -1,0 +1,83 @@
+.navbar {
+    background-color: #fff;
+    height: 50px;
+    line-height: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    display: grid;
+    justify-items: left;
+}
+
+.logo ul {
+    list-style: none;
+    padding: 0;
+}
+
+.logo ul li {
+    display: inline-block;
+    padding: 0 0.75rem;
+    cursor: pointer;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #9e9e9e;
+}
+
+.logo a:hover {
+    color: #0f1125;
+}
+
+.list,
+.mobileList {
+    display: grid;
+    justify-items: right;
+}
+
+.list > ul,
+.mobileList > ul {
+    list-style: none;
+    padding: 0;
+}
+
+.list > ul > li,
+.mobileList > ul > li {
+    display: inline-block;
+    color: #9e9e9e;
+    cursor: pointer;
+    position: relative;
+}
+
+.list > ul > li > a,
+.mobileList > ul > li > a,
+.list > ul > li > span,
+.mobileList > ul > li > span {
+    padding: 0 0.75rem;
+    display: block;
+}
+
+.list > ul > li:hover > a,
+.mobileList > ul > li:hover > a,
+.list > ul > li:hover > span,
+.mobileList > ul > li:hover > span {
+    color: #0f1125;
+}
+
+.list > ul > li > a {
+    text-decoration: none;
+    color: #9e9e9e;
+}
+
+@media (max-width: 600px) {
+    .list {
+	display: none;
+    }
+    .mobileList {
+	display: grid;
+    }
+}

@@ -1,0 +1,9 @@
+.content span {
+    padding: 1rem;
+    display: block;
+}
+
+.input {
+    display: grid;
+    grid-auto-flow: column;
+}

@@ -1,6 +1,8 @@
 import '../../css/src/Globals.css';
 import styles from '../../css/src/index.css';
-import {Landing} from './Landing';
+import {Customers} from './Customers';
+import {Navbar} from './Navbar';
+import {Menu} from './Menu';
 
 import {
     BrowserRouter as Router,
@@ -59,16 +61,25 @@ class App extends React.Component {
 	};
     }
     render() {
-        const landing = (props) => (
-            <Landing {...props}
-                     onLogin={this.handleLogin}
-                     user={this.state.user}/>
+        const customers = (props) => (
+            <Customers {...props}
+                       onLogin={this.handleLogin}
+                       user={this.state.user}/>
         );
+
+        const navbar = (props) => (
+            <Navbar {...props}/>
+        );
+
+        const menu = (props) => (
+            <Menu {...props}/>
+        );
+        
         const root = (props) => (
             this.state.user !== null ? (
-                landing(props)
+                customers(props)
             ) : (
-                landing(props)
+                customers(props)
             )
         );
 
@@ -76,10 +87,16 @@ class App extends React.Component {
             <React.Fragment>
 	      <Router>
 	        <ScrollWrapper>
-	          <Switch>
-	            <Route exact path="/" render={root}/>
-	            <Route component={FourOFour}/>
-	          </Switch>
+                  <Route render={navbar}/>
+                  <div className={styles.index}>
+                    <Route render={menu}/>
+                    <Switch>
+	              <Route exact path="/" render={root}/>
+                      <Route exact path="/customers" render={root}/>
+                      <Route exact path="/profile" render={root}/>
+	              <Route component={FourOFour}/>
+	            </Switch>
+                  </div>
 	        </ScrollWrapper>
 	      </Router>
             </React.Fragment>
@@ -87,4 +104,7 @@ class App extends React.Component {
     }
 }
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(
+    <App/>,
+    document.getElementById('root')
+);
