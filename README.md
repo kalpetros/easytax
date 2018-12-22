@@ -1,4 +1,7 @@
 # easytax
+
+[![Build Status](https://semaphoreci.com/api/v1/projects/ddc8a730-5024-4768-8360-aa352e8f8269/2420008/badge.svg)](https://semaphoreci.com/kalpetros-18/easytax)
+
 Logistic operations with gsis integration
 
 ## Sources for GSIS integration
