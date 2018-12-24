@@ -14,7 +14,8 @@ class Content extends React.Component {
     renderBody() {
         let items = Array(25).fill(1).map((item, index) => {
             return(
-                <tr key={index}>
+                <tr key={index}
+                    onClick={this.props.onViewClick}>
                   <td>
                     <input type="checkbox"/>
                   </td>
