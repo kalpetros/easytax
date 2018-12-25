@@ -15,6 +15,7 @@ class View extends React.Component {
     }
     render() {
         let list = [
+            {name: 'John Doe', id: 'usn'},
             {name: 'Οφειλές', id: 'rec'},
             {name: 'ΕΦΚΑ', id: 'efk'},
             {name: 'Eνημερότητα', id: 'cus'},

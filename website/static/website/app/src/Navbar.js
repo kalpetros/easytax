@@ -28,7 +28,17 @@ class Navbar extends React.Component {
                   </li>
                   <li>
                     <span>
+                      <i className="material-icons">settings</i>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
                       Guest
+                    </span>
+                  </li>
+                  <li onClick={this.props.onLogout}>
+                    <span>
+                      <i className="material-icons">exit_to_app</i>
                     </span>
                   </li>
                 </ul>
