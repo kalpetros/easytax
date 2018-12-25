@@ -7,7 +7,7 @@ class Menu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            active: 'adm'
+            active: 'cus'
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -22,14 +22,7 @@ class Menu extends React.Component {
         this.setState(newState);
     }
     renderList() {
-        let list = [
-            {name: 'Administration', id: 'adm', icon: 'language'},
-            {name: 'Customers', id: 'cus', icon: 'supervised_user_circle'},
-            {name: 'Regulations', id: 'reg', icon: 'beenhere'},
-            {name: 'Tax', id: 'tax', icon: 'euro_symbol'},
-            {name: 'Invoices', id: 'inv', icon: 'donut_small'},
-            {name: 'Expenses', id: 'exp', icon: 'poll'}
-        ];
+        let list = this.props.list;
         
         let items = list.map((item, index) => {
             let className = (
@@ -49,8 +42,12 @@ class Menu extends React.Component {
         return items;
     }
     render() {
+        let className = this.props.className ? (
+            `${styles.menu} ${this.props.className}`
+        ) : styles.menu;
+        
 	return(
-	    <div className={styles.menu}>
+	    <div className={className}>
               <ul className={styles.list}>
                 {this.renderList()}
               </ul>

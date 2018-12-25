@@ -15,8 +15,8 @@ class ClientMixin(object):
         transport = Transport(timeout=RQ_TIMEOUT, cache=cache)
 
         try:
+            # client = Client(WSDL, transport=transport)
             client = Client(WSDL, transport=transport, wsse=UsernameToken(
-                # Give your own. CAUTION: not taxisnet credentials
                 'username', 'password'
             ))
         except requests.exceptions.ConnectionError as e:

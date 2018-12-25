@@ -59,37 +59,6 @@ ul {
     background-color: #eee;
     overflow: auto;
 }
-._Menu__menu {
-    background-color: #0f1125;
-    width: 15vw;
-    overflow: auto;
-}
-
-._Menu__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-._Menu__li {
-    padding: 2rem;
-    color: #fff;
-    border-bottom: 1px solid #18192b;
-}
-
-._Menu__li:hover {
-    background-color: #18192b;
-    cursor: pointer;
-}
-
-._Menu__li i {
-    margin-right: 1rem;
-}
-
-._Menu__active {
-    border-left: 5px solid #99b965;
-    color: #99b965;
-}
 ._Navbar__navbar {
     background-color: #fff;
     height: 50px;
@@ -173,6 +142,37 @@ ul {
 	display: grid;
     }
 }
+._Menu__menu {
+    background-color: #0f1125;
+    width: 15vw;
+    overflow: auto;
+}
+
+._Menu__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+._Menu__li {
+    padding: 2rem;
+    color: #fff;
+    border-bottom: 1px solid #18192b;
+}
+
+._Menu__li:hover {
+    background-color: #18192b;
+    cursor: pointer;
+}
+
+._Menu__li i {
+    margin-right: 1rem;
+}
+
+._Menu__active {
+    border-left: 5px solid #99b965;
+    color: #99b965;
+}
 ._Components_Modal__modal {
     background-color: #fff;
     max-height: 90vh;
@@ -224,6 +224,43 @@ ul {
 ._Customers_Create__create {
     
 }
+._Customers_View__view {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: 100%;
+}
+
+._Customers_View__menu {
+    background-color: #000;
+    border-left: 1px solid #18192b;
+}
+
+._Customers_View__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+._Customers_View__li {
+    padding: 2rem;
+    color: #fff;
+    border-bottom: 1px solid #18192b;
+}
+
+._Customers_View__li:hover {
+    background-color: #18192b;
+    cursor: pointer;
+}
+
+._Customers_View__li i {
+    margin-right: 1rem;
+}
+
+._Customers_View__active {
+    border-left: 5px solid #99b965;
+    color: #99b965;
+}
+
 ._Components_Button__button {
     background-color: unset;
     display: inline-block;

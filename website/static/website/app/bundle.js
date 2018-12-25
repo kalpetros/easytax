@@ -29332,7 +29332,7 @@ var Button = function (_React$Component) {
 
 exports.Button = Button;
 
-},{"../../../css/src/Components/Button.css":102,"react":78}],89:[function(require,module,exports){
+},{"../../../css/src/Components/Button.css":103,"react":78}],89:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29416,7 +29416,7 @@ var Modal = function (_React$Component) {
 
 exports.Modal = Modal;
 
-},{"../../../css/src/Components/Modal.css":103,"../Components/Button":88,"./Overlay":90,"react":78}],90:[function(require,module,exports){
+},{"../../../css/src/Components/Modal.css":104,"../Components/Button":88,"./Overlay":90,"react":78}],90:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29474,7 +29474,7 @@ var Overlay = function (_React$Component) {
 
 exports.Overlay = Overlay;
 
-},{"../../../css/src/Components/Overlay.css":104,"react":78}],91:[function(require,module,exports){
+},{"../../../css/src/Components/Overlay.css":105,"react":78}],91:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29493,6 +29493,8 @@ var _Modal = require('./Components/Modal');
 var _List = require('./Customers/List');
 
 var _Create = require('./Customers/Create');
+
+var _View = require('./Customers/View');
 
 var _immutabilityHelper = require('immutability-helper');
 
@@ -29528,7 +29530,8 @@ var Customers = function (_React$Component) {
 
         _this.handleBackClick = _this.handleBackClick.bind(_this);
         _this.handleDeleteClick = _this.handleDeleteClick.bind(_this);
-        _this.handleAddClick = _this.handleAddClick.bind(_this);
+        _this.handleCreateClick = _this.handleCreateClick.bind(_this);
+        _this.handleViewClick = _this.handleViewClick.bind(_this);
         return _this;
     }
 
@@ -29550,10 +29553,19 @@ var Customers = function (_React$Component) {
             console.log('delete clicked');
         }
     }, {
-        key: 'handleAddClick',
-        value: function handleAddClick() {
+        key: 'handleCreateClick',
+        value: function handleCreateClick() {
             var newState = (0, _immutabilityHelper2.default)(this.state, {
                 view: { $set: 'create' }
+            });
+
+            this.setState(newState);
+        }
+    }, {
+        key: 'handleViewClick',
+        value: function handleViewClick() {
+            var newState = (0, _immutabilityHelper2.default)(this.state, {
+                view: { $set: 'view' }
             });
 
             this.setState(newState);
@@ -29564,11 +29576,16 @@ var Customers = function (_React$Component) {
             if (this.state.view == 'create') {
                 return _react2.default.createElement(_Create.Create, { onBackClick: this.handleBackClick,
                     onDeleteClick: this.handleDeleteClick,
-                    onAddClick: this.handleAddClick });
+                    onAddClick: this.handleCreateClick });
+            } else if (this.state.view == 'view') {
+                return _react2.default.createElement(_View.View, { onBackClick: this.handleBackClick,
+                    onDeleteClick: this.handleDeleteClick,
+                    onAddClick: this.handleCreateClick });
             }
 
             return _react2.default.createElement(_List.List, { onDeleteClick: this.handleDeleteClick,
-                onAddClick: this.handleAddClick });
+                onAddClick: this.handleCreateClick,
+                onViewClick: this.handleViewClick });
         }
     }, {
         key: 'render',
@@ -29586,7 +29603,7 @@ var Customers = function (_React$Component) {
 
 exports.Customers = Customers;
 
-},{"../../css/src/Customers.css":105,"./Components/Modal":89,"./Customers/Create":92,"./Customers/List":95,"immutability-helper":36,"react":78,"react-dom":50}],92:[function(require,module,exports){
+},{"../../css/src/Customers.css":106,"./Components/Modal":89,"./Customers/Create":92,"./Customers/List":95,"./Customers/View":98,"immutability-helper":36,"react":78,"react-dom":50}],92:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29644,7 +29661,7 @@ var Create = function (_React$Component) {
 
 exports.Create = Create;
 
-},{"../../../css/src/Customers/Create.css":106,"./Create/Content":93,"./Create/TopBar":94,"react":78}],93:[function(require,module,exports){
+},{"../../../css/src/Customers/Create.css":107,"./Create/Content":93,"./Create/TopBar":94,"react":78}],93:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29976,7 +29993,7 @@ var Content = function (_React$Component) {
 
 exports.Content = Content;
 
-},{"../../../../css/src/Customers/Create/Content.css":107,"../../Forms/Input":98,"react":78}],94:[function(require,module,exports){
+},{"../../../../css/src/Customers/Create/Content.css":108,"../../Forms/Input":99,"react":78}],94:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30047,7 +30064,7 @@ var TopBar = function (_React$Component) {
 
 exports.TopBar = TopBar;
 
-},{"../../../../css/src/Customers/Create/TopBar.css":108,"../../Components/Button":88,"react":78}],95:[function(require,module,exports){
+},{"../../../../css/src/Customers/Create/TopBar.css":109,"../../Components/Button":88,"react":78}],95:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30097,7 +30114,7 @@ var List = function (_React$Component) {
                 { className: _List2.default.list },
                 _react2.default.createElement(_TopBar.TopBar, { onDeleteClick: this.props.onDeleteClick,
                     onAddClick: this.props.onAddClick }),
-                _react2.default.createElement(_Content.Content, null)
+                _react2.default.createElement(_Content.Content, { onViewClick: this.props.onViewClick })
             );
         }
     }]);
@@ -30107,7 +30124,7 @@ var List = function (_React$Component) {
 
 exports.List = List;
 
-},{"../../../css/src/Customers/List.css":109,"./List/Content":96,"./List/TopBar":97,"react":78}],96:[function(require,module,exports){
+},{"../../../css/src/Customers/List.css":110,"./List/Content":96,"./List/TopBar":97,"react":78}],96:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30152,10 +30169,13 @@ var Content = function (_React$Component) {
   }, {
     key: 'renderBody',
     value: function renderBody() {
+      var _this2 = this;
+
       var items = Array(25).fill(1).map(function (item, index) {
         return _react2.default.createElement(
           'tr',
-          { key: index },
+          { key: index,
+            onClick: _this2.props.onViewClick },
           _react2.default.createElement(
             'td',
             null,
@@ -30253,7 +30273,7 @@ var Content = function (_React$Component) {
 
 exports.Content = Content;
 
-},{"../../../../css/src/Customers/List/Content.css":110,"react":78}],97:[function(require,module,exports){
+},{"../../../../css/src/Customers/List/Content.css":111,"react":78}],97:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30326,7 +30346,78 @@ var TopBar = function (_React$Component) {
 
 exports.TopBar = TopBar;
 
-},{"../../../../css/src/Customers/List/TopBar.css":111,"../../Components/Button":88,"react":78}],98:[function(require,module,exports){
+},{"../../../../css/src/Customers/List/TopBar.css":112,"../../Components/Button":88,"react":78}],98:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.View = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _View = require('../../../css/src/Customers/View.css');
+
+var _View2 = _interopRequireDefault(_View);
+
+var _Menu = require('../Menu');
+
+var _immutabilityHelper = require('immutability-helper');
+
+var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var View = function (_React$Component) {
+    _inherits(View, _React$Component);
+
+    function View(props) {
+        _classCallCheck(this, View);
+
+        var _this = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
+
+        _this.state = {};
+        return _this;
+    }
+
+    _createClass(View, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            var list = [{ name: 'Οφειλές', id: 'rec' }, { name: 'ΕΦΚΑ', id: 'efk' }, { name: 'Eνημερότητα', id: 'cus' }, { name: 'Μητρώο', id: 'idx' }, { name: 'Πληρωμές', id: 'pay' }];
+
+            return _react2.default.createElement(
+                'div',
+                { className: _View2.default.view },
+                _react2.default.createElement(_Menu.Menu, { list: list,
+                    className: _View2.default.menu }),
+                _react2.default.createElement('div', null)
+            );
+        }
+    }]);
+
+    return View;
+}(_react2.default.Component);
+
+exports.View = View;
+
+},{"../../../css/src/Customers/View.css":113,"../Menu":100,"immutability-helper":36,"react":78,"react-dom":50}],99:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30398,7 +30489,7 @@ var Input = function (_React$Component) {
 
 exports.Input = Input;
 
-},{"../../../css/src/Forms/Input.css":112,"react":78}],99:[function(require,module,exports){
+},{"../../../css/src/Forms/Input.css":114,"react":78}],100:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30437,7 +30528,7 @@ var Menu = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
 
         _this.state = {
-            active: 'adm'
+            active: 'cus'
         };
 
         _this.handleChange = _this.handleChange.bind(_this);
@@ -30461,7 +30552,7 @@ var Menu = function (_React$Component) {
         value: function renderList() {
             var _this2 = this;
 
-            var list = [{ name: 'Administration', id: 'adm', icon: 'language' }, { name: 'Customers', id: 'cus', icon: 'supervised_user_circle' }, { name: 'Regulations', id: 'reg', icon: 'beenhere' }, { name: 'Tax', id: 'tax', icon: 'euro_symbol' }, { name: 'Invoices', id: 'inv', icon: 'donut_small' }, { name: 'Expenses', id: 'exp', icon: 'poll' }];
+            var list = this.props.list;
 
             var items = list.map(function (item, index) {
                 var className = item.id == _this2.state.active ? _Menu2.default.active : _Menu2.default.li;
@@ -30487,9 +30578,11 @@ var Menu = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            var className = this.props.className ? _Menu2.default.menu + ' ' + this.props.className : _Menu2.default.menu;
+
             return _react2.default.createElement(
                 'div',
-                { className: _Menu2.default.menu },
+                { className: className },
                 _react2.default.createElement(
                     'ul',
                     { className: _Menu2.default.list },
@@ -30504,7 +30597,7 @@ var Menu = function (_React$Component) {
 
 exports.Menu = Menu;
 
-},{"../../css/src/Menu.css":114,"immutability-helper":36,"react":78}],100:[function(require,module,exports){
+},{"../../css/src/Menu.css":116,"immutability-helper":36,"react":78}],101:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30608,7 +30701,7 @@ var Navbar = function (_React$Component) {
 
 exports.Navbar = Navbar;
 
-},{"../../css/src/Navbar.css":115,"react":78}],101:[function(require,module,exports){
+},{"../../css/src/Navbar.css":117,"react":78}],102:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -30763,8 +30856,11 @@ var App = function (_React$Component3) {
                 return _react2.default.createElement(_Navbar.Navbar, props);
             };
 
+            var list = [{ name: 'Customers', id: 'cus', icon: 'supervised_user_circle' }];
+
             var menu = function menu(props) {
-                return _react2.default.createElement(_Menu.Menu, props);
+                return _react2.default.createElement(_Menu.Menu, _extends({}, props, {
+                    list: list }));
             };
 
             var root = function root(props) {
@@ -30805,34 +30901,36 @@ var App = function (_React$Component3) {
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
 
-},{"../../css/src/Globals.css":113,"../../css/src/index.css":116,"./Customers":91,"./Menu":99,"./Navbar":100,"axios":1,"immutability-helper":36,"react":78,"react-dom":50,"react-router-dom":63}],102:[function(require,module,exports){
+},{"../../css/src/Globals.css":115,"../../css/src/index.css":118,"./Customers":91,"./Menu":100,"./Navbar":101,"axios":1,"immutability-helper":36,"react":78,"react-dom":50,"react-router-dom":63}],103:[function(require,module,exports){
 module.exports = {"button":"_Components_Button__button"}
-},{}],103:[function(require,module,exports){
-module.exports = {"modal":"_Components_Modal__modal","header":"_Components_Modal__header","content":"_Components_Modal__content","footer":"_Components_Modal__footer","test":"_Components_Modal__test","test1":"_Components_Modal__test1"}
 },{}],104:[function(require,module,exports){
-module.exports = {"overlay":"_Components_Overlay__overlay"}
+module.exports = {"modal":"_Components_Modal__modal","header":"_Components_Modal__header","content":"_Components_Modal__content","footer":"_Components_Modal__footer","test":"_Components_Modal__test","test1":"_Components_Modal__test1"}
 },{}],105:[function(require,module,exports){
-module.exports = {"customers":"_Customers__customers"}
+module.exports = {"overlay":"_Components_Overlay__overlay"}
 },{}],106:[function(require,module,exports){
-module.exports = {"create":"_Customers_Create__create"}
+module.exports = {"customers":"_Customers__customers"}
 },{}],107:[function(require,module,exports){
-module.exports = {"content":"_Customers_Create_Content__content","input":"_Customers_Create_Content__input"}
+module.exports = {"create":"_Customers_Create__create"}
 },{}],108:[function(require,module,exports){
-module.exports = {"topBar":"_Customers_Create_TopBar__topBar","left":"_Customers_Create_TopBar__left","right":"_Customers_Create_TopBar__right","entries":"_Customers_Create_TopBar__entries"}
+module.exports = {"content":"_Customers_Create_Content__content","input":"_Customers_Create_Content__input"}
 },{}],109:[function(require,module,exports){
-module.exports = {"list":"_Customers_List__list"}
+module.exports = {"topBar":"_Customers_Create_TopBar__topBar","left":"_Customers_Create_TopBar__left","right":"_Customers_Create_TopBar__right","entries":"_Customers_Create_TopBar__entries"}
 },{}],110:[function(require,module,exports){
-module.exports = {"table":"_Customers_List_Content__table"}
+module.exports = {"list":"_Customers_List__list"}
 },{}],111:[function(require,module,exports){
-module.exports = {"topBar":"_Customers_List_TopBar__topBar","left":"_Customers_List_TopBar__left","right":"_Customers_List_TopBar__right","entries":"_Customers_List_TopBar__entries"}
+module.exports = {"table":"_Customers_List_Content__table"}
 },{}],112:[function(require,module,exports){
-module.exports = {"input":"_Forms_Input__input","inputDisabled":"_Forms_Input__inputDisabled _Forms_Input__input","label":"_Forms_Input__label","labelActive":"_Forms_Input__labelActive _Forms_Input__label"}
+module.exports = {"topBar":"_Customers_List_TopBar__topBar","left":"_Customers_List_TopBar__left","right":"_Customers_List_TopBar__right","entries":"_Customers_List_TopBar__entries"}
 },{}],113:[function(require,module,exports){
-module.exports = {}
+module.exports = {"view":"_Customers_View__view","menu":"_Customers_View__menu","list":"_Customers_View__list","li":"_Customers_View__li","active":"_Customers_View__active _Customers_View__li"}
 },{}],114:[function(require,module,exports){
-module.exports = {"menu":"_Menu__menu","list":"_Menu__list","li":"_Menu__li","active":"_Menu__active _Menu__li"}
+module.exports = {"input":"_Forms_Input__input","inputDisabled":"_Forms_Input__inputDisabled _Forms_Input__input","label":"_Forms_Input__label","labelActive":"_Forms_Input__labelActive _Forms_Input__label"}
 },{}],115:[function(require,module,exports){
-module.exports = {"navbar":"_Navbar__navbar","logo":"_Navbar__logo","list":"_Navbar__list","mobileList":"_Navbar__mobileList"}
+module.exports = {}
 },{}],116:[function(require,module,exports){
+module.exports = {"menu":"_Menu__menu","list":"_Menu__list","li":"_Menu__li","active":"_Menu__active _Menu__li"}
+},{}],117:[function(require,module,exports){
+module.exports = {"navbar":"_Navbar__navbar","logo":"_Navbar__logo","list":"_Navbar__list","mobileList":"_Navbar__mobileList"}
+},{}],118:[function(require,module,exports){
 module.exports = {"index":"_index__index"}
-},{}]},{},[101]);
+},{}]},{},[102]);
