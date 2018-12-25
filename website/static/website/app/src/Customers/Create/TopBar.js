@@ -17,10 +17,12 @@ class TopBar extends React.Component {
 	    <div className={styles.topBar}>
               <div className={styles.left}>
                 <Button icon="arrow_back"
+                        type={"round"}
                         onClick={this.props.onBackClick}/>
               </div>
               <div className={styles.right}>
                 <Button icon="save"
+                        type={"round"}
                         onClick={this.props.onAddClick}/>
               </div>
             </div>

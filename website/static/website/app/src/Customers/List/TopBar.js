@@ -16,13 +16,17 @@ class TopBar extends React.Component {
 	return(
 	    <div className={styles.topBar}>
               <div className={styles.left}>
-                <Button icon="search"/>
+                <Button icon="search"
+                        type={"round"}/>
               </div>
               <div className={styles.right}>
-                <Button icon="reorder"/>
+                <Button icon="reorder"
+                        type={"round"}/>
                 <Button icon="delete_forever"
+                        type={"round"}
                         onClick={this.props.onDeleteClick}/>
                 <Button icon="add"
+                        type={"round"}
                         onClick={this.props.onAddClick}/>
               </div>
             </div>

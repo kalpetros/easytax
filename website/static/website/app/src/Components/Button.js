@@ -20,21 +20,28 @@ class Button extends React.Component {
 
         return null;
     }
-    renderTitle() {
-        if (typeof this.props.title !== 'undefined') {
+    renderName() {
+        if (typeof this.props.name !== 'undefined') {
             return(
-                <span>{this.props.title}</span>
+                <span>{this.props.name}</span>
             );
         }
 
         return null;
     }
     render() {
+        let classes = {
+            basic: styles.basic,
+            round: styles.round
+        };
+        
+        let className = this.props.type ? classes[this.props.type] : classes.basic;
+        
 	return(
-	    <button className={styles.button}
+	    <button className={className}
                     onClick={this.props.onClick}>
               {this.renderIcon()}
-              {this.renderTitle()}
+              {this.renderName()}
 	    </button>
 	);
     }
