@@ -1,4 +1,5 @@
 import styles from '../../../css/src/Authentication/Join.css';
+import {FormErrors} from '../Forms/FormErrors';
 import {Input} from '../Forms/Input';
 import {Button} from '../Components/Button';
 import {Panel} from '../Components/Panel';
@@ -16,6 +17,31 @@ class Join extends React.Component {
 	return(
             <Panel>
               <div className={styles.join}>
+                <FormErrors errors={this.props.formErrors}/>
+                <div>
+                  <Input id="username"
+                         name="username"
+                         type="text"
+                         label="Username"
+                         value={this.props.form.username}
+                         onChange={this.props.onChange}/>
+                </div>
+                <div>
+                  <Input id="password"
+                         name="password"
+                         type="password"
+                         label="Κωδικός πρόσβασης"
+                         value={this.props.form.password}
+                         onChange={this.props.onChange}/>
+                </div>
+                <div>
+                  <Input id="password2"
+                         name="password2"
+                         type="password"
+                         label="Επιβεβαίωση κωδικού"
+                         value={this.props.form.password2}
+                         onChange={this.props.onChange}/>
+                </div>
                 <div>
                   <Input id="email"
                          name="email"
@@ -41,30 +67,13 @@ class Join extends React.Component {
                          onChange={this.props.onChange}/>
                 </div>
                 <div>
-                  <Input id="password"
-                         name="password"
-                         type="password"
-                         label="Κωδικός πρόσβασης"
-                         value={this.props.form.password}
-                         onChange={this.props.onChange}/>
-                </div>
-                <div>
-                  <Input id="password2"
-                         name="password2"
-                         type="password"
-                         label="Επιβεβαίωση κωδικού"
-                         value={this.props.form.password2}
-                         onChange={this.props.onChange}/>
-                </div>
-                <div>
                   <Button name="Δημιουργία λογαριασμού"
                           onClick={this.props.onClick}/>
                 </div>
                 <div>
-                  <a href="#"
-                     onClick={this.props.onViewChange}>
+                  <span onClick={this.props.onViewChange}>
                     Already have an account? Log in
-                  </a>
+                  </span>
                 </div>
               </div>
             </Panel>

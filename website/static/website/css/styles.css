@@ -55,13 +55,6 @@ ul {
 .section {
     margin-top: 2rem;
 }
-._Landing__landing {
-    background-color: #000;
-}
-._Customers__customers {
-    background-color: #eee;
-    overflow: auto;
-}
 ._Navbar__navbar {
     background-color: #fff;
     height: 50px;
@@ -145,6 +138,27 @@ ul {
 	display: grid;
     }
 }
+._Authentication__authentication {
+    height: 100%;
+    background: linear-gradient(90deg, #0f1125, #18192b);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+._Authentication__container {
+    width: 20vw;
+}
+
+._Authentication__title {
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+._Customers__customers {
+    background-color: #eee;
+    overflow: auto;
+}
 ._Menu__menu {
     background-color: #0f1125;
     width: 15vw;
@@ -176,7 +190,24 @@ ul {
     border-left: 5px solid #99b965;
     color: #99b965;
 }
+._Authentication_Join__join > div {
+    text-align: center;
+}
+
+._Authentication_Join__join > div:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
+._Authentication_Login__login > div {
+    text-align: center;
+}
+
+._Authentication_Login__login > div:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
 ._Customers_List__list {
+    
+}
+._Customers_Create__create {
     
 }
 ._Components_Modal__modal {
@@ -223,9 +254,6 @@ ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.75rem;
-}
-._Customers_Create__create {
-    
 }
 ._Customers_View__view {
     display: grid;
@@ -296,6 +324,99 @@ ul {
 ._Components_Button__round:hover {
     background-color: #eee;
     transition: background-color 0.5s linear;
+}
+._Components_Panel__panel {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px #212121;
+}
+._Forms_Input__input {
+    background-color: #fff;
+    height: 4rem;
+    width: 100%;
+    /*padding: 0 1rem;*/
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px #e0e0e0;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+._Forms_Input__inputDisabled {
+    background-color: rgba(238, 238, 238, 0.6);
+    cursor: not-allowed;
+}
+
+._Forms_Input__input:after {
+    content: '';
+    background-color: #0f1125;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    transition: width 0.2s ease-out;
+}
+
+._Forms_Input__input:focus-within:after {
+    width: 100%;
+    transition: width 0.2s ease-out;
+}
+
+._Forms_Input__label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: #0f1125;
+    transition: all 0.25s ease-out;
+    pointer-events: none;
+}
+
+._Forms_Input__labelActive {
+    top: 22%;
+    font-size: 10.5px;
+}
+
+._Forms_Input__label i {
+    margin-right: 0.5rem;
+}
+
+._Forms_Input__input:focus-within ._Forms_Input__label {
+    top: 22%;
+    font-size: 10.5px;
+    transition: all 0.25s ease-out;
+}
+
+._Forms_Input__input input[type="text"],
+._Forms_Input__input input[type="number"],
+._Forms_Input__input input[type="password"],
+._Forms_Input__input input[type="email"] {
+    background-color: transparent;
+    padding: 0 1rem;
+    border: none;
+    height: 100%;
+    width: 100%;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    width: fill-available;
+}
+
+._Forms_Input__input input:disabled {
+    cursor: not-allowed;
+}
+
+._Forms_Input__input input:focus {
+    outline: none;
+}
+
+._Forms_Input__input input:invalid {
+    color: red;
+}
+._Forms_FormErrors__formErrors {
+    
 }
 ._Components_Overlay__overlay {
     background: linear-gradient(90deg,
@@ -411,124 +532,10 @@ ul {
     display: grid;
     grid-auto-flow: column;
 }
-._Forms_Input__input {
-    background-color: #fff;
-    height: 4rem;
-    width: 100%;
-    /*padding: 0 1rem;*/
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    box-shadow: 0 2px 2px #e0e0e0;
-    position: relative;
-    display: inline-block;
-    box-sizing: border-box;
-}
-
-._Forms_Input__inputDisabled {
-    background-color: rgba(238, 238, 238, 0.6);
-    cursor: not-allowed;
-}
-
-._Forms_Input__input:after {
-    content: '';
-    background-color: #0f1125;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    width: 0;
-    transition: width 0.2s ease-out;
-}
-
-._Forms_Input__input:focus-within:after {
-    width: 100%;
-    transition: width 0.2s ease-out;
-}
-
-._Forms_Input__label {
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
-    color: #0f1125;
-    transition: all 0.25s ease-out;
-    pointer-events: none;
-}
-
-._Forms_Input__labelActive {
-    top: 22%;
-    font-size: 10.5px;
-}
-
-._Forms_Input__label i {
-    margin-right: 0.5rem;
-}
-
-._Forms_Input__input:focus-within ._Forms_Input__label {
-    top: 22%;
-    font-size: 10.5px;
-    transition: all 0.25s ease-out;
-}
-
-._Forms_Input__input input[type="text"],
-._Forms_Input__input input[type="number"],
-._Forms_Input__input input[type="password"],
-._Forms_Input__input input[type="email"] {
-    background-color: transparent;
-    padding: 0 1rem;
-    border: none;
-    height: 100%;
-    width: 100%;
-    width: -moz-available;
-    width: -webkit-fill-available;
-    width: fill-available;
-}
-
-._Forms_Input__input input:disabled {
-    cursor: not-allowed;
-}
-
-._Forms_Input__input input:focus {
-    outline: none;
-}
-
-._Forms_Input__input input:invalid {
-    color: red;
-}
-._Authentication__authentication {
-    height: 100%;
-    background: linear-gradient(90deg, #0f1125, #18192b);
-    display: grid;
-    align-items: center;
-    justify-items: center;
-}
-
-._Authentication__container {
-    width: 20vw;
-}
-
-._Authentication__title {
-    color: #fff;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-._Components_Panel__panel {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 2px #212121;
-}
-._Authentication_Login__login > div {
+._Authentication_PasswordChange__passwordChange > div {
     text-align: center;
 }
 
-._Authentication_Login__login > div:not(:last-of-type) {
-    margin-bottom: 1rem;
-}
-._Authentication_Join__join > div {
-    text-align: center;
-}
-
-._Authentication_Join__join > div:not(:last-of-type) {
+._Authentication_PasswordChange__passwordChange > div:not(:last-of-type) {
     margin-bottom: 1rem;
 }

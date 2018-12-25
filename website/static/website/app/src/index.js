@@ -1,5 +1,6 @@
 import '../../css/src/Globals.css';
 import styles from '../../css/src/index.css';
+import {PasswordChange} from './Authentication/PasswordChange';
 import {Authentication} from './Authentication';
 import {Customers} from './Customers';
 import {Navbar} from './Navbar';
@@ -119,6 +120,10 @@ class App extends React.Component {
                     onLogout={this.handleLogout}/>
         );
 
+        const passwordChange = (props) => (
+            <PasswordChange {...props}/>
+        );
+
         let list = [
             {name: 'Customers', id: 'cus', icon: 'supervised_user_circle'}
         ];
@@ -141,6 +146,7 @@ class App extends React.Component {
 	            <ScrollWrapper>
                       <Switch>
 	                <Route exact path="/" render={authentication}/>
+                        <Route exact path="/password-change" render={passwordChange}/>
 	                <Route component={FourOFour}/>
 	              </Switch>
 	            </ScrollWrapper>

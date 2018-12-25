@@ -16,12 +16,14 @@ class Authentication extends React.Component {
                 password: ''
             },
             joinForm: {
-                first_name: '',
-                last_name: '',
+                username: '',
                 email: '',
                 password: '',
-                password2: ''
-            }
+                password2: '',
+                first_name: '',
+                last_name: ''
+            },
+            formErrors: null
         };
 
         this.handleLogin = this.handleLogin.bind(this);
@@ -42,6 +44,12 @@ class Authentication extends React.Component {
             .then((response) => {
                 if (!response.data.errors) {
                     window.location.reload();
+                } else {
+                    const newState = update(this.state, {
+                        formErrors: {$set: response.data.message}
+                    });
+
+                    this.setState(newState);
                 }
             })
             .catch((error) => {
@@ -60,6 +68,12 @@ class Authentication extends React.Component {
             .then((response) => {
                 if (!response.data.errors) {
                     window.location.reload();
+                } else {
+                    const newState = update(this.state, {
+                        formErrors: {$set: response.data.message}
+                    });
+
+                    this.setState(newState);
                 }
             })
             .catch((error) => {
@@ -90,7 +104,8 @@ class Authentication extends React.Component {
     }
     handleViewChange() {
         const newState = update(this.state, {
-            view: {$apply: (v) => v == 'login' ? 'join' : 'login'}
+            view: {$apply: (v) => v == 'login' ? 'join' : 'login'},
+            formErrors: {$set: null}
         });
 
         this.setState(newState);
@@ -101,14 +116,16 @@ class Authentication extends React.Component {
                 <Login onClick={this.handleLogin}
                        onChange={this.handleLoginChange}
                        onViewChange={this.handleViewChange}
-                       form={this.state.loginForm}/>
+                       form={this.state.loginForm}
+                       formErrors={this.state.formErrors}/>
             );
         } else if (this.state.view == 'join') {
             return(
                 <Join onClick={this.handleJoin}
                       onChange={this.handleJoinChange}
                       onViewChange={this.handleViewChange}
-                      form={this.state.joinForm}/>
+                      form={this.state.joinForm}
+                      formErrors={this.state.formErrors}/>
             );
         }
 
