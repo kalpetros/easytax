@@ -1,8 +1,10 @@
 import styles from '../../../css/src/Authentication/Login.css';
+import {FormErrors} from '../Forms/FormErrors';
 import {Input} from '../Forms/Input';
 import {Button} from '../Components/Button';
 import {Panel} from '../Components/Panel';
 
+import {Link} from 'react-router-dom';
 import update from 'immutability-helper';
 import React from 'react';
 
@@ -16,6 +18,7 @@ class Login extends React.Component {
 	return(
             <Panel>
               <div className={styles.login}>
+                <FormErrors errors={this.props.formErrors}/>
                 <div>
                   <Input id="username"
                          name="username"
@@ -37,13 +40,12 @@ class Login extends React.Component {
                           onClick={this.props.onClick}/>
                 </div>
                 <div>
-                  <a href="#">Forgot your password?</a>
+                  <Link to="password-change">Forgot your password?</Link>
                 </div>
                 <div>
-                  <a href="#"
-                     onClick={this.props.onViewChange}>
+                  <span onClick={this.props.onViewChange}>
                     Don't have an account? Join
-                  </a>
+                  </span>
                 </div>
               </div>
             </Panel>

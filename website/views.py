@@ -34,7 +34,7 @@ class Authentication(View):
             return JsonResponse(
                 {
                     'errors': True,
-                    'message': 'A user with the username you provided does not exist'
+                    'message': 'Please check your input'
                 }
             )
         else:
@@ -56,7 +56,7 @@ class Authentication(View):
 
         if form.is_valid():
             user = User.objects.create_user(
-                rq_form['email'],
+                rq_form['username'],
                 rq_form['email'],
                 rq_form['password']
             )
@@ -73,6 +73,23 @@ class Authentication(View):
         
         return JsonResponse({'errors': False})
 
+    def password_reset_request(self, request, *args, **kwargs):
+        rq_form = kwargs['form']
+
+        # Check if user exists
+        try:
+            user = User.objects.get(email=rq_form['email'])
+        except User.DoesNotExist as e:
+            return JsonResponse(
+                {
+                    'errors': True,
+                    'message': 'Please check your input'
+                }
+            )
+        else:
+            
+            return JsonResponse({'errors': False})
+
     def password_reset(self, request, *args, **kwargs):
         return JsonResponse({'errors': False})
 
@@ -87,6 +104,8 @@ class Authentication(View):
             return self.login(request, **rq_data)
         elif rq_data['action'] == 'join':
             return self.join(request, **rq_data)
+        elif rq_data['action'] == 'password_reset_request':
+            return self.password_reset_request(request, **rq_data)
         elif rq_data['action'] == 'password_reset':
             return self.password_reset(request, **rq_data)
         elif rq_data['action'] == 'logout':
