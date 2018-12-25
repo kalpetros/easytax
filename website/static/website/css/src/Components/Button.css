@@ -1,13 +1,35 @@
 .button {
-    background-color: unset;
     display: inline-block;
-    padding: 0.5rem;
     border: none;
     cursor: pointer;
 }
 
-.button:hover {
-    background-color: #eee;
+.basic {
+    composes: button;
+    background-color: #000;
+    color: #fff;
+    height: 4rem;
+    width: 100%;
+    padding: 0rem 2rem;
+    text-transform: uppercase;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.basic:hover {
+    background-color: #212121;
+}
+
+
+.round {
+    composes: button;
+    background-color: unset;
+    padding: 0.5rem;
     border-radius: 50%;
+    transition: background-color 0.5s linear;
+}
+
+.round:hover {
+    background-color: #eee;
     transition: background-color 0.5s linear;
 }

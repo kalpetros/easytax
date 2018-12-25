@@ -29252,6 +29252,441 @@ module.exports = warning;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.Authentication = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Authentication = require('../../css/src/Authentication.css');
+
+var _Authentication2 = _interopRequireDefault(_Authentication);
+
+var _Login = require('./Authentication/Login');
+
+var _Join = require('./Authentication/Join');
+
+var _immutabilityHelper = require('immutability-helper');
+
+var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
+
+var _axios = require('axios');
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Authentication = function (_React$Component) {
+    _inherits(Authentication, _React$Component);
+
+    function Authentication(props) {
+        _classCallCheck(this, Authentication);
+
+        var _this = _possibleConstructorReturn(this, (Authentication.__proto__ || Object.getPrototypeOf(Authentication)).call(this, props));
+
+        _this.state = {
+            view: 'login',
+            loginForm: {
+                username: '',
+                password: ''
+            },
+            joinForm: {
+                first_name: '',
+                last_name: '',
+                email: '',
+                password: '',
+                password2: ''
+            }
+        };
+
+        _this.handleLogin = _this.handleLogin.bind(_this);
+        _this.handleJoin = _this.handleJoin.bind(_this);
+        _this.handleLoginChange = _this.handleLoginChange.bind(_this);
+        _this.handleJoinChange = _this.handleJoinChange.bind(_this);
+        _this.handleViewChange = _this.handleViewChange.bind(_this);
+        return _this;
+    }
+
+    _createClass(Authentication, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'handleLogin',
+        value: function handleLogin() {
+            var data = {
+                action: 'login',
+                form: this.state.loginForm
+            };
+
+            _axios2.default.post('/authentication', data).then(function (response) {
+                if (!response.data.errors) {
+                    window.location.reload();
+                }
+            }).catch(function (error) {
+                console.log(error);
+            }).then(function () {});
+        }
+    }, {
+        key: 'handleJoin',
+        value: function handleJoin() {
+            var data = {
+                action: 'join',
+                form: this.state.joinForm
+            };
+
+            _axios2.default.post('/authentication', data).then(function (response) {
+                if (!response.data.errors) {
+                    window.location.reload();
+                }
+            }).catch(function (error) {
+                console.log(error);
+            }).then(function () {});
+        }
+    }, {
+        key: 'handleLoginChange',
+        value: function handleLoginChange(event) {
+            var id = event.currentTarget.id;
+            var value = event.currentTarget.value;
+
+            var newState = (0, _immutabilityHelper2.default)(this.state, {
+                loginForm: _defineProperty({}, id, { $set: value })
+            });
+
+            this.setState(newState);
+        }
+    }, {
+        key: 'handleJoinChange',
+        value: function handleJoinChange(event) {
+            var id = event.currentTarget.id;
+            var value = event.currentTarget.value;
+
+            var newState = (0, _immutabilityHelper2.default)(this.state, {
+                joinForm: _defineProperty({}, id, { $set: value })
+            });
+
+            this.setState(newState);
+        }
+    }, {
+        key: 'handleViewChange',
+        value: function handleViewChange() {
+            var newState = (0, _immutabilityHelper2.default)(this.state, {
+                view: { $apply: function $apply(v) {
+                        return v == 'login' ? 'join' : 'login';
+                    } }
+            });
+
+            this.setState(newState);
+        }
+    }, {
+        key: 'renderView',
+        value: function renderView() {
+            if (this.state.view == 'login') {
+                return _react2.default.createElement(_Login.Login, { onClick: this.handleLogin,
+                    onChange: this.handleLoginChange,
+                    onViewChange: this.handleViewChange,
+                    form: this.state.loginForm });
+            } else if (this.state.view == 'join') {
+                return _react2.default.createElement(_Join.Join, { onClick: this.handleJoin,
+                    onChange: this.handleJoinChange,
+                    onViewChange: this.handleViewChange,
+                    form: this.state.joinForm });
+            }
+
+            return _react2.default.createElement(_Login.Login, { onClick: this.handleLogin,
+                onChange: this.handleLoginChange,
+                onViewChange: this.handleViewChange,
+                form: this.state.loginForm });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: _Authentication2.default.authentication },
+                _react2.default.createElement(
+                    'div',
+                    { className: _Authentication2.default.container },
+                    _react2.default.createElement(
+                        'div',
+                        { className: _Authentication2.default.title },
+                        _react2.default.createElement(
+                            'span',
+                            null,
+                            'easytax'
+                        )
+                    ),
+                    this.renderView()
+                )
+            );
+        }
+    }]);
+
+    return Authentication;
+}(_react2.default.Component);
+
+exports.Authentication = Authentication;
+
+},{"../../css/src/Authentication.css":107,"./Authentication/Join":89,"./Authentication/Login":90,"axios":1,"immutability-helper":36,"react":78}],89:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Join = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Join = require('../../../css/src/Authentication/Join.css');
+
+var _Join2 = _interopRequireDefault(_Join);
+
+var _Input = require('../Forms/Input');
+
+var _Button = require('../Components/Button');
+
+var _Panel = require('../Components/Panel');
+
+var _immutabilityHelper = require('immutability-helper');
+
+var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Join = function (_React$Component) {
+  _inherits(Join, _React$Component);
+
+  function Join(props) {
+    _classCallCheck(this, Join);
+
+    return _possibleConstructorReturn(this, (Join.__proto__ || Object.getPrototypeOf(Join)).call(this, props));
+  }
+
+  _createClass(Join, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _Panel.Panel,
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: _Join2.default.join },
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_Input.Input, { id: 'email',
+              name: 'email',
+              type: 'email',
+              label: 'E-mail',
+              value: this.props.form.email,
+              onChange: this.props.onChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_Input.Input, { id: 'first_name',
+              name: 'first_name',
+              type: 'text',
+              label: '\u038C\u03BD\u03BF\u03BC\u03B1',
+              value: this.props.form.first_name,
+              onChange: this.props.onChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_Input.Input, { id: 'last_name',
+              name: 'last_name',
+              type: 'text',
+              label: '\u0395\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF',
+              value: this.props.form.last_name,
+              onChange: this.props.onChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_Input.Input, { id: 'password',
+              name: 'password',
+              type: 'password',
+              label: '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03C0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2',
+              value: this.props.form.password,
+              onChange: this.props.onChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_Input.Input, { id: 'password2',
+              name: 'password2',
+              type: 'password',
+              label: '\u0395\u03C0\u03B9\u03B2\u03B5\u03B2\u03B1\u03AF\u03C9\u03C3\u03B7 \u03BA\u03C9\u03B4\u03B9\u03BA\u03BF\u03CD',
+              value: this.props.form.password2,
+              onChange: this.props.onChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_Button.Button, { name: '\u0394\u03B7\u03BC\u03B9\u03BF\u03C5\u03C1\u03B3\u03AF\u03B1 \u03BB\u03BF\u03B3\u03B1\u03C1\u03B9\u03B1\u03C3\u03BC\u03BF\u03CD',
+              onClick: this.props.onClick })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'a',
+              { href: '#',
+                onClick: this.props.onViewChange },
+              'Already have an account? Log in'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Join;
+}(_react2.default.Component);
+
+exports.Join = Join;
+
+},{"../../../css/src/Authentication/Join.css":108,"../Components/Button":91,"../Components/Panel":94,"../Forms/Input":103,"immutability-helper":36,"react":78}],90:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Login = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Login = require('../../../css/src/Authentication/Login.css');
+
+var _Login2 = _interopRequireDefault(_Login);
+
+var _Input = require('../Forms/Input');
+
+var _Button = require('../Components/Button');
+
+var _Panel = require('../Components/Panel');
+
+var _immutabilityHelper = require('immutability-helper');
+
+var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Login = function (_React$Component) {
+  _inherits(Login, _React$Component);
+
+  function Login(props) {
+    _classCallCheck(this, Login);
+
+    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+  }
+
+  _createClass(Login, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _Panel.Panel,
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: _Login2.default.login },
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_Input.Input, { id: 'username',
+              name: 'username',
+              type: 'text',
+              label: '\u038C\u03BD\u03BF\u03BC\u03B1 \u03A7\u03C1\u03AE\u03C3\u03C4\u03B7',
+              value: this.props.form.username,
+              onChange: this.props.onChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_Input.Input, { id: 'password',
+              name: 'password',
+              type: 'password',
+              label: '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03C0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2',
+              value: this.props.form.password,
+              onChange: this.props.onChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_Button.Button, { name: '\u03A3\u03CD\u03BD\u03B4\u03B5\u03C3\u03B7',
+              onClick: this.props.onClick })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'a',
+              { href: '#' },
+              'Forgot your password?'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'a',
+              { href: '#',
+                onClick: this.props.onViewChange },
+              'Don\'t have an account? Join'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Login;
+}(_react2.default.Component);
+
+exports.Login = Login;
+
+},{"../../../css/src/Authentication/Login.css":109,"../Components/Button":91,"../Components/Panel":94,"../Forms/Input":103,"immutability-helper":36,"react":78}],91:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.Button = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -29302,13 +29737,13 @@ var Button = function (_React$Component) {
             return null;
         }
     }, {
-        key: 'renderTitle',
-        value: function renderTitle() {
-            if (typeof this.props.title !== 'undefined') {
+        key: 'renderName',
+        value: function renderName() {
+            if (typeof this.props.name !== 'undefined') {
                 return _react2.default.createElement(
                     'span',
                     null,
-                    this.props.title
+                    this.props.name
                 );
             }
 
@@ -29317,12 +29752,19 @@ var Button = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            var classes = {
+                basic: _Button2.default.basic,
+                round: _Button2.default.round
+            };
+
+            var className = this.props.type ? classes[this.props.type] : classes.basic;
+
             return _react2.default.createElement(
                 'button',
-                { className: _Button2.default.button,
+                { className: className,
                     onClick: this.props.onClick },
                 this.renderIcon(),
-                this.renderTitle()
+                this.renderName()
             );
         }
     }]);
@@ -29332,7 +29774,7 @@ var Button = function (_React$Component) {
 
 exports.Button = Button;
 
-},{"../../../css/src/Components/Button.css":103,"react":78}],89:[function(require,module,exports){
+},{"../../../css/src/Components/Button.css":110,"react":78}],92:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29416,7 +29858,7 @@ var Modal = function (_React$Component) {
 
 exports.Modal = Modal;
 
-},{"../../../css/src/Components/Modal.css":104,"../Components/Button":88,"./Overlay":90,"react":78}],90:[function(require,module,exports){
+},{"../../../css/src/Components/Modal.css":111,"../Components/Button":91,"./Overlay":93,"react":78}],93:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29474,7 +29916,61 @@ var Overlay = function (_React$Component) {
 
 exports.Overlay = Overlay;
 
-},{"../../../css/src/Components/Overlay.css":105,"react":78}],91:[function(require,module,exports){
+},{"../../../css/src/Components/Overlay.css":112,"react":78}],94:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Panel = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Panel = require('../../../css/src/Components/Panel.css');
+
+var _Panel2 = _interopRequireDefault(_Panel);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Panel = function (_React$Component) {
+    _inherits(Panel, _React$Component);
+
+    function Panel(props) {
+        _classCallCheck(this, Panel);
+
+        return _possibleConstructorReturn(this, (Panel.__proto__ || Object.getPrototypeOf(Panel)).call(this, props));
+    }
+
+    _createClass(Panel, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: _Panel2.default.panel },
+                this.props.children
+            );
+        }
+    }]);
+
+    return Panel;
+}(_react2.default.Component);
+
+exports.Panel = Panel;
+
+},{"../../../css/src/Components/Panel.css":113,"react":78}],95:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29603,7 +30099,7 @@ var Customers = function (_React$Component) {
 
 exports.Customers = Customers;
 
-},{"../../css/src/Customers.css":106,"./Components/Modal":89,"./Customers/Create":92,"./Customers/List":95,"./Customers/View":98,"immutability-helper":36,"react":78,"react-dom":50}],92:[function(require,module,exports){
+},{"../../css/src/Customers.css":114,"./Components/Modal":92,"./Customers/Create":96,"./Customers/List":99,"./Customers/View":102,"immutability-helper":36,"react":78,"react-dom":50}],96:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29661,7 +30157,7 @@ var Create = function (_React$Component) {
 
 exports.Create = Create;
 
-},{"../../../css/src/Customers/Create.css":107,"./Create/Content":93,"./Create/TopBar":94,"react":78}],93:[function(require,module,exports){
+},{"../../../css/src/Customers/Create.css":115,"./Create/Content":97,"./Create/TopBar":98,"react":78}],97:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29993,7 +30489,7 @@ var Content = function (_React$Component) {
 
 exports.Content = Content;
 
-},{"../../../../css/src/Customers/Create/Content.css":108,"../../Forms/Input":99,"react":78}],94:[function(require,module,exports){
+},{"../../../../css/src/Customers/Create/Content.css":116,"../../Forms/Input":103,"react":78}],98:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30047,12 +30543,14 @@ var TopBar = function (_React$Component) {
                     'div',
                     { className: _TopBar2.default.left },
                     _react2.default.createElement(_Button.Button, { icon: 'arrow_back',
+                        type: "round",
                         onClick: this.props.onBackClick })
                 ),
                 _react2.default.createElement(
                     'div',
                     { className: _TopBar2.default.right },
                     _react2.default.createElement(_Button.Button, { icon: 'save',
+                        type: "round",
                         onClick: this.props.onAddClick })
                 )
             );
@@ -30064,7 +30562,7 @@ var TopBar = function (_React$Component) {
 
 exports.TopBar = TopBar;
 
-},{"../../../../css/src/Customers/Create/TopBar.css":109,"../../Components/Button":88,"react":78}],95:[function(require,module,exports){
+},{"../../../../css/src/Customers/Create/TopBar.css":117,"../../Components/Button":91,"react":78}],99:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30124,7 +30622,7 @@ var List = function (_React$Component) {
 
 exports.List = List;
 
-},{"../../../css/src/Customers/List.css":110,"./List/Content":96,"./List/TopBar":97,"react":78}],96:[function(require,module,exports){
+},{"../../../css/src/Customers/List.css":118,"./List/Content":100,"./List/TopBar":101,"react":78}],100:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30273,11 +30771,11 @@ var Content = function (_React$Component) {
 
 exports.Content = Content;
 
-},{"../../../../css/src/Customers/List/Content.css":111,"react":78}],97:[function(require,module,exports){
+},{"../../../../css/src/Customers/List/Content.css":119,"react":78}],101:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+        value: true
 });
 exports.TopBar = undefined;
 
@@ -30302,51 +30800,55 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var TopBar = function (_React$Component) {
-    _inherits(TopBar, _React$Component);
+        _inherits(TopBar, _React$Component);
 
-    function TopBar(props) {
-        _classCallCheck(this, TopBar);
+        function TopBar(props) {
+                _classCallCheck(this, TopBar);
 
-        var _this = _possibleConstructorReturn(this, (TopBar.__proto__ || Object.getPrototypeOf(TopBar)).call(this, props));
+                var _this = _possibleConstructorReturn(this, (TopBar.__proto__ || Object.getPrototypeOf(TopBar)).call(this, props));
 
-        _this.state = {};
+                _this.state = {};
 
-        return _this;
-    }
-
-    _createClass(TopBar, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {}
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: _TopBar2.default.topBar },
-                _react2.default.createElement(
-                    'div',
-                    { className: _TopBar2.default.left },
-                    _react2.default.createElement(_Button.Button, { icon: 'search' })
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: _TopBar2.default.right },
-                    _react2.default.createElement(_Button.Button, { icon: 'reorder' }),
-                    _react2.default.createElement(_Button.Button, { icon: 'delete_forever',
-                        onClick: this.props.onDeleteClick }),
-                    _react2.default.createElement(_Button.Button, { icon: 'add',
-                        onClick: this.props.onAddClick })
-                )
-            );
+                return _this;
         }
-    }]);
 
-    return TopBar;
+        _createClass(TopBar, [{
+                key: 'componentDidMount',
+                value: function componentDidMount() {}
+        }, {
+                key: 'render',
+                value: function render() {
+                        return _react2.default.createElement(
+                                'div',
+                                { className: _TopBar2.default.topBar },
+                                _react2.default.createElement(
+                                        'div',
+                                        { className: _TopBar2.default.left },
+                                        _react2.default.createElement(_Button.Button, { icon: 'search',
+                                                type: "round" })
+                                ),
+                                _react2.default.createElement(
+                                        'div',
+                                        { className: _TopBar2.default.right },
+                                        _react2.default.createElement(_Button.Button, { icon: 'reorder',
+                                                type: "round" }),
+                                        _react2.default.createElement(_Button.Button, { icon: 'delete_forever',
+                                                type: "round",
+                                                onClick: this.props.onDeleteClick }),
+                                        _react2.default.createElement(_Button.Button, { icon: 'add',
+                                                type: "round",
+                                                onClick: this.props.onAddClick })
+                                )
+                        );
+                }
+        }]);
+
+        return TopBar;
 }(_react2.default.Component);
 
 exports.TopBar = TopBar;
 
-},{"../../../../css/src/Customers/List/TopBar.css":112,"../../Components/Button":88,"react":78}],98:[function(require,module,exports){
+},{"../../../../css/src/Customers/List/TopBar.css":120,"../../Components/Button":91,"react":78}],102:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30400,7 +30902,7 @@ var View = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var list = [{ name: 'Οφειλές', id: 'rec' }, { name: 'ΕΦΚΑ', id: 'efk' }, { name: 'Eνημερότητα', id: 'cus' }, { name: 'Μητρώο', id: 'idx' }, { name: 'Πληρωμές', id: 'pay' }];
+            var list = [{ name: 'John Doe', id: 'usn' }, { name: 'Οφειλές', id: 'rec' }, { name: 'ΕΦΚΑ', id: 'efk' }, { name: 'Eνημερότητα', id: 'cus' }, { name: 'Μητρώο', id: 'idx' }, { name: 'Πληρωμές', id: 'pay' }];
 
             return _react2.default.createElement(
                 'div',
@@ -30417,7 +30919,7 @@ var View = function (_React$Component) {
 
 exports.View = View;
 
-},{"../../../css/src/Customers/View.css":113,"../Menu":100,"immutability-helper":36,"react":78,"react-dom":50}],99:[function(require,module,exports){
+},{"../../../css/src/Customers/View.css":121,"../Menu":104,"immutability-helper":36,"react":78,"react-dom":50}],103:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30489,7 +30991,7 @@ var Input = function (_React$Component) {
 
 exports.Input = Input;
 
-},{"../../../css/src/Forms/Input.css":114,"react":78}],100:[function(require,module,exports){
+},{"../../../css/src/Forms/Input.css":122,"react":78}],104:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30597,7 +31099,7 @@ var Menu = function (_React$Component) {
 
 exports.Menu = Menu;
 
-},{"../../css/src/Menu.css":116,"immutability-helper":36,"react":78}],101:[function(require,module,exports){
+},{"../../css/src/Menu.css":124,"immutability-helper":36,"react":78}],105:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30687,7 +31189,33 @@ var Navbar = function (_React$Component) {
               _react2.default.createElement(
                 'span',
                 null,
+                _react2.default.createElement(
+                  'i',
+                  { className: 'material-icons' },
+                  'settings'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'li',
+              null,
+              _react2.default.createElement(
+                'span',
+                null,
                 'Guest'
+              )
+            ),
+            _react2.default.createElement(
+              'li',
+              { onClick: this.props.onLogout },
+              _react2.default.createElement(
+                'span',
+                null,
+                _react2.default.createElement(
+                  'i',
+                  { className: 'material-icons' },
+                  'exit_to_app'
+                )
               )
             )
           )
@@ -30701,7 +31229,7 @@ var Navbar = function (_React$Component) {
 
 exports.Navbar = Navbar;
 
-},{"../../css/src/Navbar.css":117,"react":78}],102:[function(require,module,exports){
+},{"../../css/src/Navbar.css":125,"react":78}],106:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -30713,6 +31241,8 @@ require('../../css/src/Globals.css');
 var _index = require('../../css/src/index.css');
 
 var _index2 = _interopRequireDefault(_index);
+
+var _Authentication = require('./Authentication');
 
 var _Customers = require('./Customers');
 
@@ -30745,6 +31275,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+_axios2.default.defaults.xsrfHeaderName = "X-CSRFToken";
 
 // Disable dragging
 window.ondragstart = function () {
@@ -30831,29 +31363,73 @@ var App = function (_React$Component3) {
 
         var _this3 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-        _this3.state = {
-            links: {
-                one: { name: 'One', 'to': '/one' },
-                two: { name: 'Two', 'to': '/two' },
-                three: { name: 'Three', 'to': '/three' }
-            }
-        };
+        _this3.state = {};
+
+        _this3.handleLogout = _this3.handleLogout.bind(_this3);
         return _this3;
     }
 
     _createClass(App, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.fetchUser();
+        }
+    }, {
+        key: 'fetchUser',
+        value: function fetchUser() {
+            var _this4 = this;
+
+            var data = {
+                action: 'get_user'
+            };
+
+            _axios2.default.post('/user_info', data).then(function (response) {
+                if (!response.data.errors) {
+                    // const links = this.state.links;
+                    // links['user'] = {
+                    //     name: response.data.user.first_name,
+                    //     to: '/profile',
+                    //     image: 'https://mbtskoudsalg.com/images/avatar-png-1.png'
+                    // };
+
+                    var newState = (0, _immutabilityHelper2.default)(_this4.state, {
+                        user: { $set: response.data.user }
+                        // links: {$set: links}
+                    });
+
+                    _this4.setState(newState);
+                }
+            }).catch(function (error) {
+                console.log(error);
+            }).then(function () {});
+        }
+    }, {
+        key: 'handleLogout',
+        value: function handleLogout() {
+            var data = {
+                action: 'logout'
+            };
+
+            _axios2.default.post('/authentication', data).then(function (response) {
+                window.location.reload();
+            }).catch(function (error) {
+                console.log(error);
+            }).then(function () {});
+        }
+    }, {
         key: 'render',
         value: function render() {
-            var _this4 = this;
+            var _this5 = this;
 
             var customers = function customers(props) {
                 return _react2.default.createElement(_Customers.Customers, _extends({}, props, {
-                    onLogin: _this4.handleLogin,
-                    user: _this4.state.user }));
+                    onLogin: _this5.handleLogin,
+                    user: _this5.state.user }));
             };
 
             var navbar = function navbar(props) {
-                return _react2.default.createElement(_Navbar.Navbar, props);
+                return _react2.default.createElement(_Navbar.Navbar, _extends({}, props, {
+                    onLogout: _this5.handleLogout }));
             };
 
             var list = [{ name: 'Customers', id: 'cus', icon: 'supervised_user_circle' }];
@@ -30863,36 +31439,59 @@ var App = function (_React$Component3) {
                     list: list }));
             };
 
-            var root = function root(props) {
-                return _this4.state.user !== null ? customers(props) : customers(props);
+            var authentication = function authentication(props) {
+                return _react2.default.createElement(_Authentication.Authentication, _extends({}, props, {
+                    onLogin: _this5.handleLogin,
+                    user: _this5.state.user }));
             };
 
-            return _react2.default.createElement(
-                _react2.default.Fragment,
-                null,
-                _react2.default.createElement(
-                    _reactRouterDom.BrowserRouter,
+            if (this.state.user == null) {
+                return _react2.default.createElement(
+                    _react2.default.Fragment,
                     null,
                     _react2.default.createElement(
-                        ScrollWrapper,
+                        _reactRouterDom.BrowserRouter,
                         null,
-                        _react2.default.createElement(_reactRouterDom.Route, { render: navbar }),
                         _react2.default.createElement(
-                            'div',
-                            { className: _index2.default.index },
-                            _react2.default.createElement(_reactRouterDom.Route, { render: menu }),
+                            ScrollWrapper,
+                            null,
                             _react2.default.createElement(
                                 _reactRouterDom.Switch,
                                 null,
-                                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: root }),
-                                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/customers', render: root }),
-                                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/profile', render: root }),
+                                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: authentication }),
                                 _react2.default.createElement(_reactRouterDom.Route, { component: FourOFour })
                             )
                         )
                     )
-                )
-            );
+                );
+            } else {
+                return _react2.default.createElement(
+                    _react2.default.Fragment,
+                    null,
+                    _react2.default.createElement(
+                        _reactRouterDom.BrowserRouter,
+                        null,
+                        _react2.default.createElement(
+                            ScrollWrapper,
+                            null,
+                            _react2.default.createElement(_reactRouterDom.Route, { render: navbar }),
+                            _react2.default.createElement(
+                                'div',
+                                { className: _index2.default.index },
+                                _react2.default.createElement(_reactRouterDom.Route, { render: menu }),
+                                _react2.default.createElement(
+                                    _reactRouterDom.Switch,
+                                    null,
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: customers }),
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/customers', render: customers }),
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/profile', render: customers }),
+                                    _react2.default.createElement(_reactRouterDom.Route, { component: FourOFour })
+                                )
+                            )
+                        )
+                    )
+                );
+            }
         }
     }]);
 
@@ -30901,36 +31500,44 @@ var App = function (_React$Component3) {
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
 
-},{"../../css/src/Globals.css":115,"../../css/src/index.css":118,"./Customers":91,"./Menu":100,"./Navbar":101,"axios":1,"immutability-helper":36,"react":78,"react-dom":50,"react-router-dom":63}],103:[function(require,module,exports){
-module.exports = {"button":"_Components_Button__button"}
-},{}],104:[function(require,module,exports){
-module.exports = {"modal":"_Components_Modal__modal","header":"_Components_Modal__header","content":"_Components_Modal__content","footer":"_Components_Modal__footer","test":"_Components_Modal__test","test1":"_Components_Modal__test1"}
-},{}],105:[function(require,module,exports){
-module.exports = {"overlay":"_Components_Overlay__overlay"}
-},{}],106:[function(require,module,exports){
-module.exports = {"customers":"_Customers__customers"}
-},{}],107:[function(require,module,exports){
-module.exports = {"create":"_Customers_Create__create"}
+},{"../../css/src/Globals.css":123,"../../css/src/index.css":126,"./Authentication":88,"./Customers":95,"./Menu":104,"./Navbar":105,"axios":1,"immutability-helper":36,"react":78,"react-dom":50,"react-router-dom":63}],107:[function(require,module,exports){
+module.exports = {"authentication":"_Authentication__authentication","container":"_Authentication__container","title":"_Authentication__title"}
 },{}],108:[function(require,module,exports){
-module.exports = {"content":"_Customers_Create_Content__content","input":"_Customers_Create_Content__input"}
+module.exports = {"join":"_Authentication_Join__join"}
 },{}],109:[function(require,module,exports){
-module.exports = {"topBar":"_Customers_Create_TopBar__topBar","left":"_Customers_Create_TopBar__left","right":"_Customers_Create_TopBar__right","entries":"_Customers_Create_TopBar__entries"}
+module.exports = {"login":"_Authentication_Login__login"}
 },{}],110:[function(require,module,exports){
-module.exports = {"list":"_Customers_List__list"}
+module.exports = {"button":"_Components_Button__button","basic":"_Components_Button__basic _Components_Button__button","round":"_Components_Button__round _Components_Button__button"}
 },{}],111:[function(require,module,exports){
-module.exports = {"table":"_Customers_List_Content__table"}
+module.exports = {"modal":"_Components_Modal__modal","header":"_Components_Modal__header","content":"_Components_Modal__content","footer":"_Components_Modal__footer","test":"_Components_Modal__test","test1":"_Components_Modal__test1"}
 },{}],112:[function(require,module,exports){
-module.exports = {"topBar":"_Customers_List_TopBar__topBar","left":"_Customers_List_TopBar__left","right":"_Customers_List_TopBar__right","entries":"_Customers_List_TopBar__entries"}
+module.exports = {"overlay":"_Components_Overlay__overlay"}
 },{}],113:[function(require,module,exports){
-module.exports = {"view":"_Customers_View__view","menu":"_Customers_View__menu","list":"_Customers_View__list","li":"_Customers_View__li","active":"_Customers_View__active _Customers_View__li"}
+module.exports = {"panel":"_Components_Panel__panel"}
 },{}],114:[function(require,module,exports){
-module.exports = {"input":"_Forms_Input__input","inputDisabled":"_Forms_Input__inputDisabled _Forms_Input__input","label":"_Forms_Input__label","labelActive":"_Forms_Input__labelActive _Forms_Input__label"}
+module.exports = {"customers":"_Customers__customers"}
 },{}],115:[function(require,module,exports){
-module.exports = {}
+module.exports = {"create":"_Customers_Create__create"}
 },{}],116:[function(require,module,exports){
-module.exports = {"menu":"_Menu__menu","list":"_Menu__list","li":"_Menu__li","active":"_Menu__active _Menu__li"}
+module.exports = {"content":"_Customers_Create_Content__content","input":"_Customers_Create_Content__input"}
 },{}],117:[function(require,module,exports){
-module.exports = {"navbar":"_Navbar__navbar","logo":"_Navbar__logo","list":"_Navbar__list","mobileList":"_Navbar__mobileList"}
+module.exports = {"topBar":"_Customers_Create_TopBar__topBar","left":"_Customers_Create_TopBar__left","right":"_Customers_Create_TopBar__right","entries":"_Customers_Create_TopBar__entries"}
 },{}],118:[function(require,module,exports){
+module.exports = {"list":"_Customers_List__list"}
+},{}],119:[function(require,module,exports){
+module.exports = {"table":"_Customers_List_Content__table"}
+},{}],120:[function(require,module,exports){
+module.exports = {"topBar":"_Customers_List_TopBar__topBar","left":"_Customers_List_TopBar__left","right":"_Customers_List_TopBar__right","entries":"_Customers_List_TopBar__entries"}
+},{}],121:[function(require,module,exports){
+module.exports = {"view":"_Customers_View__view","menu":"_Customers_View__menu","list":"_Customers_View__list","li":"_Customers_View__li","active":"_Customers_View__active _Customers_View__li"}
+},{}],122:[function(require,module,exports){
+module.exports = {"input":"_Forms_Input__input","inputDisabled":"_Forms_Input__inputDisabled _Forms_Input__input","label":"_Forms_Input__label","labelActive":"_Forms_Input__labelActive _Forms_Input__label"}
+},{}],123:[function(require,module,exports){
+module.exports = {}
+},{}],124:[function(require,module,exports){
+module.exports = {"menu":"_Menu__menu","list":"_Menu__list","li":"_Menu__li","active":"_Menu__active _Menu__li"}
+},{}],125:[function(require,module,exports){
+module.exports = {"navbar":"_Navbar__navbar","logo":"_Navbar__logo","list":"_Navbar__list","mobileList":"_Navbar__mobileList"}
+},{}],126:[function(require,module,exports){
 module.exports = {"index":"_index__index"}
-},{}]},{},[102]);
+},{}]},{},[106]);

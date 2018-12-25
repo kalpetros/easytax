@@ -1,0 +1,7 @@
+.login > div {
+    text-align: center;
+}
+
+.login > div:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
