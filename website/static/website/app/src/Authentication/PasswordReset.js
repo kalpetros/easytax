@@ -1,5 +1,4 @@
-import styles from '../../../css/src/Authentication.css';
-import pwdChange from '../../../css/src/Authentication/PasswordChange.css';
+import styles from '../../../css/src/Authentication/PasswordReset.css';
 import {FormErrors} from '../Forms/FormErrors';
 import {Input} from '../Forms/Input';
 import {Button} from '../Components/Button';
@@ -10,7 +9,7 @@ import update from 'immutability-helper';
 import axios from 'axios';
 import React from 'react';
 
-class PasswordChange extends React.Component {
+class PasswordReset extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,13 +61,13 @@ class PasswordChange extends React.Component {
     }
     render() {
 	return(
-	    <div className={styles.authentication}>
+	    <div className={styles.passwordReset}>
               <div className={styles.container}>
                 <div className={styles.title}>
                   <span>easytax</span>
                 </div>
                 <Panel>
-                  <div className={pwdChange.passwordChange}>
+                  <div className={styles.form}>
                     <FormErrors errors={this.state.formErrors}/>
                     <div>
                       <Input id="email"
@@ -79,7 +78,7 @@ class PasswordChange extends React.Component {
                              onChange={this.handleChange}/>
                     </div>
                     <div>
-                      <Button name="Request password change"
+                      <Button name="Request password reset"
                               onClick={this.handleClick}/>
                     </div>
                     <div>
@@ -93,4 +92,4 @@ class PasswordChange extends React.Component {
     }
 }
 
-export{PasswordChange};
+export{PasswordReset};

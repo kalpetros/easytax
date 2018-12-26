@@ -1,7 +1,10 @@
 import '../../css/src/Globals.css';
 import styles from '../../css/src/index.css';
-import {PasswordChange} from './Authentication/PasswordChange';
-import {Authentication} from './Authentication';
+import {Login} from './Authentication/Login';
+import {Join} from './Authentication/Join';
+import {PasswordReset} from './Authentication/PasswordReset';
+import {Settings} from './Settings';
+import {Profile} from './Profile';
 import {Customers} from './Customers';
 import {Navbar} from './Navbar';
 import {Menu} from './Menu';
@@ -115,13 +118,38 @@ class App extends React.Component {
                        user={this.state.user}/>
         );
 
+        const settings = (props) => (
+            <Settings {...props}
+                      onLogin={this.handleLogin}
+                      user={this.state.user}/>
+        );
+
+        const profile = (props) => (
+            <Profile {...props}
+                     onLogin={this.handleLogin}
+                     user={this.state.user}/>
+        );
+
         const navbar = (props) => (
             <Navbar {...props}
+                    user={this.state.user}
                     onLogout={this.handleLogout}/>
         );
 
-        const passwordChange = (props) => (
-            <PasswordChange {...props}/>
+        const login = (props) => (
+            <Login {...props}
+                   onLogin={this.handleLogin}
+                   user={this.state.user}/>
+        );
+
+        const join = (props) => (
+            <Join {...props}
+                  onLogin={this.handleLogin}
+                  user={this.state.user}/>
+        );
+
+        const passwordReset = (props) => (
+            <PasswordReset {...props}/>
         );
 
         let list = [
@@ -132,12 +160,6 @@ class App extends React.Component {
             <Menu {...props}
                   list={list}/>
         );
-
-        const authentication = (props) => (
-            <Authentication {...props}
-                            onLogin={this.handleLogin}
-                            user={this.state.user}/>
-        );
         
         if (this.state.user == null) {
             return(
@@ -145,8 +167,9 @@ class App extends React.Component {
 	          <Router>
 	            <ScrollWrapper>
                       <Switch>
-	                <Route exact path="/" render={authentication}/>
-                        <Route exact path="/password-change" render={passwordChange}/>
+	                <Route exact path="/" render={login}/>
+                        <Route exact path="/join" render={join}/>
+                        <Route exact path="/password-reset" render={passwordReset}/>
 	                <Route component={FourOFour}/>
 	              </Switch>
 	            </ScrollWrapper>
@@ -165,7 +188,8 @@ class App extends React.Component {
 	                  <Route exact path="/" render={customers}/>
                           <Route exact path="/customers" render={customers}/>
                           {/* <Route exact path="/customers/:customerId" render={}/> */}
-                          <Route exact path="/profile" render={customers}/>
+                          <Route exact path="/settings" render={settings}/>
+                          <Route exact path="/profile" render={profile}/>
 	                  <Route component={FourOFour}/>
 	                </Switch>
                       </div>

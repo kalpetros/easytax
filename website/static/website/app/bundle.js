@@ -29252,17 +29252,23 @@ module.exports = warning;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Authentication = undefined;
+exports.Join = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Authentication = require('../../css/src/Authentication.css');
+var _Join = require('../../../css/src/Authentication/Join.css');
 
-var _Authentication2 = _interopRequireDefault(_Authentication);
+var _Join2 = _interopRequireDefault(_Join);
 
-var _Login = require('./Authentication/Login');
+var _FormErrors = require('../Forms/FormErrors');
 
-var _Join = require('./Authentication/Join');
+var _Input = require('../Forms/Input');
+
+var _Button = require('../Components/Button');
+
+var _Panel = require('../Components/Panel');
+
+var _reactRouterDom = require('react-router-dom');
 
 var _immutabilityHelper = require('immutability-helper');
 
@@ -29286,21 +29292,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Authentication = function (_React$Component) {
-    _inherits(Authentication, _React$Component);
+var Join = function (_React$Component) {
+    _inherits(Join, _React$Component);
 
-    function Authentication(props) {
-        _classCallCheck(this, Authentication);
+    function Join(props) {
+        _classCallCheck(this, Join);
 
-        var _this = _possibleConstructorReturn(this, (Authentication.__proto__ || Object.getPrototypeOf(Authentication)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Join.__proto__ || Object.getPrototypeOf(Join)).call(this, props));
 
         _this.state = {
-            view: 'login',
-            loginForm: {
-                username: '',
-                password: ''
-            },
-            joinForm: {
+            form: {
                 username: '',
                 email: '',
                 password: '',
@@ -29311,25 +29312,22 @@ var Authentication = function (_React$Component) {
             formErrors: null
         };
 
-        _this.handleLogin = _this.handleLogin.bind(_this);
-        _this.handleJoin = _this.handleJoin.bind(_this);
-        _this.handleLoginChange = _this.handleLoginChange.bind(_this);
-        _this.handleJoinChange = _this.handleJoinChange.bind(_this);
-        _this.handleViewChange = _this.handleViewChange.bind(_this);
+        _this.handleClick = _this.handleClick.bind(_this);
+        _this.handleChange = _this.handleChange.bind(_this);
         return _this;
     }
 
-    _createClass(Authentication, [{
+    _createClass(Join, [{
         key: 'componentDidMount',
         value: function componentDidMount() {}
     }, {
-        key: 'handleLogin',
-        value: function handleLogin() {
+        key: 'handleClick',
+        value: function handleClick() {
             var _this2 = this;
 
             var data = {
-                action: 'login',
-                form: this.state.loginForm
+                action: 'join',
+                form: this.state.form
             };
 
             _axios2.default.post('/authentication', data).then(function (response) {
@@ -29347,266 +29345,134 @@ var Authentication = function (_React$Component) {
             }).then(function () {});
         }
     }, {
-        key: 'handleJoin',
-        value: function handleJoin() {
-            var _this3 = this;
-
-            var data = {
-                action: 'join',
-                form: this.state.joinForm
-            };
-
-            _axios2.default.post('/authentication', data).then(function (response) {
-                if (!response.data.errors) {
-                    window.location.reload();
-                } else {
-                    var newState = (0, _immutabilityHelper2.default)(_this3.state, {
-                        formErrors: { $set: response.data.message }
-                    });
-
-                    _this3.setState(newState);
-                }
-            }).catch(function (error) {
-                console.log(error);
-            }).then(function () {});
-        }
-    }, {
-        key: 'handleLoginChange',
-        value: function handleLoginChange(event) {
+        key: 'handleChange',
+        value: function handleChange(event) {
             var id = event.currentTarget.id;
             var value = event.currentTarget.value;
 
             var newState = (0, _immutabilityHelper2.default)(this.state, {
-                loginForm: _defineProperty({}, id, { $set: value })
+                form: _defineProperty({}, id, { $set: value })
             });
 
             this.setState(newState);
-        }
-    }, {
-        key: 'handleJoinChange',
-        value: function handleJoinChange(event) {
-            var id = event.currentTarget.id;
-            var value = event.currentTarget.value;
-
-            var newState = (0, _immutabilityHelper2.default)(this.state, {
-                joinForm: _defineProperty({}, id, { $set: value })
-            });
-
-            this.setState(newState);
-        }
-    }, {
-        key: 'handleViewChange',
-        value: function handleViewChange() {
-            var newState = (0, _immutabilityHelper2.default)(this.state, {
-                view: { $apply: function $apply(v) {
-                        return v == 'login' ? 'join' : 'login';
-                    } },
-                formErrors: { $set: null }
-            });
-
-            this.setState(newState);
-        }
-    }, {
-        key: 'renderView',
-        value: function renderView() {
-            if (this.state.view == 'login') {
-                return _react2.default.createElement(_Login.Login, { onClick: this.handleLogin,
-                    onChange: this.handleLoginChange,
-                    onViewChange: this.handleViewChange,
-                    form: this.state.loginForm,
-                    formErrors: this.state.formErrors });
-            } else if (this.state.view == 'join') {
-                return _react2.default.createElement(_Join.Join, { onClick: this.handleJoin,
-                    onChange: this.handleJoinChange,
-                    onViewChange: this.handleViewChange,
-                    form: this.state.joinForm,
-                    formErrors: this.state.formErrors });
-            }
-
-            return _react2.default.createElement(_Login.Login, { onClick: this.handleLogin,
-                onChange: this.handleLoginChange,
-                onViewChange: this.handleViewChange,
-                form: this.state.loginForm });
         }
     }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                { className: _Authentication2.default.authentication },
+                { className: _Join2.default.join },
                 _react2.default.createElement(
                     'div',
-                    { className: _Authentication2.default.container },
+                    { className: _Join2.default.container },
                     _react2.default.createElement(
                         'div',
-                        { className: _Authentication2.default.title },
+                        { className: _Join2.default.title },
                         _react2.default.createElement(
                             'span',
                             null,
                             'easytax'
                         )
                     ),
-                    this.renderView()
+                    _react2.default.createElement(
+                        _Panel.Panel,
+                        null,
+                        _react2.default.createElement(
+                            'div',
+                            { className: _Join2.default.form },
+                            _react2.default.createElement(_FormErrors.FormErrors, { errors: this.state.formErrors }),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(_Input.Input, { id: 'username',
+                                    name: 'username',
+                                    type: 'text',
+                                    label: 'Username',
+                                    value: this.state.form.username,
+                                    onChange: this.handleChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(_Input.Input, { id: 'password',
+                                    name: 'password',
+                                    type: 'password',
+                                    label: '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03C0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2',
+                                    value: this.state.form.password,
+                                    onChange: this.handleChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(_Input.Input, { id: 'password2',
+                                    name: 'password2',
+                                    type: 'password',
+                                    label: '\u0395\u03C0\u03B9\u03B2\u03B5\u03B2\u03B1\u03AF\u03C9\u03C3\u03B7 \u03BA\u03C9\u03B4\u03B9\u03BA\u03BF\u03CD',
+                                    value: this.state.form.password2,
+                                    onChange: this.handleChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(_Input.Input, { id: 'email',
+                                    name: 'email',
+                                    type: 'email',
+                                    label: 'E-mail',
+                                    value: this.state.form.email,
+                                    onChange: this.handleChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(_Input.Input, { id: 'first_name',
+                                    name: 'first_name',
+                                    type: 'text',
+                                    label: '\u038C\u03BD\u03BF\u03BC\u03B1',
+                                    value: this.state.form.first_name,
+                                    onChange: this.handleChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(_Input.Input, { id: 'last_name',
+                                    name: 'last_name',
+                                    type: 'text',
+                                    label: '\u0395\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF',
+                                    value: this.state.form.last_name,
+                                    onChange: this.handleChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(_Button.Button, { name: '\u0394\u03B7\u03BC\u03B9\u03BF\u03C5\u03C1\u03B3\u03AF\u03B1 \u03BB\u03BF\u03B3\u03B1\u03C1\u03B9\u03B1\u03C3\u03BC\u03BF\u03CD',
+                                    onClick: this.handleClick })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(
+                                    _reactRouterDom.Link,
+                                    { to: '/' },
+                                    'Already have an account? Log in'
+                                )
+                            )
+                        )
+                    )
                 )
             );
         }
     }]);
 
-    return Authentication;
-}(_react2.default.Component);
-
-exports.Authentication = Authentication;
-
-},{"../../css/src/Authentication.css":109,"./Authentication/Join":89,"./Authentication/Login":90,"axios":1,"immutability-helper":36,"react":78}],89:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Join = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Join = require('../../../css/src/Authentication/Join.css');
-
-var _Join2 = _interopRequireDefault(_Join);
-
-var _FormErrors = require('../Forms/FormErrors');
-
-var _Input = require('../Forms/Input');
-
-var _Button = require('../Components/Button');
-
-var _Panel = require('../Components/Panel');
-
-var _immutabilityHelper = require('immutability-helper');
-
-var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Join = function (_React$Component) {
-  _inherits(Join, _React$Component);
-
-  function Join(props) {
-    _classCallCheck(this, Join);
-
-    return _possibleConstructorReturn(this, (Join.__proto__ || Object.getPrototypeOf(Join)).call(this, props));
-  }
-
-  _createClass(Join, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {}
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _Panel.Panel,
-        null,
-        _react2.default.createElement(
-          'div',
-          { className: _Join2.default.join },
-          _react2.default.createElement(_FormErrors.FormErrors, { errors: this.props.formErrors }),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_Input.Input, { id: 'username',
-              name: 'username',
-              type: 'text',
-              label: 'Username',
-              value: this.props.form.username,
-              onChange: this.props.onChange })
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_Input.Input, { id: 'password',
-              name: 'password',
-              type: 'password',
-              label: '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03C0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2',
-              value: this.props.form.password,
-              onChange: this.props.onChange })
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_Input.Input, { id: 'password2',
-              name: 'password2',
-              type: 'password',
-              label: '\u0395\u03C0\u03B9\u03B2\u03B5\u03B2\u03B1\u03AF\u03C9\u03C3\u03B7 \u03BA\u03C9\u03B4\u03B9\u03BA\u03BF\u03CD',
-              value: this.props.form.password2,
-              onChange: this.props.onChange })
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_Input.Input, { id: 'email',
-              name: 'email',
-              type: 'email',
-              label: 'E-mail',
-              value: this.props.form.email,
-              onChange: this.props.onChange })
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_Input.Input, { id: 'first_name',
-              name: 'first_name',
-              type: 'text',
-              label: '\u038C\u03BD\u03BF\u03BC\u03B1',
-              value: this.props.form.first_name,
-              onChange: this.props.onChange })
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_Input.Input, { id: 'last_name',
-              name: 'last_name',
-              type: 'text',
-              label: '\u0395\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF',
-              value: this.props.form.last_name,
-              onChange: this.props.onChange })
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_Button.Button, { name: '\u0394\u03B7\u03BC\u03B9\u03BF\u03C5\u03C1\u03B3\u03AF\u03B1 \u03BB\u03BF\u03B3\u03B1\u03C1\u03B9\u03B1\u03C3\u03BC\u03BF\u03CD',
-              onClick: this.props.onClick })
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(
-              'span',
-              { onClick: this.props.onViewChange },
-              'Already have an account? Log in'
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Join;
+    return Join;
 }(_react2.default.Component);
 
 exports.Join = Join;
 
-},{"../../../css/src/Authentication/Join.css":110,"../Components/Button":92,"../Components/Panel":95,"../Forms/FormErrors":104,"../Forms/Input":105,"immutability-helper":36,"react":78}],90:[function(require,module,exports){
+},{"../../../css/src/Authentication/Join.css":110,"../Components/Button":91,"../Components/Panel":94,"../Forms/FormErrors":103,"../Forms/Input":104,"axios":1,"immutability-helper":36,"react":78,"react-router-dom":63}],89:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Login = undefined;
 
@@ -29626,6 +29492,10 @@ var _Panel = require('../Components/Panel');
 
 var _reactRouterDom = require('react-router-dom');
 
+var _axios = require('axios');
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _immutabilityHelper = require('immutability-helper');
 
 var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
@@ -29636,6 +29506,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -29643,98 +29515,159 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Login = function (_React$Component) {
-  _inherits(Login, _React$Component);
+    _inherits(Login, _React$Component);
 
-  function Login(props) {
-    _classCallCheck(this, Login);
+    function Login(props) {
+        _classCallCheck(this, Login);
 
-    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
-  }
+        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
-  _createClass(Login, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {}
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _Panel.Panel,
-        null,
-        _react2.default.createElement(
-          'div',
-          { className: _Login2.default.login },
-          _react2.default.createElement(_FormErrors.FormErrors, { errors: this.props.formErrors }),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_Input.Input, { id: 'username',
-              name: 'username',
-              type: 'text',
-              label: '\u038C\u03BD\u03BF\u03BC\u03B1 \u03A7\u03C1\u03AE\u03C3\u03C4\u03B7',
-              value: this.props.form.username,
-              onChange: this.props.onChange })
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_Input.Input, { id: 'password',
-              name: 'password',
-              type: 'password',
-              label: '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03C0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2',
-              value: this.props.form.password,
-              onChange: this.props.onChange })
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_Button.Button, { name: '\u03A3\u03CD\u03BD\u03B4\u03B5\u03C3\u03B7',
-              onClick: this.props.onClick })
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: 'password-change' },
-              'Forgot your password?'
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(
-              'span',
-              { onClick: this.props.onViewChange },
-              'Don\'t have an account? Join'
-            )
-          )
-        )
-      );
+        _this.state = {
+            form: {
+                username: '',
+                password: ''
+            },
+            formErrors: null
+        };
+
+        _this.handleClick = _this.handleClick.bind(_this);
+        _this.handleChange = _this.handleChange.bind(_this);
+        return _this;
     }
-  }]);
 
-  return Login;
+    _createClass(Login, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'handleClick',
+        value: function handleClick() {
+            var _this2 = this;
+
+            var data = {
+                action: 'login',
+                form: this.state.form
+            };
+
+            _axios2.default.post('/authentication', data).then(function (response) {
+                if (!response.data.errors) {
+                    window.location.reload();
+                } else {
+                    var newState = (0, _immutabilityHelper2.default)(_this2.state, {
+                        formErrors: { $set: response.data.message }
+                    });
+
+                    _this2.setState(newState);
+                }
+            }).catch(function (error) {
+                console.log(error);
+            }).then(function () {});
+        }
+    }, {
+        key: 'handleChange',
+        value: function handleChange(event) {
+            var id = event.currentTarget.id;
+            var value = event.currentTarget.value;
+
+            var newState = (0, _immutabilityHelper2.default)(this.state, {
+                form: _defineProperty({}, id, { $set: value })
+            });
+
+            this.setState(newState);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: _Login2.default.login },
+                _react2.default.createElement(
+                    'div',
+                    { className: _Login2.default.container },
+                    _react2.default.createElement(
+                        'div',
+                        { className: _Login2.default.title },
+                        _react2.default.createElement(
+                            'span',
+                            null,
+                            'easytax'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _Panel.Panel,
+                        null,
+                        _react2.default.createElement(
+                            'div',
+                            { className: _Login2.default.form },
+                            _react2.default.createElement(_FormErrors.FormErrors, { errors: this.state.formErrors }),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(_Input.Input, { id: 'username',
+                                    name: 'username',
+                                    type: 'text',
+                                    label: '\u038C\u03BD\u03BF\u03BC\u03B1 \u03A7\u03C1\u03AE\u03C3\u03C4\u03B7',
+                                    value: this.state.form.username,
+                                    onChange: this.handleChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(_Input.Input, { id: 'password',
+                                    name: 'password',
+                                    type: 'password',
+                                    label: '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03C0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2',
+                                    value: this.state.form.password,
+                                    onChange: this.handleChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(_Button.Button, { name: '\u03A3\u03CD\u03BD\u03B4\u03B5\u03C3\u03B7',
+                                    onClick: this.handleClick })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(
+                                    _reactRouterDom.Link,
+                                    { to: 'password-reset' },
+                                    'Forgot your password?'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(
+                                    _reactRouterDom.Link,
+                                    { to: 'join' },
+                                    'Don\'t have an account? Join'
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Login;
 }(_react2.default.Component);
 
 exports.Login = Login;
 
-},{"../../../css/src/Authentication/Login.css":111,"../Components/Button":92,"../Components/Panel":95,"../Forms/FormErrors":104,"../Forms/Input":105,"immutability-helper":36,"react":78,"react-router-dom":63}],91:[function(require,module,exports){
+},{"../../../css/src/Authentication/Login.css":111,"../Components/Button":91,"../Components/Panel":94,"../Forms/FormErrors":103,"../Forms/Input":104,"axios":1,"immutability-helper":36,"react":78,"react-router-dom":63}],90:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.PasswordChange = undefined;
+exports.PasswordReset = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Authentication = require('../../../css/src/Authentication.css');
+var _PasswordReset = require('../../../css/src/Authentication/PasswordReset.css');
 
-var _Authentication2 = _interopRequireDefault(_Authentication);
-
-var _PasswordChange = require('../../../css/src/Authentication/PasswordChange.css');
-
-var _PasswordChange2 = _interopRequireDefault(_PasswordChange);
+var _PasswordReset2 = _interopRequireDefault(_PasswordReset);
 
 var _FormErrors = require('../Forms/FormErrors');
 
@@ -29768,13 +29701,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var PasswordChange = function (_React$Component) {
-    _inherits(PasswordChange, _React$Component);
+var PasswordReset = function (_React$Component) {
+    _inherits(PasswordReset, _React$Component);
 
-    function PasswordChange(props) {
-        _classCallCheck(this, PasswordChange);
+    function PasswordReset(props) {
+        _classCallCheck(this, PasswordReset);
 
-        var _this = _possibleConstructorReturn(this, (PasswordChange.__proto__ || Object.getPrototypeOf(PasswordChange)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (PasswordReset.__proto__ || Object.getPrototypeOf(PasswordReset)).call(this, props));
 
         _this.state = {
             view: 'login',
@@ -29789,7 +29722,7 @@ var PasswordChange = function (_React$Component) {
         return _this;
     }
 
-    _createClass(PasswordChange, [{
+    _createClass(PasswordReset, [{
         key: 'componentDidMount',
         value: function componentDidMount() {}
     }, {
@@ -29833,13 +29766,13 @@ var PasswordChange = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                { className: _Authentication2.default.authentication },
+                { className: _PasswordReset2.default.passwordReset },
                 _react2.default.createElement(
                     'div',
-                    { className: _Authentication2.default.container },
+                    { className: _PasswordReset2.default.container },
                     _react2.default.createElement(
                         'div',
-                        { className: _Authentication2.default.title },
+                        { className: _PasswordReset2.default.title },
                         _react2.default.createElement(
                             'span',
                             null,
@@ -29851,7 +29784,7 @@ var PasswordChange = function (_React$Component) {
                         null,
                         _react2.default.createElement(
                             'div',
-                            { className: _PasswordChange2.default.passwordChange },
+                            { className: _PasswordReset2.default.form },
                             _react2.default.createElement(_FormErrors.FormErrors, { errors: this.state.formErrors }),
                             _react2.default.createElement(
                                 'div',
@@ -29866,7 +29799,7 @@ var PasswordChange = function (_React$Component) {
                             _react2.default.createElement(
                                 'div',
                                 null,
-                                _react2.default.createElement(_Button.Button, { name: 'Request password change',
+                                _react2.default.createElement(_Button.Button, { name: 'Request password reset',
                                     onClick: this.handleClick })
                             ),
                             _react2.default.createElement(
@@ -29885,12 +29818,12 @@ var PasswordChange = function (_React$Component) {
         }
     }]);
 
-    return PasswordChange;
+    return PasswordReset;
 }(_react2.default.Component);
 
-exports.PasswordChange = PasswordChange;
+exports.PasswordReset = PasswordReset;
 
-},{"../../../css/src/Authentication.css":109,"../../../css/src/Authentication/PasswordChange.css":112,"../Components/Button":92,"../Components/Panel":95,"../Forms/FormErrors":104,"../Forms/Input":105,"axios":1,"immutability-helper":36,"react":78,"react-router-dom":63}],92:[function(require,module,exports){
+},{"../../../css/src/Authentication/PasswordReset.css":112,"../Components/Button":91,"../Components/Panel":94,"../Forms/FormErrors":103,"../Forms/Input":104,"axios":1,"immutability-helper":36,"react":78,"react-router-dom":63}],91:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29983,7 +29916,7 @@ var Button = function (_React$Component) {
 
 exports.Button = Button;
 
-},{"../../../css/src/Components/Button.css":113,"react":78}],93:[function(require,module,exports){
+},{"../../../css/src/Components/Button.css":113,"react":78}],92:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30067,7 +30000,7 @@ var Modal = function (_React$Component) {
 
 exports.Modal = Modal;
 
-},{"../../../css/src/Components/Modal.css":114,"../Components/Button":92,"./Overlay":94,"react":78}],94:[function(require,module,exports){
+},{"../../../css/src/Components/Modal.css":114,"../Components/Button":91,"./Overlay":93,"react":78}],93:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30125,7 +30058,7 @@ var Overlay = function (_React$Component) {
 
 exports.Overlay = Overlay;
 
-},{"../../../css/src/Components/Overlay.css":115,"react":78}],95:[function(require,module,exports){
+},{"../../../css/src/Components/Overlay.css":115,"react":78}],94:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30179,7 +30112,7 @@ var Panel = function (_React$Component) {
 
 exports.Panel = Panel;
 
-},{"../../../css/src/Components/Panel.css":116,"react":78}],96:[function(require,module,exports){
+},{"../../../css/src/Components/Panel.css":116,"react":78}],95:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30308,7 +30241,7 @@ var Customers = function (_React$Component) {
 
 exports.Customers = Customers;
 
-},{"../../css/src/Customers.css":117,"./Components/Modal":93,"./Customers/Create":97,"./Customers/List":100,"./Customers/View":103,"immutability-helper":36,"react":78,"react-dom":50}],97:[function(require,module,exports){
+},{"../../css/src/Customers.css":117,"./Components/Modal":92,"./Customers/Create":96,"./Customers/List":99,"./Customers/View":102,"immutability-helper":36,"react":78,"react-dom":50}],96:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30366,7 +30299,7 @@ var Create = function (_React$Component) {
 
 exports.Create = Create;
 
-},{"../../../css/src/Customers/Create.css":118,"./Create/Content":98,"./Create/TopBar":99,"react":78}],98:[function(require,module,exports){
+},{"../../../css/src/Customers/Create.css":118,"./Create/Content":97,"./Create/TopBar":98,"react":78}],97:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30698,7 +30631,7 @@ var Content = function (_React$Component) {
 
 exports.Content = Content;
 
-},{"../../../../css/src/Customers/Create/Content.css":119,"../../Forms/Input":105,"react":78}],99:[function(require,module,exports){
+},{"../../../../css/src/Customers/Create/Content.css":119,"../../Forms/Input":104,"react":78}],98:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30771,7 +30704,7 @@ var TopBar = function (_React$Component) {
 
 exports.TopBar = TopBar;
 
-},{"../../../../css/src/Customers/Create/TopBar.css":120,"../../Components/Button":92,"react":78}],100:[function(require,module,exports){
+},{"../../../../css/src/Customers/Create/TopBar.css":120,"../../Components/Button":91,"react":78}],99:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30831,7 +30764,7 @@ var List = function (_React$Component) {
 
 exports.List = List;
 
-},{"../../../css/src/Customers/List.css":121,"./List/Content":101,"./List/TopBar":102,"react":78}],101:[function(require,module,exports){
+},{"../../../css/src/Customers/List.css":121,"./List/Content":100,"./List/TopBar":101,"react":78}],100:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30980,7 +30913,7 @@ var Content = function (_React$Component) {
 
 exports.Content = Content;
 
-},{"../../../../css/src/Customers/List/Content.css":122,"react":78}],102:[function(require,module,exports){
+},{"../../../../css/src/Customers/List/Content.css":122,"react":78}],101:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31057,7 +30990,7 @@ var TopBar = function (_React$Component) {
 
 exports.TopBar = TopBar;
 
-},{"../../../../css/src/Customers/List/TopBar.css":123,"../../Components/Button":92,"react":78}],103:[function(require,module,exports){
+},{"../../../../css/src/Customers/List/TopBar.css":123,"../../Components/Button":91,"react":78}],102:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31128,7 +31061,7 @@ var View = function (_React$Component) {
 
 exports.View = View;
 
-},{"../../../css/src/Customers/View.css":124,"../Menu":106,"immutability-helper":36,"react":78,"react-dom":50}],104:[function(require,module,exports){
+},{"../../../css/src/Customers/View.css":124,"../Menu":105,"immutability-helper":36,"react":78,"react-dom":50}],103:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31175,6 +31108,7 @@ var FormErrors = function (_React$Component) {
         value: function renderErrors() {
             var errors = this.props.errors;
 
+            console.log(errors);
             if (errors !== null) {
                 try {
                     errors = JSON.parse(errors);
@@ -31184,21 +31118,31 @@ var FormErrors = function (_React$Component) {
                         return _react2.default.createElement(
                             'li',
                             { key: "error-" + index },
+                            _react2.default.createElement(
+                                'span',
+                                null,
+                                item,
+                                ': '
+                            ),
                             message
                         );
                     });
 
                     return _react2.default.createElement(
                         'ul',
-                        null,
+                        { className: _FormErrors2.default.list },
                         items
                     );
                 } catch (error) {}
 
                 return _react2.default.createElement(
-                    'span',
-                    null,
-                    errors
+                    'ul',
+                    { className: _FormErrors2.default.list },
+                    _react2.default.createElement(
+                        'li',
+                        null,
+                        errors
+                    )
                 );
             }
 
@@ -31207,11 +31151,15 @@ var FormErrors = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: _FormErrors2.default.formErrors },
-                this.renderErrors()
-            );
+            if (this.props.errors !== null) {
+                return _react2.default.createElement(
+                    'div',
+                    { className: _FormErrors2.default.formErrors },
+                    this.renderErrors()
+                );
+            }
+
+            return null;
         }
     }]);
 
@@ -31220,7 +31168,7 @@ var FormErrors = function (_React$Component) {
 
 exports.FormErrors = FormErrors;
 
-},{"../../../css/src/Forms/FormErrors.css":125,"immutability-helper":36,"react":78}],105:[function(require,module,exports){
+},{"../../../css/src/Forms/FormErrors.css":125,"immutability-helper":36,"react":78}],104:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31292,7 +31240,7 @@ var Input = function (_React$Component) {
 
 exports.Input = Input;
 
-},{"../../../css/src/Forms/Input.css":126,"react":78}],106:[function(require,module,exports){
+},{"../../../css/src/Forms/Input.css":126,"react":78}],105:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31400,7 +31348,7 @@ var Menu = function (_React$Component) {
 
 exports.Menu = Menu;
 
-},{"../../css/src/Menu.css":128,"immutability-helper":36,"react":78}],107:[function(require,module,exports){
+},{"../../css/src/Menu.css":128,"immutability-helper":36,"react":78}],106:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31413,6 +31361,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _Navbar = require('../../css/src/Navbar.css');
 
 var _Navbar2 = _interopRequireDefault(_Navbar);
+
+var _reactRouterDom = require('react-router-dom');
 
 var _react = require('react');
 
@@ -31445,6 +31395,8 @@ var Navbar = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var user = this.props.user;
+
       return _react2.default.createElement(
         'div',
         { className: _Navbar2.default.navbar },
@@ -31458,8 +31410,8 @@ var Navbar = function (_React$Component) {
               'li',
               null,
               _react2.default.createElement(
-                'a',
-                { href: '/' },
+                _reactRouterDom.Link,
+                { to: '/' },
                 'easytax v0.0.1'
               )
             )
@@ -31478,9 +31430,18 @@ var Navbar = function (_React$Component) {
                 'span',
                 null,
                 _react2.default.createElement(
-                  'i',
-                  { className: 'material-icons' },
-                  'notifications'
+                  'span',
+                  { className: _Navbar2.default.badge },
+                  _react2.default.createElement(
+                    'i',
+                    { className: 'material-icons' },
+                    'notifications'
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    '2'
+                  )
                 )
               )
             ),
@@ -31488,8 +31449,8 @@ var Navbar = function (_React$Component) {
               'li',
               null,
               _react2.default.createElement(
-                'span',
-                null,
+                _reactRouterDom.Link,
+                { to: 'settings' },
                 _react2.default.createElement(
                   'i',
                   { className: 'material-icons' },
@@ -31501,9 +31462,9 @@ var Navbar = function (_React$Component) {
               'li',
               null,
               _react2.default.createElement(
-                'span',
-                null,
-                'Guest'
+                _reactRouterDom.Link,
+                { to: 'profile' },
+                user.username
               )
             ),
             _react2.default.createElement(
@@ -31530,7 +31491,119 @@ var Navbar = function (_React$Component) {
 
 exports.Navbar = Navbar;
 
-},{"../../css/src/Navbar.css":129,"react":78}],108:[function(require,module,exports){
+},{"../../css/src/Navbar.css":129,"react":78,"react-router-dom":63}],107:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Profile = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Profile = require('../../css/src/Profile.css');
+
+var _Profile2 = _interopRequireDefault(_Profile);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Profile = function (_React$Component) {
+    _inherits(Profile, _React$Component);
+
+    function Profile(props) {
+        _classCallCheck(this, Profile);
+
+        var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
+
+        _this.state = {};
+
+        return _this;
+    }
+
+    _createClass(Profile, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement('div', { className: _Profile2.default.profile });
+        }
+    }]);
+
+    return Profile;
+}(_react2.default.Component);
+
+exports.Profile = Profile;
+
+},{"../../css/src/Profile.css":130,"react":78,"react-router-dom":63}],108:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Settings = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Settings = require('../../css/src/Settings.css');
+
+var _Settings2 = _interopRequireDefault(_Settings);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Settings = function (_React$Component) {
+    _inherits(Settings, _React$Component);
+
+    function Settings(props) {
+        _classCallCheck(this, Settings);
+
+        var _this = _possibleConstructorReturn(this, (Settings.__proto__ || Object.getPrototypeOf(Settings)).call(this, props));
+
+        _this.state = {};
+
+        return _this;
+    }
+
+    _createClass(Settings, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement('div', { className: _Settings2.default.settings });
+        }
+    }]);
+
+    return Settings;
+}(_react2.default.Component);
+
+exports.Settings = Settings;
+
+},{"../../css/src/Settings.css":131,"react":78,"react-router-dom":63}],109:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -31543,9 +31616,15 @@ var _index = require('../../css/src/index.css');
 
 var _index2 = _interopRequireDefault(_index);
 
-var _PasswordChange = require('./Authentication/PasswordChange');
+var _Login = require('./Authentication/Login');
 
-var _Authentication = require('./Authentication');
+var _Join = require('./Authentication/Join');
+
+var _PasswordReset = require('./Authentication/PasswordReset');
+
+var _Settings = require('./Settings');
+
+var _Profile = require('./Profile');
 
 var _Customers = require('./Customers');
 
@@ -31730,13 +31809,38 @@ var App = function (_React$Component3) {
                     user: _this5.state.user }));
             };
 
+            var settings = function settings(props) {
+                return _react2.default.createElement(_Settings.Settings, _extends({}, props, {
+                    onLogin: _this5.handleLogin,
+                    user: _this5.state.user }));
+            };
+
+            var profile = function profile(props) {
+                return _react2.default.createElement(_Profile.Profile, _extends({}, props, {
+                    onLogin: _this5.handleLogin,
+                    user: _this5.state.user }));
+            };
+
             var navbar = function navbar(props) {
                 return _react2.default.createElement(_Navbar.Navbar, _extends({}, props, {
+                    user: _this5.state.user,
                     onLogout: _this5.handleLogout }));
             };
 
-            var passwordChange = function passwordChange(props) {
-                return _react2.default.createElement(_PasswordChange.PasswordChange, props);
+            var login = function login(props) {
+                return _react2.default.createElement(_Login.Login, _extends({}, props, {
+                    onLogin: _this5.handleLogin,
+                    user: _this5.state.user }));
+            };
+
+            var join = function join(props) {
+                return _react2.default.createElement(_Join.Join, _extends({}, props, {
+                    onLogin: _this5.handleLogin,
+                    user: _this5.state.user }));
+            };
+
+            var passwordReset = function passwordReset(props) {
+                return _react2.default.createElement(_PasswordReset.PasswordReset, props);
             };
 
             var list = [{ name: 'Customers', id: 'cus', icon: 'supervised_user_circle' }];
@@ -31744,12 +31848,6 @@ var App = function (_React$Component3) {
             var menu = function menu(props) {
                 return _react2.default.createElement(_Menu.Menu, _extends({}, props, {
                     list: list }));
-            };
-
-            var authentication = function authentication(props) {
-                return _react2.default.createElement(_Authentication.Authentication, _extends({}, props, {
-                    onLogin: _this5.handleLogin,
-                    user: _this5.state.user }));
             };
 
             if (this.state.user == null) {
@@ -31765,8 +31863,9 @@ var App = function (_React$Component3) {
                             _react2.default.createElement(
                                 _reactRouterDom.Switch,
                                 null,
-                                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: authentication }),
-                                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/password-change', render: passwordChange }),
+                                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: login }),
+                                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/join', render: join }),
+                                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/password-reset', render: passwordReset }),
                                 _react2.default.createElement(_reactRouterDom.Route, { component: FourOFour })
                             )
                         )
@@ -31792,7 +31891,8 @@ var App = function (_React$Component3) {
                                     null,
                                     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: customers }),
                                     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/customers', render: customers }),
-                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/profile', render: customers }),
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/settings', render: settings }),
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/profile', render: profile }),
                                     _react2.default.createElement(_reactRouterDom.Route, { component: FourOFour })
                                 )
                             )
@@ -31808,14 +31908,12 @@ var App = function (_React$Component3) {
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
 
-},{"../../css/src/Globals.css":127,"../../css/src/index.css":130,"./Authentication":88,"./Authentication/PasswordChange":91,"./Customers":96,"./Menu":106,"./Navbar":107,"axios":1,"immutability-helper":36,"react":78,"react-dom":50,"react-router-dom":63}],109:[function(require,module,exports){
-module.exports = {"authentication":"_Authentication__authentication","container":"_Authentication__container","title":"_Authentication__title"}
-},{}],110:[function(require,module,exports){
-module.exports = {"join":"_Authentication_Join__join"}
+},{"../../css/src/Globals.css":127,"../../css/src/index.css":132,"./Authentication/Join":88,"./Authentication/Login":89,"./Authentication/PasswordReset":90,"./Customers":95,"./Menu":105,"./Navbar":106,"./Profile":107,"./Settings":108,"axios":1,"immutability-helper":36,"react":78,"react-dom":50,"react-router-dom":63}],110:[function(require,module,exports){
+module.exports = {"join":"_Authentication_Join__join","container":"_Authentication_Join__container","title":"_Authentication_Join__title","form":"_Authentication_Join__form"}
 },{}],111:[function(require,module,exports){
-module.exports = {"login":"_Authentication_Login__login"}
+module.exports = {"login":"_Authentication_Login__login","container":"_Authentication_Login__container","title":"_Authentication_Login__title","form":"_Authentication_Login__form"}
 },{}],112:[function(require,module,exports){
-module.exports = {"passwordChange":"_Authentication_PasswordChange__passwordChange"}
+module.exports = {"passwordReset":"_Authentication_PasswordReset__passwordReset","container":"_Authentication_PasswordReset__container","title":"_Authentication_PasswordReset__title","form":"_Authentication_PasswordReset__form"}
 },{}],113:[function(require,module,exports){
 module.exports = {"button":"_Components_Button__button","basic":"_Components_Button__basic _Components_Button__button","round":"_Components_Button__round _Components_Button__button"}
 },{}],114:[function(require,module,exports){
@@ -31841,7 +31939,7 @@ module.exports = {"topBar":"_Customers_List_TopBar__topBar","left":"_Customers_L
 },{}],124:[function(require,module,exports){
 module.exports = {"view":"_Customers_View__view","menu":"_Customers_View__menu","list":"_Customers_View__list","li":"_Customers_View__li","active":"_Customers_View__active _Customers_View__li"}
 },{}],125:[function(require,module,exports){
-module.exports = {"formErrors":"_Forms_FormErrors__formErrors"}
+module.exports = {"formErrors":"_Forms_FormErrors__formErrors","list":"_Forms_FormErrors__list"}
 },{}],126:[function(require,module,exports){
 module.exports = {"input":"_Forms_Input__input","inputDisabled":"_Forms_Input__inputDisabled _Forms_Input__input","label":"_Forms_Input__label","labelActive":"_Forms_Input__labelActive _Forms_Input__label"}
 },{}],127:[function(require,module,exports){
@@ -31849,7 +31947,11 @@ module.exports = {}
 },{}],128:[function(require,module,exports){
 module.exports = {"menu":"_Menu__menu","list":"_Menu__list","li":"_Menu__li","active":"_Menu__active _Menu__li"}
 },{}],129:[function(require,module,exports){
-module.exports = {"navbar":"_Navbar__navbar","logo":"_Navbar__logo","list":"_Navbar__list","mobileList":"_Navbar__mobileList"}
+module.exports = {"navbar":"_Navbar__navbar","badge":"_Navbar__badge","logo":"_Navbar__logo","list":"_Navbar__list","mobileList":"_Navbar__mobileList"}
 },{}],130:[function(require,module,exports){
+module.exports = {"profile":"_Profile__profile"}
+},{}],131:[function(require,module,exports){
+module.exports = {"settings":"_Settings__settings"}
+},{}],132:[function(require,module,exports){
 module.exports = {"index":"_index__index"}
-},{}]},{},[108]);
+},{}]},{},[109]);

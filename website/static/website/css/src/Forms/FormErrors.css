@@ -1,3 +1,14 @@
 .formErrors {
-    
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.list li span {
+    font-weight: 600;
 }

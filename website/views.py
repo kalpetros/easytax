@@ -1,4 +1,6 @@
+import base64
 import json
+import uuid
 
 from datetime import datetime, date
 
@@ -79,6 +81,11 @@ class Authentication(View):
         # Check if user exists
         try:
             user = User.objects.get(email=rq_form['email'])
+            domain = request.get_host()
+            
+            # Encode users primary key in base64
+            encoded_pk = base64.b64encode(str(user.pk).encode())
+            
         except User.DoesNotExist as e:
             return JsonResponse(
                 {
@@ -91,6 +98,12 @@ class Authentication(View):
             return JsonResponse({'errors': False})
 
     def password_reset(self, request, *args, **kwargs):
+        rq_form = kwargs['form']
+        
+        u = User.objects.get(username='john')
+        u.set_password(rq_form['password'])
+        u.save()
+        
         return JsonResponse({'errors': False})
 
     def logout(self, request, *args, **kwargs):

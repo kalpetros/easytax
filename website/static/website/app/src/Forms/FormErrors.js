@@ -11,7 +11,8 @@ class FormErrors extends React.Component {
     }
     renderErrors() {
         let errors = this.props.errors;
-        
+
+        console.log(errors);
         if (errors !== null) {
             try {
                 errors = JSON.parse(errors);
@@ -19,12 +20,15 @@ class FormErrors extends React.Component {
                 let items = Object.keys(errors).map((item, index) => {
                     let message = errors[item][0].message;
                     return(
-                        <li key={"error-" + index}>{message}</li>
+                        <li key={"error-" + index}>
+                          <span>{item}: </span>
+                          {message}
+                        </li>
                     );
                 });
 
                 return(
-                    <ul>
+                    <ul className={styles.list}>
                       {items}
                     </ul>
                 );
@@ -33,18 +37,26 @@ class FormErrors extends React.Component {
             }
             
             return(
-                <span>{errors}</span>
+                <ul className={styles.list}>
+                  <li>
+                    {errors}
+                  </li>
+                </ul>
             );
         }
 
         return null;
     }
     render() {
-	return(
-            <div className={styles.formErrors}>
-              {this.renderErrors()}
-            </div>
-	);
+        if (this.props.errors !== null) {
+            return(
+                <div className={styles.formErrors}>
+                  {this.renderErrors()}
+                </div>
+	    );
+        }
+
+        return null;
     }
 }
 

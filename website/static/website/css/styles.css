@@ -1,9 +1,3 @@
-._index__index {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    height: calc(100% - 51px);
-    overflow: hidden;
-}
 html,
 body,
 #root {
@@ -55,6 +49,16 @@ ul {
 .section {
     margin-top: 2rem;
 }
+._index__index {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: calc(100% - 51px);
+    overflow: hidden;
+}
+._Customers__customers {
+    background-color: #eee;
+    overflow: auto;
+}
 ._Navbar__navbar {
     background-color: #fff;
     height: 50px;
@@ -63,6 +67,23 @@ ul {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     border-bottom: 1px solid #eee;
+}
+
+._Navbar__badge {
+    position: relative;
+}
+
+._Navbar__badge > span {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: red;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: white;
 }
 
 ._Navbar__logo {
@@ -138,27 +159,6 @@ ul {
 	display: grid;
     }
 }
-._Authentication__authentication {
-    height: 100%;
-    background: linear-gradient(90deg, #0f1125, #18192b);
-    display: grid;
-    align-items: center;
-    justify-items: center;
-}
-
-._Authentication__container {
-    width: 20vw;
-}
-
-._Authentication__title {
-    color: #fff;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-._Customers__customers {
-    background-color: #eee;
-    overflow: auto;
-}
 ._Menu__menu {
     background-color: #0f1125;
     width: 15vw;
@@ -190,25 +190,82 @@ ul {
     border-left: 5px solid #99b965;
     color: #99b965;
 }
-._Authentication_Join__join > div {
+._Authentication_Login__login {
+    height: 100%;
+    background: linear-gradient(90deg, #0f1125, #18192b);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+._Authentication_Login__container {
+    width: 20vw;
+}
+
+._Authentication_Login__title {
+    color: #fff;
+    margin-bottom: 1rem;
     text-align: center;
 }
 
-._Authentication_Join__join > div:not(:last-of-type) {
-    margin-bottom: 1rem;
-}
-._Authentication_Login__login > div {
+
+._Authentication_Login__form > div {
     text-align: center;
 }
 
-._Authentication_Login__login > div:not(:last-of-type) {
+._Authentication_Login__form > div:not(:last-of-type) {
     margin-bottom: 1rem;
 }
-._Customers_List__list {
-    
+._Authentication_Join__join {
+    height: 100%;
+    background: linear-gradient(90deg, #0f1125, #18192b);
+    display: grid;
+    align-items: center;
+    justify-items: center;
 }
-._Customers_Create__create {
-    
+
+._Authentication_Join__container {
+    width: 20vw;
+}
+
+._Authentication_Join__title {
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+._Authentication_Join__form > div {
+    text-align: center;
+}
+
+._Authentication_Join__form > div:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
+._Authentication_PasswordReset__passwordReset {
+    height: 100%;
+    background: linear-gradient(90deg, #0f1125, #18192b);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+._Authentication_PasswordReset__container {
+    width: 20vw;
+}
+
+._Authentication_PasswordReset__title {
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+._Authentication_PasswordReset__form > div {
+    text-align: center;
+}
+
+._Authentication_PasswordReset__form > div:not(:last-of-type) {
+    margin-bottom: 1rem;
 }
 ._Components_Modal__modal {
     background-color: #fff;
@@ -255,6 +312,12 @@ ul {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.75rem;
 }
+._Customers_List__list {
+    
+}
+._Customers_Create__create {
+    
+}
 ._Customers_View__view {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -292,44 +355,19 @@ ul {
     color: #99b965;
 }
 
-._Components_Button__button {
-    display: inline-block;
-    border: none;
-    cursor: pointer;
+._Forms_FormErrors__formErrors {
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
 }
 
-._Components_Button__basic {
-    background-color: #000;
-    color: #fff;
-    height: 4rem;
-    width: 100%;
-    padding: 0rem 2rem;
-    text-transform: uppercase;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+._Forms_FormErrors__list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
 }
 
-._Components_Button__basic:hover {
-    background-color: #212121;
-}
-
-
-._Components_Button__round {
-    background-color: unset;
-    padding: 0.5rem;
-    border-radius: 50%;
-    transition: background-color 0.5s linear;
-}
-
-._Components_Button__round:hover {
-    background-color: #eee;
-    transition: background-color 0.5s linear;
-}
-._Components_Panel__panel {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 2px #212121;
+._Forms_FormErrors__list li span {
+    font-weight: 600;
 }
 ._Forms_Input__input {
     background-color: #fff;
@@ -415,8 +453,44 @@ ul {
 ._Forms_Input__input input:invalid {
     color: red;
 }
-._Forms_FormErrors__formErrors {
-    
+._Components_Button__button {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+._Components_Button__basic {
+    background-color: #000;
+    color: #fff;
+    height: 4rem;
+    width: 100%;
+    padding: 0rem 2rem;
+    text-transform: uppercase;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+._Components_Button__basic:hover {
+    background-color: #212121;
+}
+
+
+._Components_Button__round {
+    background-color: unset;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.5s linear;
+}
+
+._Components_Button__round:hover {
+    background-color: #eee;
+    transition: background-color 0.5s linear;
+}
+._Components_Panel__panel {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px #212121;
 }
 ._Components_Overlay__overlay {
     background: linear-gradient(90deg,
@@ -428,37 +502,6 @@ ul {
     bottom: 0;
     left: 0;
     z-index: 9999;
-}
-._Customers_List_Content__table {
-    width: 100%;
-    border-spacing: 1px;
-}
-
-._Customers_List_Content__table thead {
-    background-color: #fff;
-}
-
-._Customers_List_Content__table tbody {
-    background-color: #fff;
-}
-
-._Customers_List_Content__table thead tr th {
-    background-color: #fff;
-    padding: 0.75rem;
-    text-align: center;
-    position: sticky;
-    top: calc(0.75rem * 2 + 0.5rem * 2 + 25.5px);
-    filter: drop-shadow(0 2px 2px #eee);
-}
-
-._Customers_List_Content__table tbody tr td {
-    padding: 0.75rem;
-    text-align: center;
-}
-
-._Customers_List_Content__table tbody tr:hover {
-    background-color: #f5f5f5;
-    cursor: pointer;
 }
 ._Customers_List_TopBar__topBar {
     background-color: #fff;
@@ -490,6 +533,37 @@ ul {
 
 ._Customers_List_TopBar__entries {
     color: #9e9e9e;
+}
+._Customers_List_Content__table {
+    width: 100%;
+    border-spacing: 1px;
+}
+
+._Customers_List_Content__table thead {
+    background-color: #fff;
+}
+
+._Customers_List_Content__table tbody {
+    background-color: #fff;
+}
+
+._Customers_List_Content__table thead tr th {
+    background-color: #fff;
+    padding: 0.75rem;
+    text-align: center;
+    position: sticky;
+    top: calc(0.75rem * 2 + 0.5rem * 2 + 25.5px);
+    filter: drop-shadow(0 2px 2px #eee);
+}
+
+._Customers_List_Content__table tbody tr td {
+    padding: 0.75rem;
+    text-align: center;
+}
+
+._Customers_List_Content__table tbody tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
 }
 ._Customers_Create_TopBar__topBar {
     background-color: #fff;
@@ -532,10 +606,9 @@ ul {
     display: grid;
     grid-auto-flow: column;
 }
-._Authentication_PasswordChange__passwordChange > div {
-    text-align: center;
+._Settings__settings {
+    
 }
-
-._Authentication_PasswordChange__passwordChange > div:not(:last-of-type) {
-    margin-bottom: 1rem;
+._Profile__profile {
+    
 }
