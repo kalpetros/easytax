@@ -86,6 +86,9 @@ class PasswordReset extends React.Component {
                     </div>
                   </div>
                 </Panel>
+                <div className={styles.footer}>
+                  <span>easytax v0.0.1</span>
+                </div>
               </div>
 	    </div>
 	);

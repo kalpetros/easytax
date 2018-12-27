@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: auto 1fr;
     height: 100%;
+    overflow: hidden;
 }
 
 .menu {
@@ -9,30 +10,6 @@
     border-left: 1px solid #18192b;
 }
 
-.list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.content {
+    overflow: auto;
 }
-
-.li {
-    padding: 2rem;
-    color: #fff;
-    border-bottom: 1px solid #18192b;
-}
-
-.li:hover {
-    background-color: #18192b;
-    cursor: pointer;
-}
-
-.li i {
-    margin-right: 1rem;
-}
-
-.active {
-    composes: li;
-    border-left: 5px solid #99b965;
-    color: #99b965;
-}
-

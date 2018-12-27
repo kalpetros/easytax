@@ -12,7 +12,6 @@ class FormErrors extends React.Component {
     renderErrors() {
         let errors = this.props.errors;
 
-        console.log(errors);
         if (errors !== null) {
             try {
                 errors = JSON.parse(errors);

@@ -24,3 +24,9 @@
 .form > div:not(:last-of-type) {
     margin-bottom: 1rem;
 }
+
+.footer {
+    color: #fff;
+    margin-top: 1rem;
+    text-align: center;
+}

@@ -38,7 +38,11 @@ class Join extends React.Component {
         axios.post('/authentication', data)
             .then((response) => {
                 if (!response.data.errors) {
-                    window.location.reload();
+                    const newState = update(this.state, {
+                        formErrors: {$set: response.data.message}
+                    });
+
+                    this.setState(newState);
                 } else {
                     const newState = update(this.state, {
                         formErrors: {$set: response.data.message}
@@ -132,6 +136,9 @@ class Join extends React.Component {
                     </div>
                   </div>
                 </Panel>
+                <div className={styles.footer}>
+                  <span>easytax v0.0.1</span>
+                </div>
               </div>
             </div>
 	);

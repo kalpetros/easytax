@@ -4,3 +4,8 @@
     height: calc(100% - 51px);
     overflow: hidden;
 }
+
+.loading {
+    height: 100%;
+    background-color: #eee;
+}

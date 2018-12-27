@@ -14,6 +14,9 @@
     padding: 2rem;
     color: #fff;
     border-bottom: 1px solid #18192b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .li:hover {

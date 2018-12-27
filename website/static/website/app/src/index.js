@@ -8,6 +8,7 @@ import {Profile} from './Profile';
 import {Customers} from './Customers';
 import {Navbar} from './Navbar';
 import {Menu} from './Menu';
+import {Loader} from './Components/Loader';
 
 import {
     BrowserRouter as Router,
@@ -60,9 +61,13 @@ class App extends React.Component {
     constructor(props) {
 	super(props);
 	this.state = {
+            user: null,
+            loaded: false,
+            view: 'cus'
 	};
         
         this.handleLogout = this.handleLogout.bind(this);
+        this.handleViewClick = this.handleViewClick.bind(this);
     }
     componentDidMount() {
         this.fetchUser();
@@ -75,16 +80,9 @@ class App extends React.Component {
         axios.post('/user_info', data)
             .then((response) => {
                 if (!response.data.errors) {
-                    // const links = this.state.links;
-                    // links['user'] = {
-                    //     name: response.data.user.first_name,
-                    //     to: '/profile',
-                    //     image: 'https://mbtskoudsalg.com/images/avatar-png-1.png'
-                    // };
-
                     const newState = update(this.state, {
                         user: {$set: response.data.user},
-                        // links: {$set: links}
+                        loaded: {$set: true}
                     });
 
                     this.setState(newState);
@@ -94,6 +92,11 @@ class App extends React.Component {
                 console.log(error);
             })
             .then(() => {
+                const newState = update(this.state, {
+                    loaded: {$set: true}
+                });
+
+                this.setState(newState);
             });
     }
     handleLogout() {
@@ -111,25 +114,14 @@ class App extends React.Component {
             .then(() => {
             });
     }
+    handleViewClick(event) {
+        const newState = update(this.state, {
+            view: {$set: event.currentTarget.id}
+        });
+
+        this.setState(newState);
+    }
     render() {
-        const customers = (props) => (
-            <Customers {...props}
-                       onLogin={this.handleLogin}
-                       user={this.state.user}/>
-        );
-
-        const settings = (props) => (
-            <Settings {...props}
-                      onLogin={this.handleLogin}
-                      user={this.state.user}/>
-        );
-
-        const profile = (props) => (
-            <Profile {...props}
-                     onLogin={this.handleLogin}
-                     user={this.state.user}/>
-        );
-
         const navbar = (props) => (
             <Navbar {...props}
                     user={this.state.user}
@@ -153,49 +145,70 @@ class App extends React.Component {
         );
 
         let list = [
-            {name: 'Customers', id: 'cus', icon: 'supervised_user_circle'}
+            {name: 'Πελάτες', id: 'cus', icon: 'supervised_user_circle'}
         ];
 
-        const menu = (props) => (
-            <Menu {...props}
-                  list={list}/>
+        const customers = (props) => (
+            <div className={styles.index}>
+              <Menu {...props}
+                    list={list}
+                    active={this.state.view}
+                    onClick={this.handleViewClick}/>
+              <Customers {...props}
+                         onLogin={this.handleLogin}
+                         user={this.state.user}/>
+            </div>
+            
         );
-        
-        if (this.state.user == null) {
-            return(
-                <React.Fragment>
-	          <Router>
-	            <ScrollWrapper>
-                      <Switch>
-	                <Route exact path="/" render={login}/>
-                        <Route exact path="/join" render={join}/>
-                        <Route exact path="/password-reset" render={passwordReset}/>
-	                <Route component={FourOFour}/>
-	              </Switch>
-	            </ScrollWrapper>
-	          </Router>
-                </React.Fragment>
-            );
+
+        const settings = (props) => (
+            <Settings {...props}
+                      onLogin={this.handleLogin}
+                      user={this.state.user}/>
+        );
+
+        const profile = (props) => (
+            <Profile {...props}
+                     onLogin={this.handleLogin}
+                     user={this.state.user}/>
+        );
+
+        if (this.state.loaded) {
+            if (this.state.user == null) {
+                return(
+                    <React.Fragment>
+	              <Router>
+	                <ScrollWrapper>
+                          <Switch>
+	                    <Route exact path="/" render={login}/>
+                            <Route exact path="/join" render={join}/>
+                            <Route exact path="/password-reset" render={passwordReset}/>
+	                    <Route component={FourOFour}/>
+	                  </Switch>
+	                </ScrollWrapper>
+	              </Router>
+                    </React.Fragment>
+                );
+            } else {
+                return(
+                    <React.Fragment>
+	              <Router>
+	                <ScrollWrapper>
+                          <Route render={navbar}/>
+                          <Switch>
+	                    <Route exact path="/" render={customers}/>
+                            <Route exact path="/settings" render={settings}/>
+                            <Route exact path="/profile" render={profile}/>
+	                    <Route component={FourOFour}/>
+	                  </Switch>
+	                </ScrollWrapper>
+	              </Router>
+                    </React.Fragment>
+                );
+            }
         } else {
             return(
-                <React.Fragment>
-	          <Router>
-	            <ScrollWrapper>
-                      <Route render={navbar}/>
-                      <div className={styles.index}>
-                        <Route render={menu}/>
-                        <Switch>
-	                  <Route exact path="/" render={customers}/>
-                          <Route exact path="/customers" render={customers}/>
-                          {/* <Route exact path="/customers/:customerId" render={}/> */}
-                          <Route exact path="/settings" render={settings}/>
-                          <Route exact path="/profile" render={profile}/>
-	                  <Route component={FourOFour}/>
-	                </Switch>
-                      </div>
-	            </ScrollWrapper>
-	          </Router>
-                </React.Fragment>
+                <div className={styles.loading}></div>
             );
         }
     }

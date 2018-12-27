@@ -5,6 +5,7 @@ body,
 }
 
 body {
+    background-color: #f5f5f5;
     margin: 0;
     font-family: 'Monospace';
 }
@@ -55,9 +56,24 @@ ul {
     height: calc(100% - 51px);
     overflow: hidden;
 }
-._Customers__customers {
+
+._index__loading {
+    height: 100%;
     background-color: #eee;
+}
+._Profile__list {
+    list-style: none;
+    padding: 0;
+}
+
+._Profile__list li {
+    padding: 0.5rem 0;
+}
+._Customers__customers {
     overflow: auto;
+}
+._Settings__settings {
+    
 }
 ._Navbar__navbar {
     background-color: #fff;
@@ -175,6 +191,9 @@ ul {
     padding: 2rem;
     color: #fff;
     border-bottom: 1px solid #18192b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 ._Menu__li:hover {
@@ -189,32 +208,6 @@ ul {
 ._Menu__active {
     border-left: 5px solid #99b965;
     color: #99b965;
-}
-._Authentication_Login__login {
-    height: 100%;
-    background: linear-gradient(90deg, #0f1125, #18192b);
-    display: grid;
-    align-items: center;
-    justify-items: center;
-}
-
-._Authentication_Login__container {
-    width: 20vw;
-}
-
-._Authentication_Login__title {
-    color: #fff;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-
-._Authentication_Login__form > div {
-    text-align: center;
-}
-
-._Authentication_Login__form > div:not(:last-of-type) {
-    margin-bottom: 1rem;
 }
 ._Authentication_Join__join {
     height: 100%;
@@ -242,6 +235,12 @@ ul {
 ._Authentication_Join__form > div:not(:last-of-type) {
     margin-bottom: 1rem;
 }
+
+._Authentication_Join__footer {
+    color: #fff;
+    margin-top: 1rem;
+    text-align: center;
+}
 ._Authentication_PasswordReset__passwordReset {
     height: 100%;
     background: linear-gradient(90deg, #0f1125, #18192b);
@@ -267,53 +266,62 @@ ul {
 ._Authentication_PasswordReset__form > div:not(:last-of-type) {
     margin-bottom: 1rem;
 }
-._Components_Modal__modal {
-    background-color: #fff;
-    max-height: 90vh;
-    max-width: 90vw;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: auto;
-    /* border-radius: 30px; */
-}
 
-._Components_Modal__header {
-    background-color: #fff;
-    position: sticky;
-    top: 0;
-    padding: 0.75rem;
-    border-bottom: 1px solid #e0e0e0;
-    filter: drop-shadow(0 2px 2px #eee);
-    z-index: 1;
+._Authentication_PasswordReset__footer {
+    color: #fff;
+    margin-top: 1rem;
+    text-align: center;
 }
-
-._Components_Modal__content {
-    padding: 0.75rem;
-}
-
-._Components_Modal__footer {
-    background-color: #fff;
-    position: sticky;
-    bottom: 0;
-    padding: 0.75rem;
-    border-top: 1px solid #e0e0e0;
-}
-
-._Components_Modal__test {
+._Authentication_Login__login {
+    height: 100%;
+    background: linear-gradient(90deg, #0f1125, #18192b);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0.75rem;
+    align-items: center;
+    justify-items: center;
 }
 
-._Components_Modal__test1 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0.75rem;
+._Authentication_Login__container {
+    width: 20vw;
 }
-._Customers_List__list {
-    
+
+._Authentication_Login__title {
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+._Authentication_Login__form > div {
+    text-align: center;
+}
+
+._Authentication_Login__form > div:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
+
+._Authentication_Login__footer {
+    color: #fff;
+    margin-top: 1rem;
+    text-align: center;
+}
+._Components_Loader__loader {
+    background-color: #000;
+}
+._Components_Card__card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin: 0.75rem;
+    filter: drop-shadow(0 2px 2px #e0e0e0);
+}
+
+._Components_Card__title {
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+}
+
+._Components_Card__content {
+    padding: 0.75rem;
 }
 ._Customers_Create__create {
     
@@ -322,6 +330,7 @@ ul {
     display: grid;
     grid-template-columns: auto 1fr;
     height: 100%;
+    overflow: hidden;
 }
 
 ._Customers_View__menu {
@@ -329,32 +338,15 @@ ul {
     border-left: 1px solid #18192b;
 }
 
-._Customers_View__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+._Customers_View__content {
+    overflow: auto;
 }
-
-._Customers_View__li {
-    padding: 2rem;
-    color: #fff;
-    border-bottom: 1px solid #18192b;
+._Components_Panel__panel {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px #212121;
 }
-
-._Customers_View__li:hover {
-    background-color: #18192b;
-    cursor: pointer;
-}
-
-._Customers_View__li i {
-    margin-right: 1rem;
-}
-
-._Customers_View__active {
-    border-left: 5px solid #99b965;
-    color: #99b965;
-}
-
 ._Forms_FormErrors__formErrors {
     padding: 0.75rem;
     border-bottom: 1px solid #eee;
@@ -486,24 +478,7 @@ ul {
     background-color: #eee;
     transition: background-color 0.5s linear;
 }
-._Components_Panel__panel {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 2px #212121;
-}
-._Components_Overlay__overlay {
-    background: linear-gradient(90deg,
-				rgba(255, 255, 255, 0.5),
-				rgba(15, 17, 37, 0.9));
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 9999;
-}
-._Customers_List_TopBar__topBar {
+._Components_TopBar__topBar {
     background-color: #fff;
     height: auto;
     width: 100%;
@@ -512,10 +487,11 @@ ul {
     align-items: center;
     position: sticky;
     top: 0;
+    z-index: 1;
     filter: drop-shadow(0 2px 2px #eee);   
 }
 
-._Customers_List_TopBar__left {
+._Components_TopBar__left {
     padding: 0.75rem;
     display: grid;
     grid-auto-flow: column;
@@ -523,7 +499,7 @@ ul {
     align-items: center;
 }
 
-._Customers_List_TopBar__right {
+._Components_TopBar__right {
     padding: 0.75rem;
     display: grid;
     grid-template-columns: repeat(3, minmax(auto, max-content));
@@ -531,12 +507,12 @@ ul {
     align-items: center;
 }
 
-._Customers_List_TopBar__entries {
+._Components_TopBar__entries {
     color: #9e9e9e;
 }
 ._Customers_List_Content__table {
     width: 100%;
-    border-spacing: 1px;
+    border-spacing: 2px;
 }
 
 ._Customers_List_Content__table thead {
@@ -562,40 +538,38 @@ ul {
 }
 
 ._Customers_List_Content__table tbody tr:hover {
-    background-color: #f5f5f5;
+    background-color: #fafafa;
     cursor: pointer;
 }
-._Customers_Create_TopBar__topBar {
-    background-color: #fff;
-    height: auto;
+._Customers_View_Customer__content {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr); 
+}
+
+._Customers_View_Customer__table {
     width: 100%;
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
+    border-spacing: 2px;
+}
+
+._Customers_View_Customer__table thead {
+    background-color: #fff;
+}
+
+._Customers_View_Customer__table tbody {
+    background-color: #fff;
+}
+
+._Customers_View_Customer__table thead tr th {
+    background-color: #fff;
+    padding: 0.75rem;
+    text-align: center;
     position: sticky;
-    top: 0;
+    top: calc(0.75rem * 2 + 0.5rem * 2 + 25.5px);
     filter: drop-shadow(0 2px 2px #eee);
-    z-index: 1;
 }
 
-._Customers_Create_TopBar__left {
+._Customers_View_Customer__table tbody tr td {
     padding: 0.75rem;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(2, minmax(auto, max-content));
-    align-items: center;
-}
-
-._Customers_Create_TopBar__right {
-    padding: 0.75rem;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(auto, max-content));
-    justify-content: right;
-    align-items: center;
-}
-
-._Customers_Create_TopBar__entries {
-    color: #9e9e9e;
 }
 ._Customers_Create_Content__content span {
     padding: 1rem;
@@ -605,10 +579,4 @@ ul {
 ._Customers_Create_Content__input {
     display: grid;
     grid-auto-flow: column;
-}
-._Settings__settings {
-    
-}
-._Profile__profile {
-    
 }

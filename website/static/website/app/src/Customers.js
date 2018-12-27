@@ -1,18 +1,19 @@
 import styles from '../../css/src/Customers.css';
-import {Modal} from './Components/Modal';
 import {List} from './Customers/List';
 import {Create} from './Customers/Create';
 import {View} from './Customers/View';
 
+import axios from 'axios';
 import update from 'immutability-helper';
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class Customers extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: 'list'
+            view: 'list',
+            content: [],
+            customer: null
         };
 
         this.handleBackClick = this.handleBackClick.bind(this);
@@ -21,6 +22,28 @@ class Customers extends React.Component {
         this.handleViewClick = this.handleViewClick.bind(this);
     }
     componentDidMount() {
+        this.fetch();
+    }
+    fetch() {
+        let data = {
+            action: 'fetch_customers'
+        };
+        
+        axios.post('/customers_view', data)
+            .then((response) => {
+                if (!response.data.errors) {
+                    const newState = update(this.state, {
+                        content: {$set: response.data.content}
+                    });
+
+                    this.setState(newState);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .then(() => {
+            });
     }
     handleBackClick() {
         const newState = update(this.state, {
@@ -39,9 +62,10 @@ class Customers extends React.Component {
 
         this.setState(newState);
     }
-    handleViewClick() {
+    handleViewClick(event) {
         const newState = update(this.state, {
-            view: {$set: 'view'}
+            view: {$set: 'view'},
+            customer: {$set: event.currentTarget.id}
         });
 
         this.setState(newState);
@@ -55,14 +79,15 @@ class Customers extends React.Component {
             );
         } else if (this.state.view == 'view') {
             return(
-                <View onBackClick={this.handleBackClick}
-                      onDeleteClick={this.handleDeleteClick}
-                      onAddClick={this.handleCreateClick}/>
+                <View content={this.state.content}
+                      customer={this.state.customer}
+                      onBackClick={this.handleBackClick}/>
             );
         }
 
         return(
-            <List onDeleteClick={this.handleDeleteClick}
+            <List content={this.state.content}
+                  onDeleteClick={this.handleDeleteClick}
                   onAddClick={this.handleCreateClick}
                   onViewClick={this.handleViewClick}/>
         );
