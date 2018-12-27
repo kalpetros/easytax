@@ -61,6 +61,9 @@ ul {
     height: 100%;
     background-color: #eee;
 }
+._Settings__settings {
+    
+}
 ._Profile__list {
     list-style: none;
     padding: 0;
@@ -71,9 +74,6 @@ ul {
 }
 ._Customers__customers {
     overflow: auto;
-}
-._Settings__settings {
-    
 }
 ._Navbar__navbar {
     background-color: #fff;
@@ -209,6 +209,38 @@ ul {
     border-left: 5px solid #99b965;
     color: #99b965;
 }
+._Authentication_Login__login {
+    height: 100%;
+    background: linear-gradient(90deg, #0f1125, #18192b);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+._Authentication_Login__container {
+    width: 20vw;
+}
+
+._Authentication_Login__title {
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+._Authentication_Login__form > div {
+    text-align: center;
+}
+
+._Authentication_Login__form > div:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
+
+._Authentication_Login__footer {
+    color: #fff;
+    margin-top: 1rem;
+    text-align: center;
+}
 ._Authentication_Join__join {
     height: 100%;
     background: linear-gradient(90deg, #0f1125, #18192b);
@@ -272,38 +304,6 @@ ul {
     margin-top: 1rem;
     text-align: center;
 }
-._Authentication_Login__login {
-    height: 100%;
-    background: linear-gradient(90deg, #0f1125, #18192b);
-    display: grid;
-    align-items: center;
-    justify-items: center;
-}
-
-._Authentication_Login__container {
-    width: 20vw;
-}
-
-._Authentication_Login__title {
-    color: #fff;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-
-._Authentication_Login__form > div {
-    text-align: center;
-}
-
-._Authentication_Login__form > div:not(:last-of-type) {
-    margin-bottom: 1rem;
-}
-
-._Authentication_Login__footer {
-    color: #fff;
-    margin-top: 1rem;
-    text-align: center;
-}
 ._Components_Loader__loader {
     background-color: #000;
 }
@@ -340,12 +340,6 @@ ul {
 
 ._Customers_View__content {
     overflow: auto;
-}
-._Components_Panel__panel {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 2px #212121;
 }
 ._Forms_FormErrors__formErrors {
     padding: 0.75rem;
@@ -445,6 +439,12 @@ ul {
 ._Forms_Input__input input:invalid {
     color: red;
 }
+._Components_Panel__panel {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px #212121;
+}
 ._Components_Button__button {
     display: inline-block;
     border: none;
@@ -541,6 +541,15 @@ ul {
     background-color: #fafafa;
     cursor: pointer;
 }
+._Customers_Create_Content__content span {
+    padding: 1rem;
+    display: block;
+}
+
+._Customers_Create_Content__input {
+    display: grid;
+    grid-auto-flow: column;
+}
 ._Customers_View_Customer__content {
    display: grid;
    grid-template-columns: repeat(2, 1fr); 
@@ -570,13 +579,4 @@ ul {
 
 ._Customers_View_Customer__table tbody tr td {
     padding: 0.75rem;
-}
-._Customers_Create_Content__content span {
-    padding: 1rem;
-    display: block;
-}
-
-._Customers_Create_Content__input {
-    display: grid;
-    grid-auto-flow: column;
 }
