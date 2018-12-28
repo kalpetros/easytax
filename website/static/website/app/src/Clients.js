@@ -1,19 +1,19 @@
-import styles from '../../css/src/Customers.css';
-import {List} from './Customers/List';
-import {Create} from './Customers/Create';
-import {View} from './Customers/View';
+import styles from '../../css/src/Clients.css';
+import {List} from './Clients/List';
+import {Create} from './Clients/Create';
+import {View} from './Clients/View';
 
 import axios from 'axios';
 import update from 'immutability-helper';
 import React from 'react';
 
-class Customers extends React.Component {
+class Clients extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             view: 'list',
             content: [],
-            customer: null
+            client: null
         };
 
         this.handleBackClick = this.handleBackClick.bind(this);
@@ -26,10 +26,10 @@ class Customers extends React.Component {
     }
     fetch() {
         let data = {
-            action: 'fetch_customers'
+            action: 'fetch_clients'
         };
         
-        axios.post('/customers_view', data)
+        axios.post('/clients_view', data)
             .then((response) => {
                 if (!response.data.errors) {
                     const newState = update(this.state, {
@@ -65,7 +65,7 @@ class Customers extends React.Component {
     handleViewClick(event) {
         const newState = update(this.state, {
             view: {$set: 'view'},
-            customer: {$set: event.currentTarget.id}
+            client: {$set: event.currentTarget.id}
         });
 
         this.setState(newState);
@@ -80,7 +80,7 @@ class Customers extends React.Component {
         } else if (this.state.view == 'view') {
             return(
                 <View content={this.state.content}
-                      customer={this.state.customer}
+                      client={this.state.client}
                       onBackClick={this.handleBackClick}/>
             );
         }
@@ -94,11 +94,11 @@ class Customers extends React.Component {
     }
     render() {
 	return(
-	    <div className={styles.customers}>
+	    <div className={styles.clients}>
               {this.renderView()}
 	    </div>
 	);
     }
 }
 
-export{Customers};
+export{Clients};

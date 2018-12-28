@@ -5,7 +5,7 @@ import {Join} from './Authentication/Join';
 import {PasswordReset} from './Authentication/PasswordReset';
 import {Settings} from './Settings';
 import {Profile} from './Profile';
-import {Customers} from './Customers';
+import {Clients} from './Clients';
 import {Navbar} from './Navbar';
 import {Menu} from './Menu';
 
@@ -147,13 +147,13 @@ class App extends React.Component {
             {name: 'Πελάτες', id: 'cus', icon: 'supervised_user_circle'}
         ];
 
-        const customers = (props) => (
+        const clients = (props) => (
             <div className={styles.index}>
               <Menu {...props}
                     list={list}
                     active={this.state.view}
                     onClick={this.handleViewClick}/>
-              <Customers {...props}
+              <Clients {...props}
                          onLogin={this.handleLogin}
                          user={this.state.user}/>
             </div>
@@ -195,7 +195,7 @@ class App extends React.Component {
 	                <ScrollWrapper>
                           <Route render={navbar}/>
                           <Switch>
-	                    <Route exact path="/customers" render={customers}/>
+	                    <Route exact path="/clients" render={clients}/>
                             <Route exact path="/settings" render={settings}/>
                             <Route exact path="/profile" render={profile}/>
 	                    <Route component={FourOFour}/>

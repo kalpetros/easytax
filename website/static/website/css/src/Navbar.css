@@ -16,13 +16,14 @@
     position: absolute;
     top: -8px;
     right: -8px;
-    background-color: red;
+    background-color: #e57373;
     border-radius: 50%;
     width: 20px;
     height: 20px;
     line-height: 20px;
     text-align: center;
     color: white;
+    font-size: 0.7rem;
 }
 
 .logo {

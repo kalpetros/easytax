@@ -82,7 +82,7 @@ class BusinessRegistryDetails(models.Model):
         abstract = True
 
 
-class Customer(TaxisDetails,
+class Client(TaxisDetails,
                IkaDetails,
                BusinessRegistryDetails):
     tax_number = models.CharField(max_length=200, blank=False, unique=True)

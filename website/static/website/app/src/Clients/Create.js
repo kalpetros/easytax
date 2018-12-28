@@ -1,4 +1,4 @@
-import styles from '../../../css/src/Customers/Create.css';
+import styles from '../../../css/src/Clients/Create.css';
 import {TopBar} from '../Components/TopBar';
 import {Button} from '../Components/Button';
 import {FormErrors} from '../Forms/FormErrors';
@@ -60,11 +60,11 @@ class Create extends React.Component {
     }
     handleAddClick() {
         let data = {
-            action: 'create_customer',
+            action: 'create_client',
             form: this.state.form
         };
         
-        axios.post('/customers_view', data)
+        axios.post('/clients_view', data)
             .then((response) => {
                 if (!response.data.errors) {
                     //console.log(response);

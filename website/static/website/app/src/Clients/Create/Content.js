@@ -1,4 +1,4 @@
-import styles from '../../../../css/src/Customers/Create/Content.css';
+import styles from '../../../../css/src/Clients/Create/Content.css';
 import {Input} from '../../Forms/Input';
 
 import React from 'react';

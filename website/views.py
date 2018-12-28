@@ -174,11 +174,11 @@ class UserInfo(View):
             return self.get_user(request, **rq_data)
 
 
-class Customers(View):
-    def fetch_customer(self, request, *args, **kwargs):
-        customer_pk = kwargs.get('customer_pk', None)
+class Clients(View):
+    def fetch_client(self, request, *args, **kwargs):
+        client_pk = kwargs.get('client_pk', None)
 
-        if customer_pk is None:
+        if client_pk is None:
             return JsonResponse(
                 {
                     'errors': True
@@ -186,8 +186,8 @@ class Customers(View):
             )
 
         try:
-            customer = MOD.Customer.objects.get(pk=customer_pk)
-        except MOD.Customer.DoesNotExist:
+            client = MOD.Client.objects.get(pk=client_pk)
+        except MOD.Client.DoesNotExist:
             return JsonResponse(
                 {
                     'errors': True
@@ -195,43 +195,43 @@ class Customers(View):
             )
         else:
             content = {
-                'taxis_username': customer.taxis_username,
-                'taxis_password': customer.taxis_password,
-                'ika_username': customer.ika_username,
-                'ika_password': customer.ika_password,
-                'business_registry_username': customer.business_registry_username,
-                'business_registry_password': customer.business_registry_password,
-                'tax_number': customer.tax_number,
-                'social_security_number': customer.social_security_number,
-                'first_name': customer.first_name,
-                'last_name': customer.last_name,
-                'last_name_2': customer.last_name_2,
-                'father_first_name': customer.father_first_name,
-                'father_last_name': customer.father_last_name,
-                'mother_first_name': customer.mother_first_name,
-                'mother_last_name': customer.mother_last_name,
-                'date_of_birth': customer.date_of_birth,
-                'date_of_death': customer.date_of_death,
-                'country_of_birth': customer.country_of_birth,
-                'gender': customer.gender,
-                'nationality': customer.nationality,
-                'home_phone_number': customer.home_phone_number,
-                'mobile_phone_number': customer.mobile_phone_number,
-                'fax': customer.fax,
-                'email': customer.email,
-                'identity_type': customer.identity_type,
-                'identity_number': customer.identity_number,
-                'identity_issue_date': customer.identity_issue_date,
-                'identity_issuing_authority': customer.identity_issuing_authority,
-                'country': customer.country,
-                'postcode': customer.postcode,
-                'address': customer.address,
-                'municipality': customer.municipality,
-                'marital_status': customer.marital_status,
-                'marriage_date': customer.marriage_date,
-                'partner_tax_number': customer.partner_tax_number,
-                'partner_first_name': customer.partner_first_name,
-                'partner_last_name': customer.partner_last_name,
+                'taxis_username': client.taxis_username,
+                'taxis_password': client.taxis_password,
+                'ika_username': client.ika_username,
+                'ika_password': client.ika_password,
+                'business_registry_username': client.business_registry_username,
+                'business_registry_password': client.business_registry_password,
+                'tax_number': client.tax_number,
+                'social_security_number': client.social_security_number,
+                'first_name': client.first_name,
+                'last_name': client.last_name,
+                'last_name_2': client.last_name_2,
+                'father_first_name': client.father_first_name,
+                'father_last_name': client.father_last_name,
+                'mother_first_name': client.mother_first_name,
+                'mother_last_name': client.mother_last_name,
+                'date_of_birth': client.date_of_birth,
+                'date_of_death': client.date_of_death,
+                'country_of_birth': client.country_of_birth,
+                'gender': client.gender,
+                'nationality': client.nationality,
+                'home_phone_number': client.home_phone_number,
+                'mobile_phone_number': client.mobile_phone_number,
+                'fax': client.fax,
+                'email': client.email,
+                'identity_type': client.identity_type,
+                'identity_number': client.identity_number,
+                'identity_issue_date': client.identity_issue_date,
+                'identity_issuing_authority': client.identity_issuing_authority,
+                'country': client.country,
+                'postcode': client.postcode,
+                'address': client.address,
+                'municipality': client.municipality,
+                'marital_status': client.marital_status,
+                'marriage_date': client.marriage_date,
+                'partner_tax_number': client.partner_tax_number,
+                'partner_first_name': client.partner_first_name,
+                'partner_last_name': client.partner_last_name,
             }
 
             return JsonResponse(
@@ -241,18 +241,18 @@ class Customers(View):
                 }
             )
     
-    def fetch_customers(self, request, *args, **kwargs):
-        customers = MOD.Customer.objects.all()
+    def fetch_clients(self, request, *args, **kwargs):
+        clients = MOD.Client.objects.all()
 
         content = []
-        for customer in customers:
+        for client in clients:
             content.append(
                 {
-                    'pk': customer.pk,
-                    'tax_number': customer.tax_number,
-                    'first_name': customer.first_name,
-                    'last_name': customer.last_name,
-                    'country': customer.country
+                    'pk': client.pk,
+                    'tax_number': client.tax_number,
+                    'first_name': client.first_name,
+                    'last_name': client.last_name,
+                    'country': client.country
                 }
             )
 
@@ -263,10 +263,10 @@ class Customers(View):
             }
         )
         
-    def create_customer(self, request, *args, **kwargs):
+    def create_client(self, request, *args, **kwargs):
         rq_form = kwargs['form']
 
-        form = FRM.CustomerForm(rq_form)
+        form = FRM.ClientForm(rq_form)
 
         if form.is_valid():
             form.save()
@@ -287,9 +287,9 @@ class Customers(View):
     def post(self, request, *args, **kwargs):
         rq_data = json.loads(request.body.decode('utf-8'))
 
-        if rq_data['action'] == 'fetch_customer':
-            return self.fetch_customer(request, **rq_data)
-        elif rq_data['action'] == 'fetch_customers':
-            return self.fetch_customers(request, **rq_data)
-        elif rq_data['action'] == 'create_customer':
-            return self.create_customer(request, **rq_data)
+        if rq_data['action'] == 'fetch_client':
+            return self.fetch_client(request, **rq_data)
+        elif rq_data['action'] == 'fetch_clients':
+            return self.fetch_clients(request, **rq_data)
+        elif rq_data['action'] == 'create_client':
+            return self.create_client(request, **rq_data)

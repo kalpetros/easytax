@@ -33994,7 +33994,7 @@ var Join = function (_React$Component) {
 
 exports.Join = Join;
 
-},{"../../../css/src/Authentication/Join.css":110,"../Components/Button":92,"../Components/Panel":94,"../Forms/FormErrors":103,"../Forms/Input":104,"axios":1,"immutability-helper":36,"react":79,"react-router-dom":64}],90:[function(require,module,exports){
+},{"../../../css/src/Authentication/Join.css":110,"../Components/Button":99,"../Components/Panel":101,"../Forms/FormErrors":103,"../Forms/Input":104,"axios":1,"immutability-helper":36,"react":79,"react-router-dom":64}],90:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34190,7 +34190,7 @@ var Login = function (_React$Component) {
 
 exports.Login = Login;
 
-},{"../../../css/src/Authentication/Login.css":111,"../Components/Button":92,"../Components/Panel":94,"../Forms/FormErrors":103,"../Forms/Input":104,"axios":1,"immutability-helper":36,"react":79,"react-router-dom":64}],91:[function(require,module,exports){
+},{"../../../css/src/Authentication/Login.css":111,"../Components/Button":99,"../Components/Panel":101,"../Forms/FormErrors":103,"../Forms/Input":104,"axios":1,"immutability-helper":36,"react":79,"react-router-dom":64}],91:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34367,301 +34367,25 @@ var PasswordReset = function (_React$Component) {
 
 exports.PasswordReset = PasswordReset;
 
-},{"../../../css/src/Authentication/PasswordReset.css":112,"../Components/Button":92,"../Components/Panel":94,"../Forms/FormErrors":103,"../Forms/Input":104,"axios":1,"immutability-helper":36,"react":79,"react-router-dom":64}],92:[function(require,module,exports){
+},{"../../../css/src/Authentication/PasswordReset.css":112,"../Components/Button":99,"../Components/Panel":101,"../Forms/FormErrors":103,"../Forms/Input":104,"axios":1,"immutability-helper":36,"react":79,"react-router-dom":64}],92:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Button = undefined;
+exports.Clients = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Button = require('../../../css/src/Components/Button.css');
+var _Clients = require('../../css/src/Clients.css');
 
-var _Button2 = _interopRequireDefault(_Button);
+var _Clients2 = _interopRequireDefault(_Clients);
 
-var _react = require('react');
+var _List = require('./Clients/List');
 
-var _react2 = _interopRequireDefault(_react);
+var _Create = require('./Clients/Create');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Button = function (_React$Component) {
-    _inherits(Button, _React$Component);
-
-    function Button(props) {
-        _classCallCheck(this, Button);
-
-        var _this = _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).call(this, props));
-
-        _this.state = {};
-
-        return _this;
-    }
-
-    _createClass(Button, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {}
-    }, {
-        key: 'renderIcon',
-        value: function renderIcon() {
-            if (typeof this.props.icon !== 'undefined') {
-                return _react2.default.createElement(
-                    'i',
-                    { className: 'material-icons' },
-                    this.props.icon
-                );
-            }
-
-            return null;
-        }
-    }, {
-        key: 'renderName',
-        value: function renderName() {
-            if (typeof this.props.name !== 'undefined') {
-                return _react2.default.createElement(
-                    'span',
-                    null,
-                    this.props.name
-                );
-            }
-
-            return null;
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var classes = {
-                basic: _Button2.default.basic,
-                round: _Button2.default.round
-            };
-
-            var className = this.props.type ? classes[this.props.type] : classes.basic;
-
-            return _react2.default.createElement(
-                'button',
-                { className: className,
-                    onClick: this.props.onClick },
-                this.renderIcon(),
-                this.renderName()
-            );
-        }
-    }]);
-
-    return Button;
-}(_react2.default.Component);
-
-exports.Button = Button;
-
-},{"../../../css/src/Components/Button.css":113,"react":79}],93:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Card = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Card = require('../../../css/src/Components/Card.css');
-
-var _Card2 = _interopRequireDefault(_Card);
-
-var _reactRouterDom = require('react-router-dom');
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Card = function (_React$Component) {
-    _inherits(Card, _React$Component);
-
-    function Card(props) {
-        _classCallCheck(this, Card);
-
-        var _this = _possibleConstructorReturn(this, (Card.__proto__ || Object.getPrototypeOf(Card)).call(this, props));
-
-        _this.state = {};
-
-        return _this;
-    }
-
-    _createClass(Card, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {}
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: _Card2.default.card },
-                _react2.default.createElement(
-                    'div',
-                    { className: _Card2.default.title },
-                    this.props.title
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: _Card2.default.content },
-                    this.props.children
-                )
-            );
-        }
-    }]);
-
-    return Card;
-}(_react2.default.Component);
-
-exports.Card = Card;
-
-},{"../../../css/src/Components/Card.css":114,"react":79,"react-router-dom":64}],94:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Panel = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Panel = require('../../../css/src/Components/Panel.css');
-
-var _Panel2 = _interopRequireDefault(_Panel);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Panel = function (_React$Component) {
-    _inherits(Panel, _React$Component);
-
-    function Panel(props) {
-        _classCallCheck(this, Panel);
-
-        return _possibleConstructorReturn(this, (Panel.__proto__ || Object.getPrototypeOf(Panel)).call(this, props));
-    }
-
-    _createClass(Panel, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {}
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: _Panel2.default.panel },
-                this.props.children
-            );
-        }
-    }]);
-
-    return Panel;
-}(_react2.default.Component);
-
-exports.Panel = Panel;
-
-},{"../../../css/src/Components/Panel.css":115,"react":79}],95:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.TopBar = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _TopBar = require('../../../css/src/Components/TopBar.css');
-
-var _TopBar2 = _interopRequireDefault(_TopBar);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TopBar = function (_React$Component) {
-  _inherits(TopBar, _React$Component);
-
-  function TopBar(props) {
-    _classCallCheck(this, TopBar);
-
-    return _possibleConstructorReturn(this, (TopBar.__proto__ || Object.getPrototypeOf(TopBar)).call(this, props));
-  }
-
-  _createClass(TopBar, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: _TopBar2.default.topBar },
-        _react2.default.createElement(
-          'div',
-          { className: _TopBar2.default.left },
-          this.props.left
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: _TopBar2.default.right },
-          this.props.right
-        )
-      );
-    }
-  }]);
-
-  return TopBar;
-}(_react2.default.Component);
-
-exports.TopBar = TopBar;
-
-},{"../../../css/src/Components/TopBar.css":116,"react":79}],96:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Customers = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Customers = require('../../css/src/Customers.css');
-
-var _Customers2 = _interopRequireDefault(_Customers);
-
-var _List = require('./Customers/List');
-
-var _Create = require('./Customers/Create');
-
-var _View = require('./Customers/View');
+var _View = require('./Clients/View');
 
 var _axios = require('axios');
 
@@ -34683,18 +34407,18 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Customers = function (_React$Component) {
-    _inherits(Customers, _React$Component);
+var Clients = function (_React$Component) {
+    _inherits(Clients, _React$Component);
 
-    function Customers(props) {
-        _classCallCheck(this, Customers);
+    function Clients(props) {
+        _classCallCheck(this, Clients);
 
-        var _this = _possibleConstructorReturn(this, (Customers.__proto__ || Object.getPrototypeOf(Customers)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Clients.__proto__ || Object.getPrototypeOf(Clients)).call(this, props));
 
         _this.state = {
             view: 'list',
             content: [],
-            customer: null
+            client: null
         };
 
         _this.handleBackClick = _this.handleBackClick.bind(_this);
@@ -34704,7 +34428,7 @@ var Customers = function (_React$Component) {
         return _this;
     }
 
-    _createClass(Customers, [{
+    _createClass(Clients, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
             this.fetch();
@@ -34715,10 +34439,10 @@ var Customers = function (_React$Component) {
             var _this2 = this;
 
             var data = {
-                action: 'fetch_customers'
+                action: 'fetch_clients'
             };
 
-            _axios2.default.post('/customers_view', data).then(function (response) {
+            _axios2.default.post('/clients_view', data).then(function (response) {
                 if (!response.data.errors) {
                     var newState = (0, _immutabilityHelper2.default)(_this2.state, {
                         content: { $set: response.data.content }
@@ -34758,7 +34482,7 @@ var Customers = function (_React$Component) {
         value: function handleViewClick(event) {
             var newState = (0, _immutabilityHelper2.default)(this.state, {
                 view: { $set: 'view' },
-                customer: { $set: event.currentTarget.id }
+                client: { $set: event.currentTarget.id }
             });
 
             this.setState(newState);
@@ -34772,7 +34496,7 @@ var Customers = function (_React$Component) {
                     onAddClick: this.handleCreateClick });
             } else if (this.state.view == 'view') {
                 return _react2.default.createElement(_View.View, { content: this.state.content,
-                    customer: this.state.customer,
+                    client: this.state.client,
                     onBackClick: this.handleBackClick });
             }
 
@@ -34786,18 +34510,18 @@ var Customers = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                { className: _Customers2.default.customers },
+                { className: _Clients2.default.clients },
                 this.renderView()
             );
         }
     }]);
 
-    return Customers;
+    return Clients;
 }(_react2.default.Component);
 
-exports.Customers = Customers;
+exports.Clients = Clients;
 
-},{"../../css/src/Customers.css":117,"./Customers/Create":97,"./Customers/List":99,"./Customers/View":101,"axios":1,"immutability-helper":36,"react":79}],97:[function(require,module,exports){
+},{"../../css/src/Clients.css":113,"./Clients/Create":93,"./Clients/List":95,"./Clients/View":97,"axios":1,"immutability-helper":36,"react":79}],93:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34807,7 +34531,7 @@ exports.Create = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Create = require('../../../css/src/Customers/Create.css');
+var _Create = require('../../../css/src/Clients/Create.css');
 
 var _Create2 = _interopRequireDefault(_Create);
 
@@ -34903,11 +34627,11 @@ var Create = function (_React$Component) {
             var _this2 = this;
 
             var data = {
-                action: 'create_customer',
+                action: 'create_client',
                 form: this.state.form
             };
 
-            _axios2.default.post('/customers_view', data).then(function (response) {
+            _axios2.default.post('/clients_view', data).then(function (response) {
                 if (!response.data.errors) {
                     //console.log(response);
 
@@ -34959,7 +34683,7 @@ var Create = function (_React$Component) {
 
 exports.Create = Create;
 
-},{"../../../css/src/Customers/Create.css":118,"../Components/Button":92,"../Components/TopBar":95,"../Forms/FormErrors":103,"./Create/Content":98,"axios":1,"immutability-helper":36,"react":79}],98:[function(require,module,exports){
+},{"../../../css/src/Clients/Create.css":114,"../Components/Button":99,"../Components/TopBar":102,"../Forms/FormErrors":103,"./Create/Content":94,"axios":1,"immutability-helper":36,"react":79}],94:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34969,7 +34693,7 @@ exports.Content = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Content = require('../../../../css/src/Customers/Create/Content.css');
+var _Content = require('../../../../css/src/Clients/Create/Content.css');
 
 var _Content2 = _interopRequireDefault(_Content);
 
@@ -35332,7 +35056,7 @@ var Content = function (_React$Component) {
 
 exports.Content = Content;
 
-},{"../../../../css/src/Customers/Create/Content.css":119,"../../Forms/Input":104,"react":79}],99:[function(require,module,exports){
+},{"../../../../css/src/Clients/Create/Content.css":115,"../../Forms/Input":104,"react":79}],95:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35342,7 +35066,7 @@ exports.List = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _List = require('../../../css/src/Customers/List.css');
+var _List = require('../../../css/src/Clients/List.css');
 
 var _List2 = _interopRequireDefault(_List);
 
@@ -35408,7 +35132,7 @@ var List = function (_React$Component) {
 
 exports.List = List;
 
-},{"../../../css/src/Customers/List.css":120,"../Components/Button":92,"../Components/TopBar":95,"./List/Content":100,"react":79}],100:[function(require,module,exports){
+},{"../../../css/src/Clients/List.css":116,"../Components/Button":99,"../Components/TopBar":102,"./List/Content":96,"react":79}],96:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35418,7 +35142,7 @@ exports.Content = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Content = require('../../../../css/src/Customers/List/Content.css');
+var _Content = require('../../../../css/src/Clients/List/Content.css');
 
 var _Content2 = _interopRequireDefault(_Content);
 
@@ -35578,7 +35302,7 @@ var Content = function (_React$Component) {
 
 exports.Content = Content;
 
-},{"../../../../css/src/Customers/List/Content.css":121,"react":79}],101:[function(require,module,exports){
+},{"../../../../css/src/Clients/List/Content.css":117,"react":79}],97:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35588,13 +35312,13 @@ exports.View = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _View = require('../../../css/src/Customers/View.css');
+var _View = require('../../../css/src/Clients/View.css');
 
 var _View2 = _interopRequireDefault(_View);
 
 var _Menu = require('../Menu');
 
-var _Customer = require('./View/Customer');
+var _Client = require('./View/Client');
 
 var _immutabilityHelper = require('immutability-helper');
 
@@ -35621,7 +35345,7 @@ var View = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
 
         _this.state = {
-            view: 'customer'
+            view: 'client'
         };
 
         _this.handleViewClick = _this.handleViewClick.bind(_this);
@@ -35634,8 +35358,8 @@ var View = function (_React$Component) {
     }, {
         key: 'renderView',
         value: function renderView() {
-            if (this.state.view == 'customer') {
-                return _react2.default.createElement(_Customer.Customer, { customer: this.props.customer,
+            if (this.state.view == 'client') {
+                return _react2.default.createElement(_Client.Client, { client: this.props.client,
                     onBackClick: this.props.onBackClick });
             } else if (this.state.view == 'rec') {
                 return null;
@@ -35648,7 +35372,7 @@ var View = function (_React$Component) {
             } else if (this.state.view == 'pay') {
                 return null;
             } else {
-                return _react2.default.createElement(_Customer.Customer, null);
+                return _react2.default.createElement(_Client.Client, null);
             }
         }
     }, {
@@ -35665,12 +35389,12 @@ var View = function (_React$Component) {
         value: function render() {
             var _this2 = this;
 
-            var customer = this.props.content.find(function (c) {
-                return c.pk == _this2.props.customer;
+            var client = this.props.content.find(function (c) {
+                return c.pk == _this2.props.client;
             });
-            var customerName = customer.first_name + ' ' + customer.last_name;
+            var clientName = client.first_name + ' ' + client.last_name;
 
-            var list = [{ name: customerName, id: 'customer' }, { name: 'Οφειλές', id: 'rec' }, { name: 'ΕΦΚΑ', id: 'efk' }, { name: 'Eνημερότητα', id: 'inf' }, { name: 'Μητρώο', id: 'reg' }, { name: 'Πληρωμές', id: 'pay' }, { name: 'Μισθωτήρια', id: 'sld' }, { name: 'Δημόσια Κλήρωση', id: 'pdr' }, { name: 'Αυτοκίνητα', id: 'car' }, { name: 'Ακατάσχετος', id: 'upd' }, { name: 'Επιδόματα', id: 'han' }];
+            var list = [{ name: clientName, id: 'client' }, { name: 'Οφειλές', id: 'rec' }, { name: 'ΕΦΚΑ', id: 'efk' }, { name: 'Eνημερότητα', id: 'inf' }, { name: 'Μητρώο', id: 'reg' }, { name: 'Πληρωμές', id: 'pay' }, { name: 'Μισθωτήρια', id: 'sld' }, { name: 'Δημόσια Κλήρωση', id: 'pdr' }, { name: 'Αυτοκίνητα', id: 'car' }, { name: 'Ακατάσχετος', id: 'upd' }, { name: 'Επιδόματα', id: 'han' }];
 
             return _react2.default.createElement(
                 'div',
@@ -35693,19 +35417,19 @@ var View = function (_React$Component) {
 
 exports.View = View;
 
-},{"../../../css/src/Customers/View.css":122,"../Menu":105,"./View/Customer":102,"immutability-helper":36,"react":79}],102:[function(require,module,exports){
+},{"../../../css/src/Clients/View.css":118,"../Menu":105,"./View/Client":98,"immutability-helper":36,"react":79}],98:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Customer = undefined;
+exports.Client = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Customer = require('../../../../css/src/Customers/View/Customer.css');
+var _Client = require('../../../../css/src/Clients/View/Client.css');
 
-var _Customer2 = _interopRequireDefault(_Customer);
+var _Client2 = _interopRequireDefault(_Client);
 
 var _TopBar = require('../../Components/TopBar');
 
@@ -35746,7 +35470,7 @@ function TaxisDetails(props) {
     { title: '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 TAXIS' },
     _react2.default.createElement(
       'table',
-      { className: _Customer2.default.table },
+      { className: _Client2.default.table },
       _react2.default.createElement(
         'tbody',
         null,
@@ -35792,7 +35516,7 @@ function IkaDetails(props) {
     { title: '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 \u0399\u039A\u0391' },
     _react2.default.createElement(
       'table',
-      { className: _Customer2.default.table },
+      { className: _Client2.default.table },
       _react2.default.createElement(
         'tbody',
         null,
@@ -35838,7 +35562,7 @@ function BusinessRegistryDetails(props) {
     { title: '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 \u0393\u0395\u039C\u0397' },
     _react2.default.createElement(
       'table',
-      { className: _Customer2.default.table },
+      { className: _Client2.default.table },
       _react2.default.createElement(
         'tbody',
         null,
@@ -35896,7 +35620,7 @@ function PersonalDetails(props) {
     { title: '\u03A0\u03C1\u03BF\u03C3\u03C9\u03C0\u03B9\u03BA\u03AC \u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1' },
     _react2.default.createElement(
       'table',
-      { className: _Customer2.default.table },
+      { className: _Client2.default.table },
       _react2.default.createElement(
         'tbody',
         null,
@@ -36112,7 +35836,7 @@ function ContactDetails(props) {
     { title: '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 \u0395\u03C0\u03B9\u03BA\u03BF\u03B9\u03BD\u03C9\u03BD\u03AF\u03B1\u03C2' },
     _react2.default.createElement(
       'table',
-      { className: _Customer2.default.table },
+      { className: _Client2.default.table },
       _react2.default.createElement(
         'tbody',
         null,
@@ -36188,7 +35912,7 @@ function IdentityDetails(props) {
     { title: '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 \u03A4\u03B1\u03C5\u03C4\u03CC\u03C4\u03B7\u03C4\u03B1\u03C2' },
     _react2.default.createElement(
       'table',
-      { className: _Customer2.default.table },
+      { className: _Client2.default.table },
       _react2.default.createElement(
         'tbody',
         null,
@@ -36264,7 +35988,7 @@ function AddressDetails(props) {
     { title: '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 \u0394\u03B9\u03B5\u03CD\u03B8\u03C5\u03BD\u03C3\u03B7\u03C2' },
     _react2.default.createElement(
       'table',
-      { className: _Customer2.default.table },
+      { className: _Client2.default.table },
       _react2.default.createElement(
         'tbody',
         null,
@@ -36345,7 +36069,7 @@ function StatusDetails(props) {
     { title: '\u039F\u03B9\u03BA\u03BF\u03B3\u03B5\u03BD\u03B5\u03B9\u03B1\u03BA\u03AE \u039A\u03B1\u03C4\u03AC\u03C3\u03C4\u03B1\u03C3\u03B7' },
     _react2.default.createElement(
       'table',
-      { className: _Customer2.default.table },
+      { className: _Client2.default.table },
       _react2.default.createElement(
         'tbody',
         null,
@@ -36424,13 +36148,13 @@ function StatusDetails(props) {
   );
 }
 
-var Customer = function (_React$Component) {
-  _inherits(Customer, _React$Component);
+var Client = function (_React$Component) {
+  _inherits(Client, _React$Component);
 
-  function Customer(props) {
-    _classCallCheck(this, Customer);
+  function Client(props) {
+    _classCallCheck(this, Client);
 
-    var _this = _possibleConstructorReturn(this, (Customer.__proto__ || Object.getPrototypeOf(Customer)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Client.__proto__ || Object.getPrototypeOf(Client)).call(this, props));
 
     _this.state = {
       content: {}
@@ -36438,7 +36162,7 @@ var Customer = function (_React$Component) {
     return _this;
   }
 
-  _createClass(Customer, [{
+  _createClass(Client, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.fetch();
@@ -36448,14 +36172,14 @@ var Customer = function (_React$Component) {
     value: function fetch() {
       var _this2 = this;
 
-      var customer = this.props.customer;
+      var client = this.props.client;
 
       var data = {
-        action: 'fetch_customer',
-        customer_pk: customer
+        action: 'fetch_client',
+        client_pk: client
       };
 
-      _axios2.default.post('/customers_view', data).then(function (response) {
+      _axios2.default.post('/clients_view', data).then(function (response) {
         if (!response.data.errors) {
           var newState = (0, _immutabilityHelper2.default)(_this2.state, {
             content: { $set: response.data.content }
@@ -36480,12 +36204,12 @@ var Customer = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: _Customer2.default.customer },
+        { className: _Client2.default.client },
         _react2.default.createElement(_TopBar.TopBar, { left: left,
           right: right }),
         _react2.default.createElement(
           'div',
-          { className: _Customer2.default.content },
+          { className: _Client2.default.content },
           _react2.default.createElement(TaxisDetails, { content: this.state.content }),
           _react2.default.createElement(IkaDetails, { content: this.state.content }),
           _react2.default.createElement(BusinessRegistryDetails, { content: this.state.content }),
@@ -36499,12 +36223,288 @@ var Customer = function (_React$Component) {
     }
   }]);
 
-  return Customer;
+  return Client;
 }(_react2.default.Component);
 
-exports.Customer = Customer;
+exports.Client = Client;
 
-},{"../../../../css/src/Customers/View/Customer.css":123,"../../Components/Button":92,"../../Components/Card":93,"../../Components/TopBar":95,"axios":1,"immutability-helper":36,"moment":39,"react":79}],103:[function(require,module,exports){
+},{"../../../../css/src/Clients/View/Client.css":119,"../../Components/Button":99,"../../Components/Card":100,"../../Components/TopBar":102,"axios":1,"immutability-helper":36,"moment":39,"react":79}],99:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Button = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Button = require('../../../css/src/Components/Button.css');
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Button = function (_React$Component) {
+    _inherits(Button, _React$Component);
+
+    function Button(props) {
+        _classCallCheck(this, Button);
+
+        var _this = _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).call(this, props));
+
+        _this.state = {};
+
+        return _this;
+    }
+
+    _createClass(Button, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'renderIcon',
+        value: function renderIcon() {
+            if (typeof this.props.icon !== 'undefined') {
+                return _react2.default.createElement(
+                    'i',
+                    { className: 'material-icons' },
+                    this.props.icon
+                );
+            }
+
+            return null;
+        }
+    }, {
+        key: 'renderName',
+        value: function renderName() {
+            if (typeof this.props.name !== 'undefined') {
+                return _react2.default.createElement(
+                    'span',
+                    null,
+                    this.props.name
+                );
+            }
+
+            return null;
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var classes = {
+                basic: _Button2.default.basic,
+                round: _Button2.default.round
+            };
+
+            var className = this.props.type ? classes[this.props.type] : classes.basic;
+
+            return _react2.default.createElement(
+                'button',
+                { className: className,
+                    onClick: this.props.onClick },
+                this.renderIcon(),
+                this.renderName()
+            );
+        }
+    }]);
+
+    return Button;
+}(_react2.default.Component);
+
+exports.Button = Button;
+
+},{"../../../css/src/Components/Button.css":120,"react":79}],100:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Card = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Card = require('../../../css/src/Components/Card.css');
+
+var _Card2 = _interopRequireDefault(_Card);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Card = function (_React$Component) {
+    _inherits(Card, _React$Component);
+
+    function Card(props) {
+        _classCallCheck(this, Card);
+
+        var _this = _possibleConstructorReturn(this, (Card.__proto__ || Object.getPrototypeOf(Card)).call(this, props));
+
+        _this.state = {};
+
+        return _this;
+    }
+
+    _createClass(Card, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: _Card2.default.card },
+                _react2.default.createElement(
+                    'div',
+                    { className: _Card2.default.title },
+                    this.props.title
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: _Card2.default.content },
+                    this.props.children
+                )
+            );
+        }
+    }]);
+
+    return Card;
+}(_react2.default.Component);
+
+exports.Card = Card;
+
+},{"../../../css/src/Components/Card.css":121,"react":79,"react-router-dom":64}],101:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Panel = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Panel = require('../../../css/src/Components/Panel.css');
+
+var _Panel2 = _interopRequireDefault(_Panel);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Panel = function (_React$Component) {
+    _inherits(Panel, _React$Component);
+
+    function Panel(props) {
+        _classCallCheck(this, Panel);
+
+        return _possibleConstructorReturn(this, (Panel.__proto__ || Object.getPrototypeOf(Panel)).call(this, props));
+    }
+
+    _createClass(Panel, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: _Panel2.default.panel },
+                this.props.children
+            );
+        }
+    }]);
+
+    return Panel;
+}(_react2.default.Component);
+
+exports.Panel = Panel;
+
+},{"../../../css/src/Components/Panel.css":122,"react":79}],102:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TopBar = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _TopBar = require('../../../css/src/Components/TopBar.css');
+
+var _TopBar2 = _interopRequireDefault(_TopBar);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TopBar = function (_React$Component) {
+  _inherits(TopBar, _React$Component);
+
+  function TopBar(props) {
+    _classCallCheck(this, TopBar);
+
+    return _possibleConstructorReturn(this, (TopBar.__proto__ || Object.getPrototypeOf(TopBar)).call(this, props));
+  }
+
+  _createClass(TopBar, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: _TopBar2.default.topBar },
+        _react2.default.createElement(
+          'div',
+          { className: _TopBar2.default.left },
+          this.props.left
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _TopBar2.default.right },
+          this.props.right
+        )
+      );
+    }
+  }]);
+
+  return TopBar;
+}(_react2.default.Component);
+
+exports.TopBar = TopBar;
+
+},{"../../../css/src/Components/TopBar.css":123,"react":79}],103:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37028,7 +37028,7 @@ var Profile = function (_React$Component) {
 
 exports.Profile = Profile;
 
-},{"../../css/src/Profile.css":129,"./Components/Card":93,"moment":39,"react":79,"react-router-dom":64}],108:[function(require,module,exports){
+},{"../../css/src/Profile.css":129,"./Components/Card":100,"moment":39,"react":79,"react-router-dom":64}],108:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37107,7 +37107,7 @@ var _Settings = require('./Settings');
 
 var _Profile = require('./Profile');
 
-var _Customers = require('./Customers');
+var _Clients = require('./Clients');
 
 var _Navbar = require('./Navbar');
 
@@ -37321,7 +37321,7 @@ var App = function (_React$Component3) {
 
             var list = [{ name: 'Πελάτες', id: 'cus', icon: 'supervised_user_circle' }];
 
-            var customers = function customers(props) {
+            var clients = function clients(props) {
                 return _react2.default.createElement(
                     'div',
                     { className: _index2.default.index },
@@ -37329,7 +37329,7 @@ var App = function (_React$Component3) {
                         list: list,
                         active: _this5.state.view,
                         onClick: _this5.handleViewClick })),
-                    _react2.default.createElement(_Customers.Customers, _extends({}, props, {
+                    _react2.default.createElement(_Clients.Clients, _extends({}, props, {
                         onLogin: _this5.handleLogin,
                         user: _this5.state.user }))
                 );
@@ -37383,7 +37383,7 @@ var App = function (_React$Component3) {
                                 _react2.default.createElement(
                                     _reactRouterDom.Switch,
                                     null,
-                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/customers', render: customers }),
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/clients', render: clients }),
                                     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/settings', render: settings }),
                                     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/profile', render: profile }),
                                     _react2.default.createElement(_reactRouterDom.Route, { component: FourOFour })
@@ -37403,41 +37403,41 @@ var App = function (_React$Component3) {
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
 
-},{"../../css/src/Globals.css":126,"../../css/src/index.css":131,"./Authentication/Join":89,"./Authentication/Login":90,"./Authentication/PasswordReset":91,"./Customers":96,"./Menu":105,"./Navbar":106,"./Profile":107,"./Settings":108,"axios":1,"immutability-helper":36,"react":79,"react-dom":51,"react-router-dom":64}],110:[function(require,module,exports){
+},{"../../css/src/Globals.css":126,"../../css/src/index.css":131,"./Authentication/Join":89,"./Authentication/Login":90,"./Authentication/PasswordReset":91,"./Clients":92,"./Menu":105,"./Navbar":106,"./Profile":107,"./Settings":108,"axios":1,"immutability-helper":36,"react":79,"react-dom":51,"react-router-dom":64}],110:[function(require,module,exports){
 module.exports = {"join":"_Authentication_Join__join","container":"_Authentication_Join__container","title":"_Authentication_Join__title","form":"_Authentication_Join__form","footer":"_Authentication_Join__footer"}
 },{}],111:[function(require,module,exports){
 module.exports = {"login":"_Authentication_Login__login","container":"_Authentication_Login__container","title":"_Authentication_Login__title","form":"_Authentication_Login__form","footer":"_Authentication_Login__footer"}
 },{}],112:[function(require,module,exports){
 module.exports = {"passwordReset":"_Authentication_PasswordReset__passwordReset","container":"_Authentication_PasswordReset__container","title":"_Authentication_PasswordReset__title","form":"_Authentication_PasswordReset__form","footer":"_Authentication_PasswordReset__footer"}
 },{}],113:[function(require,module,exports){
-module.exports = {"button":"_Components_Button__button","basic":"_Components_Button__basic _Components_Button__button","round":"_Components_Button__round _Components_Button__button"}
+module.exports = {"clients":"_Clients__clients"}
 },{}],114:[function(require,module,exports){
-module.exports = {"card":"_Components_Card__card","title":"_Components_Card__title","content":"_Components_Card__content"}
+module.exports = {"create":"_Clients_Create__create"}
 },{}],115:[function(require,module,exports){
-module.exports = {"panel":"_Components_Panel__panel"}
+module.exports = {"content":"_Clients_Create_Content__content","input":"_Clients_Create_Content__input"}
 },{}],116:[function(require,module,exports){
-module.exports = {"topBar":"_Components_TopBar__topBar","left":"_Components_TopBar__left","right":"_Components_TopBar__right","entries":"_Components_TopBar__entries"}
-},{}],117:[function(require,module,exports){
-module.exports = {"customers":"_Customers__customers"}
-},{}],118:[function(require,module,exports){
-module.exports = {"create":"_Customers_Create__create"}
-},{}],119:[function(require,module,exports){
-module.exports = {"content":"_Customers_Create_Content__content","input":"_Customers_Create_Content__input"}
-},{}],120:[function(require,module,exports){
 module.exports = {}
+},{}],117:[function(require,module,exports){
+module.exports = {"table":"_Clients_List_Content__table"}
+},{}],118:[function(require,module,exports){
+module.exports = {"view":"_Clients_View__view","menu":"_Clients_View__menu","content":"_Clients_View__content"}
+},{}],119:[function(require,module,exports){
+module.exports = {"content":"_Clients_View_Client__content","table":"_Clients_View_Client__table"}
+},{}],120:[function(require,module,exports){
+module.exports = {"button":"_Components_Button__button","basic":"_Components_Button__basic _Components_Button__button","round":"_Components_Button__round _Components_Button__button"}
 },{}],121:[function(require,module,exports){
-module.exports = {"table":"_Customers_List_Content__table"}
+module.exports = {"card":"_Components_Card__card","title":"_Components_Card__title","content":"_Components_Card__content"}
 },{}],122:[function(require,module,exports){
-module.exports = {"view":"_Customers_View__view","menu":"_Customers_View__menu","content":"_Customers_View__content"}
+module.exports = {"panel":"_Components_Panel__panel"}
 },{}],123:[function(require,module,exports){
-module.exports = {"content":"_Customers_View_Customer__content","table":"_Customers_View_Customer__table"}
+module.exports = {"topBar":"_Components_TopBar__topBar","left":"_Components_TopBar__left","right":"_Components_TopBar__right","entries":"_Components_TopBar__entries"}
 },{}],124:[function(require,module,exports){
 module.exports = {"formErrors":"_Forms_FormErrors__formErrors","list":"_Forms_FormErrors__list"}
 },{}],125:[function(require,module,exports){
 module.exports = {"input":"_Forms_Input__input","inputDisabled":"_Forms_Input__inputDisabled _Forms_Input__input","label":"_Forms_Input__label","labelActive":"_Forms_Input__labelActive _Forms_Input__label"}
 },{}],126:[function(require,module,exports){
-arguments[4][120][0].apply(exports,arguments)
-},{"dup":120}],127:[function(require,module,exports){
+arguments[4][116][0].apply(exports,arguments)
+},{"dup":116}],127:[function(require,module,exports){
 module.exports = {"menu":"_Menu__menu","list":"_Menu__list","li":"_Menu__li","active":"_Menu__active _Menu__li"}
 },{}],128:[function(require,module,exports){
 module.exports = {"navbar":"_Navbar__navbar","badge":"_Navbar__badge","logo":"_Navbar__logo","list":"_Navbar__list","mobileList":"_Navbar__mobileList"}

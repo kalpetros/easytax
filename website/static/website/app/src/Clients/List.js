@@ -1,4 +1,4 @@
-import styles from '../../../css/src/Customers/List.css';
+import styles from '../../../css/src/Clients/List.css';
 import {TopBar} from '../Components/TopBar';
 import {Button} from '../Components/Button';
 

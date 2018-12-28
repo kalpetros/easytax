@@ -1,4 +1,4 @@
-import styles from '../../../../css/src/Customers/View/Customer.css';
+import styles from '../../../../css/src/Clients/View/Client.css';
 import {TopBar} from '../../Components/TopBar';
 import {Button} from '../../Components/Button';
 import {Card} from '../../Components/Card';
@@ -441,7 +441,7 @@ function StatusDetails(props) {
     );
 }
 
-class Customer extends React.Component {
+class Client extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -452,14 +452,14 @@ class Customer extends React.Component {
         this.fetch();
     }
     fetch() {
-        let customer = this.props.customer;
+        let client = this.props.client;
         
         let data = {
-            action: 'fetch_customer',
-            customer_pk: customer
+            action: 'fetch_client',
+            client_pk: client
         };
         
-        axios.post('/customers_view', data)
+        axios.post('/clients_view', data)
             .then((response) => {
                 if (!response.data.errors) {
                     const newState = update(this.state, {
@@ -489,7 +489,7 @@ class Customer extends React.Component {
         );
         
 	return(
-	    <div className={styles.customer}>
+	    <div className={styles.client}>
               <TopBar left={left}
                       right={right}/>
               <div className={styles.content}>
@@ -507,4 +507,4 @@ class Customer extends React.Component {
     }
 }
 
-export{Customer};
+export{Client};
