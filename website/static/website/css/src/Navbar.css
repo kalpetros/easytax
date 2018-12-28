@@ -8,6 +8,23 @@
     border-bottom: 1px solid #eee;
 }
 
+.badge {
+    position: relative;
+}
+
+.badge > span {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: red;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: white;
+}
+
 .logo {
     display: grid;
     justify-items: left;

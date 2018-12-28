@@ -2,6 +2,8 @@ from django.forms import ModelForm
 
 from django.contrib.auth.models import User
 
+from website.models import Customer
+
 
 class UserForm(ModelForm):
     def __init__(self, *args, **kwargs):
@@ -21,3 +23,12 @@ class UserForm(ModelForm):
             'first_name',
             'last_name'
         ]
+
+
+class CustomerForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomerForm, self).__init__(*args, **kwargs)
+
+    class Meta:
+        model = Customer
+        fields = '__all__'
