@@ -21,6 +21,7 @@ class Create extends React.Component {
                 business_registry_username: '',
                 business_registry_password: '',
                 tax_number: '',
+                social_security_number: '',
                 first_name: '',
                 last_name: '',
                 last_name_2: '',

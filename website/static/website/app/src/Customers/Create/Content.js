@@ -23,8 +23,8 @@ class Content extends React.Component {
                        label="Όνομα Χρήστη"
                        value={this.props.form.taxis_username}
                        onChange={this.props.onChange}/>
-                <Input id="taxis__password"
-                       name="taxis__password"
+                <Input id="taxis_password"
+                       name="taxis_password"
                        type="password"
                        label="Κωδικός Πρόσβασης"
                        value={this.props.form.taxis_password}
@@ -61,12 +61,20 @@ class Content extends React.Component {
                        onChange={this.props.onChange}/>
               </div>
               <span>Προσωπικά στοιχεία</span>
-              <Input id="tax_number"
-                     name="tax_number"
-                     type="text"
-                     label="ΑΦΜ"
-                     value={this.props.form.tax_number}
-                     onChange={this.props.onChange}/>
+              <div className={styles.input}>
+                <Input id="tax_number"
+                       name="tax_number"
+                       type="text"
+                       label="ΑΦΜ"
+                       value={this.props.form.tax_number}
+                       onChange={this.props.onChange}/>
+                <Input id="social_security_number"
+                       name="social_security_number"
+                       type="text"
+                       label="ΑΜΚΑ"
+                       value={this.props.form.social_security_number}
+                       onChange={this.props.onChange}/>
+              </div>
               <div className={styles.input}>
                 <Input id="first_name"
                        name="first_name"

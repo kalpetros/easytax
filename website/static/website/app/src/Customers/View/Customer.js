@@ -4,11 +4,103 @@ import {Button} from '../../Components/Button';
 import {Card} from '../../Components/Card';
 
 import axios from 'axios';
+import moment from 'moment';
 import update from 'immutability-helper';
 import React from 'react';
 
+function TaxisDetails(props) {
+    let username = props.content.taxis_username;
+    let password = props.content.taxis_password;
+    
+    return(
+        <Card title="Στοιχεία TAXIS">
+          <table className={styles.table}>
+            <tbody>
+              <tr>
+                <td>
+                  Όνομα Χρήστη
+                </td>
+                <td>
+                  {username}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Κωδικός Πρόσβασης
+                </td>
+                <td>
+                  {password}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </Card>
+    );
+}
+
+function IkaDetails(props) {
+    let username = props.content.ika_username;
+    let password = props.content.ika_password;
+    
+    return(
+        <Card title="Στοιχεία ΙΚΑ">
+          <table className={styles.table}>
+            <tbody>
+              <tr>
+                <td>
+                  Όνομα Χρήστη
+                </td>
+                <td>
+                  {username}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Κωδικός Πρόσβασης
+                </td>
+                <td>
+                  {password}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </Card>
+    );
+}
+
+function BusinessRegistryDetails(props) {
+    let username = props.content.business_registry_username;
+    let password = props.content.business_registry_password;
+    
+    return(
+        <Card title="Στοιχεία ΓΕΜΗ">
+          <table className={styles.table}>
+            <tbody>
+              <tr>
+                <td>
+                  Όνομα Χρήστη
+                </td>
+                <td>
+                  {username}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Κωδικός Πρόσβασης
+                </td>
+                <td>
+                  {password}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </Card>
+    );
+}
+
 function PersonalDetails(props) {
     let taxNumber = props.content.tax_number;
+    let socialSecurityNumber = props.content.social_security_number;
     let firstName = props.content.first_name;
     let lastName = props.content.last_name;
     let lastName2 = props.content.last_name_2;
@@ -16,7 +108,7 @@ function PersonalDetails(props) {
     let fatherLastName = props.content.father_last_name;
     let motherFirstName = props.content.mother_first_name;
     let motherLastName = props.content.mother_last_name;
-    let dateOfBirth = props.content.date_of_birth;
+    let dateOfBirth = moment(props.content.date_of_birth).format('D/MMM/Y');
     let dateOfDeath = props.content.date_of_death;
     let countryOfBirth = props.content.country_of_birth;
     let gender = props.content.gender;
@@ -32,6 +124,14 @@ function PersonalDetails(props) {
                 </td>
                 <td>
                   {taxNumber}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  ΑΜΚΑ
+                </td>
+                <td>
+                  {socialSecurityNumber}
                 </td>
               </tr>
               <tr>
@@ -187,7 +287,7 @@ function ContactDetails(props) {
 function IdentityDetails(props) {
     let identityType = props.content.identity_type;
     let identityNumber = props.content.identity_number;
-    let identityIssueDate = props.content.identity_issue_date;
+    let identityIssueDate = moment(props.content.identity_issue_date).format('D/MMM/Y');
     let identityIssuingAuthority = props.content.identity_issuing_authority;
     
     return(
@@ -286,6 +386,10 @@ function StatusDetails(props) {
     let partnerTaxNumber = props.content.partner_tax_number;
     let partnerFirstName = props.content.partner_first_name;
     let partnerLastName = props.content.partner_last_name;
+
+    if (marriageDate !== null) {
+        marriageDate = moment(marriageDate).format('D/MMM/Y');
+    }
     
     return(
         <Card title="Οικογενειακή Κατάσταση">
@@ -358,7 +462,6 @@ class Customer extends React.Component {
         axios.post('/customers_view', data)
             .then((response) => {
                 if (!response.data.errors) {
-                    console.log(response.data);
                     const newState = update(this.state, {
                         content: {$set: response.data.content}
                     });
@@ -380,7 +483,7 @@ class Customer extends React.Component {
         );
 
         let right = (
-            <Button icon="save"
+            <Button icon="edit"
                     type={"round"}
                     onClick={this.handleAddClick}/>
         );
@@ -390,6 +493,9 @@ class Customer extends React.Component {
               <TopBar left={left}
                       right={right}/>
               <div className={styles.content}>
+                <TaxisDetails content={this.state.content}/>
+                <IkaDetails content={this.state.content}/>
+                <BusinessRegistryDetails content={this.state.content}/>
                 <PersonalDetails content={this.state.content}/>
                 <ContactDetails content={this.state.content}/>
                 <IdentityDetails content={this.state.content}/>

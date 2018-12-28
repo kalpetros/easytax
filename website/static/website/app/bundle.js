@@ -33994,7 +33994,7 @@ var Join = function (_React$Component) {
 
 exports.Join = Join;
 
-},{"../../../css/src/Authentication/Join.css":111,"../Components/Button":92,"../Components/Panel":95,"../Forms/FormErrors":104,"../Forms/Input":105,"axios":1,"immutability-helper":36,"react":79,"react-router-dom":64}],90:[function(require,module,exports){
+},{"../../../css/src/Authentication/Join.css":110,"../Components/Button":92,"../Components/Panel":94,"../Forms/FormErrors":103,"../Forms/Input":104,"axios":1,"immutability-helper":36,"react":79,"react-router-dom":64}],90:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34190,7 +34190,7 @@ var Login = function (_React$Component) {
 
 exports.Login = Login;
 
-},{"../../../css/src/Authentication/Login.css":112,"../Components/Button":92,"../Components/Panel":95,"../Forms/FormErrors":104,"../Forms/Input":105,"axios":1,"immutability-helper":36,"react":79,"react-router-dom":64}],91:[function(require,module,exports){
+},{"../../../css/src/Authentication/Login.css":111,"../Components/Button":92,"../Components/Panel":94,"../Forms/FormErrors":103,"../Forms/Input":104,"axios":1,"immutability-helper":36,"react":79,"react-router-dom":64}],91:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34367,7 +34367,7 @@ var PasswordReset = function (_React$Component) {
 
 exports.PasswordReset = PasswordReset;
 
-},{"../../../css/src/Authentication/PasswordReset.css":113,"../Components/Button":92,"../Components/Panel":95,"../Forms/FormErrors":104,"../Forms/Input":105,"axios":1,"immutability-helper":36,"react":79,"react-router-dom":64}],92:[function(require,module,exports){
+},{"../../../css/src/Authentication/PasswordReset.css":112,"../Components/Button":92,"../Components/Panel":94,"../Forms/FormErrors":103,"../Forms/Input":104,"axios":1,"immutability-helper":36,"react":79,"react-router-dom":64}],92:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34460,7 +34460,7 @@ var Button = function (_React$Component) {
 
 exports.Button = Button;
 
-},{"../../../css/src/Components/Button.css":114,"react":79}],93:[function(require,module,exports){
+},{"../../../css/src/Components/Button.css":113,"react":79}],93:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34529,58 +34529,7 @@ var Card = function (_React$Component) {
 
 exports.Card = Card;
 
-},{"../../../css/src/Components/Card.css":115,"react":79,"react-router-dom":64}],94:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Loader = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Loader = require('../../../css/src/Components/Loader.css');
-
-var _Loader2 = _interopRequireDefault(_Loader);
-
-var _immutabilityHelper = require('immutability-helper');
-
-var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Loader = function (_React$Component) {
-    _inherits(Loader, _React$Component);
-
-    function Loader(props) {
-        _classCallCheck(this, Loader);
-
-        return _possibleConstructorReturn(this, (Loader.__proto__ || Object.getPrototypeOf(Loader)).call(this, props));
-    }
-
-    _createClass(Loader, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement('div', { className: _Loader2.default.loader });
-        }
-    }]);
-
-    return Loader;
-}(_react2.default.Component);
-
-exports.Loader = Loader;
-
-},{"../../../css/src/Components/Loader.css":116,"immutability-helper":36,"react":79}],95:[function(require,module,exports){
+},{"../../../css/src/Components/Card.css":114,"react":79,"react-router-dom":64}],94:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34634,7 +34583,7 @@ var Panel = function (_React$Component) {
 
 exports.Panel = Panel;
 
-},{"../../../css/src/Components/Panel.css":117,"react":79}],96:[function(require,module,exports){
+},{"../../../css/src/Components/Panel.css":115,"react":79}],95:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34694,7 +34643,7 @@ var TopBar = function (_React$Component) {
 
 exports.TopBar = TopBar;
 
-},{"../../../css/src/Components/TopBar.css":118,"react":79}],97:[function(require,module,exports){
+},{"../../../css/src/Components/TopBar.css":116,"react":79}],96:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34848,7 +34797,7 @@ var Customers = function (_React$Component) {
 
 exports.Customers = Customers;
 
-},{"../../css/src/Customers.css":119,"./Customers/Create":98,"./Customers/List":100,"./Customers/View":102,"axios":1,"immutability-helper":36,"react":79}],98:[function(require,module,exports){
+},{"../../css/src/Customers.css":117,"./Customers/Create":97,"./Customers/List":99,"./Customers/View":101,"axios":1,"immutability-helper":36,"react":79}],97:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34909,6 +34858,7 @@ var Create = function (_React$Component) {
                 business_registry_username: '',
                 business_registry_password: '',
                 tax_number: '',
+                social_security_number: '',
                 first_name: '',
                 last_name: '',
                 last_name_2: '',
@@ -35009,7 +34959,7 @@ var Create = function (_React$Component) {
 
 exports.Create = Create;
 
-},{"../../../css/src/Customers/Create.css":120,"../Components/Button":92,"../Components/TopBar":96,"../Forms/FormErrors":104,"./Create/Content":99,"axios":1,"immutability-helper":36,"react":79}],99:[function(require,module,exports){
+},{"../../../css/src/Customers/Create.css":118,"../Components/Button":92,"../Components/TopBar":95,"../Forms/FormErrors":103,"./Create/Content":98,"axios":1,"immutability-helper":36,"react":79}],98:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35073,8 +35023,8 @@ var Content = function (_React$Component) {
                                           label: '\u038C\u03BD\u03BF\u03BC\u03B1 \u03A7\u03C1\u03AE\u03C3\u03C4\u03B7',
                                           value: this.props.form.taxis_username,
                                           onChange: this.props.onChange }),
-                                   _react2.default.createElement(_Input.Input, { id: 'taxis__password',
-                                          name: 'taxis__password',
+                                   _react2.default.createElement(_Input.Input, { id: 'taxis_password',
+                                          name: 'taxis_password',
                                           type: 'password',
                                           label: '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03A0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2',
                                           value: this.props.form.taxis_password,
@@ -35127,12 +35077,22 @@ var Content = function (_React$Component) {
                                    null,
                                    '\u03A0\u03C1\u03BF\u03C3\u03C9\u03C0\u03B9\u03BA\u03AC \u03C3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1'
                             ),
-                            _react2.default.createElement(_Input.Input, { id: 'tax_number',
-                                   name: 'tax_number',
-                                   type: 'text',
-                                   label: '\u0391\u03A6\u039C',
-                                   value: this.props.form.tax_number,
-                                   onChange: this.props.onChange }),
+                            _react2.default.createElement(
+                                   'div',
+                                   { className: _Content2.default.input },
+                                   _react2.default.createElement(_Input.Input, { id: 'tax_number',
+                                          name: 'tax_number',
+                                          type: 'text',
+                                          label: '\u0391\u03A6\u039C',
+                                          value: this.props.form.tax_number,
+                                          onChange: this.props.onChange }),
+                                   _react2.default.createElement(_Input.Input, { id: 'social_security_number',
+                                          name: 'social_security_number',
+                                          type: 'text',
+                                          label: '\u0391\u039C\u039A\u0391',
+                                          value: this.props.form.social_security_number,
+                                          onChange: this.props.onChange })
+                            ),
                             _react2.default.createElement(
                                    'div',
                                    { className: _Content2.default.input },
@@ -35372,7 +35332,7 @@ var Content = function (_React$Component) {
 
 exports.Content = Content;
 
-},{"../../../../css/src/Customers/Create/Content.css":121,"../../Forms/Input":105,"react":79}],100:[function(require,module,exports){
+},{"../../../../css/src/Customers/Create/Content.css":119,"../../Forms/Input":104,"react":79}],99:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35448,7 +35408,7 @@ var List = function (_React$Component) {
 
 exports.List = List;
 
-},{"../../../css/src/Customers/List.css":122,"../Components/Button":92,"../Components/TopBar":96,"./List/Content":101,"react":79}],101:[function(require,module,exports){
+},{"../../../css/src/Customers/List.css":120,"../Components/Button":92,"../Components/TopBar":95,"./List/Content":100,"react":79}],100:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35618,7 +35578,7 @@ var Content = function (_React$Component) {
 
 exports.Content = Content;
 
-},{"../../../../css/src/Customers/List/Content.css":123,"react":79}],102:[function(require,module,exports){
+},{"../../../../css/src/Customers/List/Content.css":121,"react":79}],101:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35710,7 +35670,7 @@ var View = function (_React$Component) {
             });
             var customerName = customer.first_name + ' ' + customer.last_name;
 
-            var list = [{ name: customerName, id: 'customer' }, { name: 'Οφειλές', id: 'rec' }, { name: 'ΕΦΚΑ', id: 'efk' }, { name: 'Eνημερότητα', id: 'inf' }, { name: 'Μητρώο', id: 'reg' }, { name: 'Πληρωμές', id: 'pay' }];
+            var list = [{ name: customerName, id: 'customer' }, { name: 'Οφειλές', id: 'rec' }, { name: 'ΕΦΚΑ', id: 'efk' }, { name: 'Eνημερότητα', id: 'inf' }, { name: 'Μητρώο', id: 'reg' }, { name: 'Πληρωμές', id: 'pay' }, { name: 'Μισθωτήρια', id: 'sld' }, { name: 'Δημόσια Κλήρωση', id: 'pdr' }, { name: 'Αυτοκίνητα', id: 'car' }, { name: 'Ακατάσχετος', id: 'upd' }, { name: 'Επιδόματα', id: 'han' }];
 
             return _react2.default.createElement(
                 'div',
@@ -35733,7 +35693,7 @@ var View = function (_React$Component) {
 
 exports.View = View;
 
-},{"../../../css/src/Customers/View.css":124,"../Menu":106,"./View/Customer":103,"immutability-helper":36,"react":79}],103:[function(require,module,exports){
+},{"../../../css/src/Customers/View.css":122,"../Menu":105,"./View/Customer":102,"immutability-helper":36,"react":79}],102:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35757,6 +35717,10 @@ var _axios = require('axios');
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
 var _immutabilityHelper = require('immutability-helper');
 
 var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
@@ -35773,8 +35737,147 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function TaxisDetails(props) {
+  var username = props.content.taxis_username;
+  var password = props.content.taxis_password;
+
+  return _react2.default.createElement(
+    _Card.Card,
+    { title: '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 TAXIS' },
+    _react2.default.createElement(
+      'table',
+      { className: _Customer2.default.table },
+      _react2.default.createElement(
+        'tbody',
+        null,
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            '\u038C\u03BD\u03BF\u03BC\u03B1 \u03A7\u03C1\u03AE\u03C3\u03C4\u03B7'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            username
+          )
+        ),
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03A0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            password
+          )
+        )
+      )
+    )
+  );
+}
+
+function IkaDetails(props) {
+  var username = props.content.ika_username;
+  var password = props.content.ika_password;
+
+  return _react2.default.createElement(
+    _Card.Card,
+    { title: '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 \u0399\u039A\u0391' },
+    _react2.default.createElement(
+      'table',
+      { className: _Customer2.default.table },
+      _react2.default.createElement(
+        'tbody',
+        null,
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            '\u038C\u03BD\u03BF\u03BC\u03B1 \u03A7\u03C1\u03AE\u03C3\u03C4\u03B7'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            username
+          )
+        ),
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03A0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            password
+          )
+        )
+      )
+    )
+  );
+}
+
+function BusinessRegistryDetails(props) {
+  var username = props.content.business_registry_username;
+  var password = props.content.business_registry_password;
+
+  return _react2.default.createElement(
+    _Card.Card,
+    { title: '\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 \u0393\u0395\u039C\u0397' },
+    _react2.default.createElement(
+      'table',
+      { className: _Customer2.default.table },
+      _react2.default.createElement(
+        'tbody',
+        null,
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            '\u038C\u03BD\u03BF\u03BC\u03B1 \u03A7\u03C1\u03AE\u03C3\u03C4\u03B7'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            username
+          )
+        ),
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            '\u039A\u03C9\u03B4\u03B9\u03BA\u03CC\u03C2 \u03A0\u03C1\u03CC\u03C3\u03B2\u03B1\u03C3\u03B7\u03C2'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            password
+          )
+        )
+      )
+    )
+  );
+}
+
 function PersonalDetails(props) {
   var taxNumber = props.content.tax_number;
+  var socialSecurityNumber = props.content.social_security_number;
   var firstName = props.content.first_name;
   var lastName = props.content.last_name;
   var lastName2 = props.content.last_name_2;
@@ -35782,7 +35885,7 @@ function PersonalDetails(props) {
   var fatherLastName = props.content.father_last_name;
   var motherFirstName = props.content.mother_first_name;
   var motherLastName = props.content.mother_last_name;
-  var dateOfBirth = props.content.date_of_birth;
+  var dateOfBirth = (0, _moment2.default)(props.content.date_of_birth).format('D/MMM/Y');
   var dateOfDeath = props.content.date_of_death;
   var countryOfBirth = props.content.country_of_birth;
   var gender = props.content.gender;
@@ -35809,6 +35912,20 @@ function PersonalDetails(props) {
             'td',
             null,
             taxNumber
+          )
+        ),
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            '\u0391\u039C\u039A\u0391'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            socialSecurityNumber
           )
         ),
         _react2.default.createElement(
@@ -36063,7 +36180,7 @@ function ContactDetails(props) {
 function IdentityDetails(props) {
   var identityType = props.content.identity_type;
   var identityNumber = props.content.identity_number;
-  var identityIssueDate = props.content.identity_issue_date;
+  var identityIssueDate = (0, _moment2.default)(props.content.identity_issue_date).format('D/MMM/Y');
   var identityIssuingAuthority = props.content.identity_issuing_authority;
 
   return _react2.default.createElement(
@@ -36219,6 +36336,10 @@ function StatusDetails(props) {
   var partnerFirstName = props.content.partner_first_name;
   var partnerLastName = props.content.partner_last_name;
 
+  if (marriageDate !== null) {
+    marriageDate = (0, _moment2.default)(marriageDate).format('D/MMM/Y');
+  }
+
   return _react2.default.createElement(
     _Card.Card,
     { title: '\u039F\u03B9\u03BA\u03BF\u03B3\u03B5\u03BD\u03B5\u03B9\u03B1\u03BA\u03AE \u039A\u03B1\u03C4\u03AC\u03C3\u03C4\u03B1\u03C3\u03B7' },
@@ -36336,7 +36457,6 @@ var Customer = function (_React$Component) {
 
       _axios2.default.post('/customers_view', data).then(function (response) {
         if (!response.data.errors) {
-          console.log(response.data);
           var newState = (0, _immutabilityHelper2.default)(_this2.state, {
             content: { $set: response.data.content }
           });
@@ -36354,7 +36474,7 @@ var Customer = function (_React$Component) {
         type: "round",
         onClick: this.props.onBackClick });
 
-      var right = _react2.default.createElement(_Button.Button, { icon: 'save',
+      var right = _react2.default.createElement(_Button.Button, { icon: 'edit',
         type: "round",
         onClick: this.handleAddClick });
 
@@ -36366,6 +36486,9 @@ var Customer = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: _Customer2.default.content },
+          _react2.default.createElement(TaxisDetails, { content: this.state.content }),
+          _react2.default.createElement(IkaDetails, { content: this.state.content }),
+          _react2.default.createElement(BusinessRegistryDetails, { content: this.state.content }),
           _react2.default.createElement(PersonalDetails, { content: this.state.content }),
           _react2.default.createElement(ContactDetails, { content: this.state.content }),
           _react2.default.createElement(IdentityDetails, { content: this.state.content }),
@@ -36381,7 +36504,7 @@ var Customer = function (_React$Component) {
 
 exports.Customer = Customer;
 
-},{"../../../../css/src/Customers/View/Customer.css":125,"../../Components/Button":92,"../../Components/Card":93,"../../Components/TopBar":96,"axios":1,"immutability-helper":36,"react":79}],104:[function(require,module,exports){
+},{"../../../../css/src/Customers/View/Customer.css":123,"../../Components/Button":92,"../../Components/Card":93,"../../Components/TopBar":95,"axios":1,"immutability-helper":36,"moment":39,"react":79}],103:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36487,7 +36610,7 @@ var FormErrors = function (_React$Component) {
 
 exports.FormErrors = FormErrors;
 
-},{"../../../css/src/Forms/FormErrors.css":126,"immutability-helper":36,"react":79}],105:[function(require,module,exports){
+},{"../../../css/src/Forms/FormErrors.css":124,"immutability-helper":36,"react":79}],104:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36559,7 +36682,7 @@ var Input = function (_React$Component) {
 
 exports.Input = Input;
 
-},{"../../../css/src/Forms/Input.css":127,"react":79}],106:[function(require,module,exports){
+},{"../../../css/src/Forms/Input.css":125,"react":79}],105:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36648,7 +36771,7 @@ var Menu = function (_React$Component) {
 
 exports.Menu = Menu;
 
-},{"../../css/src/Menu.css":129,"immutability-helper":36,"react":79}],107:[function(require,module,exports){
+},{"../../css/src/Menu.css":127,"immutability-helper":36,"react":79}],106:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36791,7 +36914,7 @@ var Navbar = function (_React$Component) {
 
 exports.Navbar = Navbar;
 
-},{"../../css/src/Navbar.css":130,"react":79,"react-router-dom":64}],108:[function(require,module,exports){
+},{"../../css/src/Navbar.css":128,"react":79,"react-router-dom":64}],107:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36860,7 +36983,7 @@ var Profile = function (_React$Component) {
           { className: 'container' },
           _react2.default.createElement(
             _Card.Card,
-            null,
+            { title: 'User' },
             _react2.default.createElement(
               'ul',
               { className: _Profile2.default.list },
@@ -36905,7 +37028,7 @@ var Profile = function (_React$Component) {
 
 exports.Profile = Profile;
 
-},{"../../css/src/Profile.css":131,"./Components/Card":93,"moment":39,"react":79,"react-router-dom":64}],109:[function(require,module,exports){
+},{"../../css/src/Profile.css":129,"./Components/Card":93,"moment":39,"react":79,"react-router-dom":64}],108:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36961,7 +37084,7 @@ var Settings = function (_React$Component) {
 
 exports.Settings = Settings;
 
-},{"../../css/src/Settings.css":132,"react":79,"react-router-dom":64}],110:[function(require,module,exports){
+},{"../../css/src/Settings.css":130,"react":79,"react-router-dom":64}],109:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -36989,8 +37112,6 @@ var _Customers = require('./Customers');
 var _Navbar = require('./Navbar');
 
 var _Menu = require('./Menu');
-
-var _Loader = require('./Components/Loader');
 
 var _reactRouterDom = require('react-router-dom');
 
@@ -37262,7 +37383,7 @@ var App = function (_React$Component3) {
                                 _react2.default.createElement(
                                     _reactRouterDom.Switch,
                                     null,
-                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: customers }),
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/customers', render: customers }),
                                     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/settings', render: settings }),
                                     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/profile', render: profile }),
                                     _react2.default.createElement(_reactRouterDom.Route, { component: FourOFour })
@@ -37282,50 +37403,48 @@ var App = function (_React$Component3) {
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
 
-},{"../../css/src/Globals.css":128,"../../css/src/index.css":133,"./Authentication/Join":89,"./Authentication/Login":90,"./Authentication/PasswordReset":91,"./Components/Loader":94,"./Customers":97,"./Menu":106,"./Navbar":107,"./Profile":108,"./Settings":109,"axios":1,"immutability-helper":36,"react":79,"react-dom":51,"react-router-dom":64}],111:[function(require,module,exports){
+},{"../../css/src/Globals.css":126,"../../css/src/index.css":131,"./Authentication/Join":89,"./Authentication/Login":90,"./Authentication/PasswordReset":91,"./Customers":96,"./Menu":105,"./Navbar":106,"./Profile":107,"./Settings":108,"axios":1,"immutability-helper":36,"react":79,"react-dom":51,"react-router-dom":64}],110:[function(require,module,exports){
 module.exports = {"join":"_Authentication_Join__join","container":"_Authentication_Join__container","title":"_Authentication_Join__title","form":"_Authentication_Join__form","footer":"_Authentication_Join__footer"}
-},{}],112:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 module.exports = {"login":"_Authentication_Login__login","container":"_Authentication_Login__container","title":"_Authentication_Login__title","form":"_Authentication_Login__form","footer":"_Authentication_Login__footer"}
-},{}],113:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 module.exports = {"passwordReset":"_Authentication_PasswordReset__passwordReset","container":"_Authentication_PasswordReset__container","title":"_Authentication_PasswordReset__title","form":"_Authentication_PasswordReset__form","footer":"_Authentication_PasswordReset__footer"}
-},{}],114:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 module.exports = {"button":"_Components_Button__button","basic":"_Components_Button__basic _Components_Button__button","round":"_Components_Button__round _Components_Button__button"}
-},{}],115:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 module.exports = {"card":"_Components_Card__card","title":"_Components_Card__title","content":"_Components_Card__content"}
-},{}],116:[function(require,module,exports){
-module.exports = {"loader":"_Components_Loader__loader"}
-},{}],117:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 module.exports = {"panel":"_Components_Panel__panel"}
-},{}],118:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 module.exports = {"topBar":"_Components_TopBar__topBar","left":"_Components_TopBar__left","right":"_Components_TopBar__right","entries":"_Components_TopBar__entries"}
-},{}],119:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 module.exports = {"customers":"_Customers__customers"}
-},{}],120:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 module.exports = {"create":"_Customers_Create__create"}
-},{}],121:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 module.exports = {"content":"_Customers_Create_Content__content","input":"_Customers_Create_Content__input"}
-},{}],122:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 module.exports = {}
-},{}],123:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 module.exports = {"table":"_Customers_List_Content__table"}
-},{}],124:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 module.exports = {"view":"_Customers_View__view","menu":"_Customers_View__menu","content":"_Customers_View__content"}
-},{}],125:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 module.exports = {"content":"_Customers_View_Customer__content","table":"_Customers_View_Customer__table"}
-},{}],126:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 module.exports = {"formErrors":"_Forms_FormErrors__formErrors","list":"_Forms_FormErrors__list"}
-},{}],127:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 module.exports = {"input":"_Forms_Input__input","inputDisabled":"_Forms_Input__inputDisabled _Forms_Input__input","label":"_Forms_Input__label","labelActive":"_Forms_Input__labelActive _Forms_Input__label"}
-},{}],128:[function(require,module,exports){
-arguments[4][122][0].apply(exports,arguments)
-},{"dup":122}],129:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
+arguments[4][120][0].apply(exports,arguments)
+},{"dup":120}],127:[function(require,module,exports){
 module.exports = {"menu":"_Menu__menu","list":"_Menu__list","li":"_Menu__li","active":"_Menu__active _Menu__li"}
-},{}],130:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 module.exports = {"navbar":"_Navbar__navbar","badge":"_Navbar__badge","logo":"_Navbar__logo","list":"_Navbar__list","mobileList":"_Navbar__mobileList"}
-},{}],131:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 module.exports = {"list":"_Profile__list"}
-},{}],132:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 module.exports = {"settings":"_Settings__settings"}
-},{}],133:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 module.exports = {"index":"_index__index","loading":"_index__loading"}
-},{}]},{},[110]);
+},{}]},{},[109]);

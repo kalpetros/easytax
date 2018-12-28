@@ -26,7 +26,7 @@ class Profile extends React.Component {
 	return(
 	    <div className={styles.profile}>
               <div className="container">
-                <Card>
+                <Card title="User">
                   <ul className={styles.list}>
                     <li>{username}</li>
                     <li>{email}</li>

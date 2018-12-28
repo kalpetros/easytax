@@ -195,7 +195,14 @@ class Customers(View):
             )
         else:
             content = {
+                'taxis_username': customer.taxis_username,
+                'taxis_password': customer.taxis_password,
+                'ika_username': customer.ika_username,
+                'ika_password': customer.ika_password,
+                'business_registry_username': customer.business_registry_username,
+                'business_registry_password': customer.business_registry_password,
                 'tax_number': customer.tax_number,
+                'social_security_number': customer.social_security_number,
                 'first_name': customer.first_name,
                 'last_name': customer.last_name,
                 'last_name_2': customer.last_name_2,

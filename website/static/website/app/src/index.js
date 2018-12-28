@@ -8,7 +8,6 @@ import {Profile} from './Profile';
 import {Customers} from './Customers';
 import {Navbar} from './Navbar';
 import {Menu} from './Menu';
-import {Loader} from './Components/Loader';
 
 import {
     BrowserRouter as Router,
@@ -196,7 +195,7 @@ class App extends React.Component {
 	                <ScrollWrapper>
                           <Route render={navbar}/>
                           <Switch>
-	                    <Route exact path="/" render={customers}/>
+	                    <Route exact path="/customers" render={customers}/>
                             <Route exact path="/settings" render={settings}/>
                             <Route exact path="/profile" render={profile}/>
 	                    <Route component={FourOFour}/>

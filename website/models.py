@@ -86,6 +86,7 @@ class Customer(TaxisDetails,
                IkaDetails,
                BusinessRegistryDetails):
     tax_number = models.CharField(max_length=200, blank=False, unique=True)
+    social_security_number = models.CharField(max_length=200, blank=False, unique=True)
     first_name = models.CharField(max_length=200, blank=False)
     last_name = models.CharField(max_length=200, blank=False)
     last_name_2 = models.CharField(max_length=200, blank=True)

@@ -65,7 +65,12 @@ class View extends React.Component {
             {name: 'ΕΦΚΑ', id: 'efk'},
             {name: 'Eνημερότητα', id: 'inf'},
             {name: 'Μητρώο', id: 'reg'},
-            {name: 'Πληρωμές', id: 'pay'}
+            {name: 'Πληρωμές', id: 'pay'},
+            {name: 'Μισθωτήρια', id: 'sld'},
+            {name: 'Δημόσια Κλήρωση', id: 'pdr'},
+            {name: 'Αυτοκίνητα', id: 'car'},
+            {name: 'Ακατάσχετος', id: 'upd'},
+            {name: 'Επιδόματα', id: 'han'}
         ];
         
 	return(

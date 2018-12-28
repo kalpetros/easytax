@@ -1,6 +1,8 @@
 .content {
    display: grid;
-   grid-template-columns: repeat(2, 1fr); 
+   grid-template-columns: repeat(2, 1fr);
+   grid-gap: 0.75rem;
+   margin: 0.75rem;
 }
 
 .table {
@@ -16,15 +18,10 @@
     background-color: #fff;
 }
 
-.table thead tr th {
-    background-color: #fff;
-    padding: 0.75rem;
-    text-align: center;
-    position: sticky;
-    top: calc(0.75rem * 2 + 0.5rem * 2 + 25.5px);
-    filter: drop-shadow(0 2px 2px #eee);
-}
-
 .table tbody tr td {
     padding: 0.75rem;
+}
+
+.table tbody tr td:nth-of-type(1) {
+    font-weight: 600;
 }
