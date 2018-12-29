@@ -195,6 +195,7 @@ class App extends React.Component {
 	                <ScrollWrapper>
                           <Route render={navbar}/>
                           <Switch>
+                            <Route exact path="/" render={clients}/>
 	                    <Route exact path="/clients" render={clients}/>
                             <Route exact path="/settings" render={settings}/>
                             <Route exact path="/profile" render={profile}/>

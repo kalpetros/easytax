@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders a modal 1`] = `
+<div
+  className="overlay"
+>
+  <div
+    className="modal"
+  >
+    <div
+      className="header"
+    >
+      <span>
+        Add a client
+      </span>
+    </div>
+    <div
+      className="content"
+    >
+      Test
+    </div>
+    <div
+      className="footer"
+    >
+      <button
+        className="basic"
+      />
+    </div>
+  </div>
+</div>
+`;

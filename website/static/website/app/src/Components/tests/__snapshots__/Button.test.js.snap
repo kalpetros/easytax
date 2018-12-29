@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders a basic button 1`] = `
+<button
+  className="basic"
+/>
+`;
+
+exports[`Renders a button with a name 1`] = `
+<button
+  className="basic"
+>
+  <span>
+    Test
+  </span>
+</button>
+`;
+
+exports[`Renders a button with a name and an icon 1`] = `
+<button
+  className="basic"
+>
+  <i
+    className="material-icons"
+  >
+    close
+  </i>
+  <span>
+    Test
+  </span>
+</button>
+`;
+
+exports[`Renders a button with an icon 1`] = `
+<button
+  className="basic"
+>
+  <i
+    className="material-icons"
+  >
+    close
+  </i>
+</button>
+`;
+
+exports[`Renders a button without name or icon 1`] = `
+<button
+  className="basic"
+/>
+`;
+
+exports[`Renders a round button 1`] = `
+<button
+  className="round"
+/>
+`;
