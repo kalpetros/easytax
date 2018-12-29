@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders a card with a title and content 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="title"
+  >
+    Test
+  </div>
+  <div
+    className="content"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`Renders a card with content 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="title"
+  />
+  <div
+    className="content"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`Renders a card with just a title 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="title"
+  >
+    Test
+  </div>
+  <div
+    className="content"
+  />
+</div>
+`;

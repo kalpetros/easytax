@@ -574,3 +574,91 @@ ul {
 ._Clients_View_Client__table tbody tr td:nth-of-type(1) {
     font-weight: 600;
 }
+._Customers__customers {
+    overflow: auto;
+}
+._Customers_Create__create {
+    
+}
+._Customers_View__view {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: 100%;
+    overflow: hidden;
+}
+
+._Customers_View__menu {
+    background-color: #000;
+    border-left: 1px solid #18192b;
+}
+
+._Customers_View__content {
+    overflow: auto;
+}
+._Customers_List_Content__table {
+    width: 100%;
+    border-spacing: 2px;
+}
+
+._Customers_List_Content__table thead {
+    background-color: #fff;
+}
+
+._Customers_List_Content__table tbody {
+    background-color: #fff;
+}
+
+._Customers_List_Content__table thead tr th {
+    background-color: #fff;
+    padding: 0.75rem;
+    text-align: center;
+    position: sticky;
+    top: calc(0.75rem * 2 + 0.5rem * 2 + 25.5px);
+    filter: drop-shadow(0 2px 2px #eee);
+}
+
+._Customers_List_Content__table tbody tr td {
+    padding: 0.75rem;
+    text-align: center;
+}
+
+._Customers_List_Content__table tbody tr:hover {
+    background-color: #fafafa;
+    cursor: pointer;
+}
+._Customers_View_Customer__content {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-gap: 0.75rem;
+   margin: 0.75rem;
+}
+
+._Customers_View_Customer__table {
+    width: 100%;
+    border-spacing: 2px;
+}
+
+._Customers_View_Customer__table thead {
+    background-color: #fff;
+}
+
+._Customers_View_Customer__table tbody {
+    background-color: #fff;
+}
+
+._Customers_View_Customer__table tbody tr td {
+    padding: 0.75rem;
+}
+
+._Customers_View_Customer__table tbody tr td:nth-of-type(1) {
+    font-weight: 600;
+}
+._Customers_Create_Content__content span {
+    padding: 1rem;
+    display: block;
+}
+
+._Customers_Create_Content__input {
+    display: grid;
+    grid-auto-flow: column;
+}

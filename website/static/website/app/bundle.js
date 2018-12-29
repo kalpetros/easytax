@@ -37383,6 +37383,7 @@ var App = function (_React$Component3) {
                                 _react2.default.createElement(
                                     _reactRouterDom.Switch,
                                     null,
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: clients }),
                                     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/clients', render: clients }),
                                     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/settings', render: settings }),
                                     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/profile', render: profile }),

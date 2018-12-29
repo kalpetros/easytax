@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders a top bar with content on the left and right side 1`] = `
+<div
+  className="topBar"
+>
+  <div
+    className="left"
+  >
+    Test
+  </div>
+  <div
+    className="right"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`Renders a top bar with content on the left side 1`] = `
+<div
+  className="topBar"
+>
+  <div
+    className="left"
+  >
+    Test
+  </div>
+  <div
+    className="right"
+  />
+</div>
+`;
+
+exports[`Renders a top bar with content on the right side 1`] = `
+<div
+  className="topBar"
+>
+  <div
+    className="left"
+  />
+  <div
+    className="right"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`Renders an empty top bar 1`] = `
+<div
+  className="topBar"
+>
+  <div
+    className="left"
+  />
+  <div
+    className="right"
+  />
+</div>
+`;
